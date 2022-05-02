@@ -34,7 +34,7 @@
     'Helvetica', sans-serif;
 }
 
-[data-theme='dark'] {
+[data-theme='light'] {
   --primary: #000000;
   --primary-2: #111;
   --secondary: #ffffff;
