@@ -39,6 +39,22 @@ const UserNav: React.FC<{
   return (
     <nav className={cn(s.root, className)}>
       <ul className={s.list}>
+        {process.env.COMMERCE_CUSTOMERAUTH_ENABLED && (
+          <li className={s.item}>
+            <Dropdown>
+              <DropdownTrigger>
+                <button
+                  aria-label="Menu"
+                  className={s.avatarButton}
+                  onClick={() => (isCustomerLoggedIn ? null : openModal())}
+                >
+                  <Avatar />
+                </button>
+              </DropdownTrigger>
+              <CustomerMenuContent />
+            </Dropdown>
+          </li>
+        )}
         {process.env.COMMERCE_CART_ENABLED && (
           <li className={s.item}>
             <Button
@@ -55,31 +71,6 @@ const UserNav: React.FC<{
                 <span className={s.bagCount}>{itemsCount}</span>
               )}
             </Button>
-          </li>
-        )}
-        {process.env.COMMERCE_WISHLIST_ENABLED && (
-          <li className={s.item}>
-            <Link href="/wishlist">
-              <a onClick={closeSidebarIfPresent} aria-label="Wishlist">
-                <Heart />
-              </a>
-            </Link>
-          </li>
-        )}
-        {process.env.COMMERCE_CUSTOMERAUTH_ENABLED && (
-          <li className={s.item}>
-            <Dropdown>
-              <DropdownTrigger>
-                <button
-                  aria-label="Menu"
-                  className={s.avatarButton}
-                  onClick={() => (isCustomerLoggedIn ? null : openModal())}
-                >
-                  <Avatar />
-                </button>
-              </DropdownTrigger>
-              <CustomerMenuContent />
-            </Dropdown>
           </li>
         )}
         <li className={s.mobileMenu}>

@@ -8,7 +8,7 @@
 }
 
 .navMenu {
-  @apply hidden ml-6 space-x-4 lg:block;
+  @apply hidden mx-[7rem] space-x-4 lg:block;
 }
 
 .link {
@@ -27,4 +27,5 @@
 
 .logo {
   @apply cursor-pointer  transform duration-100 ease-in-out;
+  max-width: 4.5rem;
 }

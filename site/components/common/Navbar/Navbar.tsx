@@ -18,7 +18,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
     <Container clean className="mx-auto max-w-8xl px-6">
       <div className={s.nav}>
-        <div className="flex items-center flex-1">
+        <div className="flex items-center flex-none">
           <Link href="/">
             <a className={s.logo} aria-label="Logo">
               <Logo />
@@ -26,17 +26,23 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           </Link>
           <nav className={s.navMenu}>
             <Link href="/search">
-              <a className={s.link}>All</a>
+              <a className={s.link}>Catalog</a>
             </Link>
-            {links?.map((l) => (
+            <Link href="/blog">
+              <a className={s.link}>About Us</a>
+            </Link>
+            <Link href="/about">
+              <a className={s.link}>Catalog</a>
+            </Link>
+            {/* {links?.map((l) => (
               <Link href={l.href} key={l.href}>
                 <a className={s.link}>{l.label}</a>
               </Link>
-            ))}
+            ))} */}
           </nav>
         </div>
         {process.env.COMMERCE_SEARCH_ENABLED && (
-          <div className="justify-center flex-1 hidden lg:flex h-full">
+          <div className="justify-center flex-1 hidden lg:flex h-full self-center">
             <Searchbar />
           </div>
         )}

@@ -1,5 +1,4 @@
 import { FC, useRef, useEffect } from 'react'
-import { useUserAvatar } from '@lib/hooks/useUserAvatar'
 
 interface Props {
   className?: string
@@ -8,15 +7,10 @@ interface Props {
 
 const Avatar: FC<Props> = ({}) => {
   let ref = useRef() as React.MutableRefObject<HTMLInputElement>
-  let { userAvatar } = useUserAvatar()
 
   return (
-    <div
-      ref={ref}
-      style={{ backgroundImage: userAvatar }}
-      className="inline-block h-8 w-8 rounded-full border-2 border-primary hover:border-secondary focus:border-secondary transition-colors ease-linear"
-    >
-      {/* Add an image - We're generating a gradient as placeholder  <img></img> */}
+    <div ref={ref} className="inline-block h-7 w-7">
+      <img src="./user-icon.svg" alt="user icon" />
     </div>
   )
 }
