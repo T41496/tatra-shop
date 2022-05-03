@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -41,6 +43,9 @@ module.exports = {
         base: 'var(--text-base)',
         primary: 'var(--text-primary)',
         secondary: 'var(--text-secondary)',
+      },
+      fontFamily: {
+        sans: ['Raleway', ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {
         'outline-normal': '0 0 0 2px var(--accent-2)',

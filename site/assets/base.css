@@ -30,7 +30,7 @@
   --accent-7: #333333;
   --accent-8: #111111;
   --accent-9: #000;
-  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Raleway',
+  --font-sans: 'Raleway', -apple-system, system-ui, BlinkMacSystemFont,
     'Helvetica', sans-serif;
 }
 
