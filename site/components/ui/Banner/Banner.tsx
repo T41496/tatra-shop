@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import s from './Banner.module.css'
 
-const photos = ['photo-1', 'photo-2', 'photo-3', 'photo-4']
 export const Banner = () => {
   return (
-    <div className="grid grid-cols-3 h-[calc(100vh_-_104px)]">
-      <div className="bg-[#70877B] flex justify-center">
+    <div className="grid grid-cols-3 h-[calc(100vh_-_104px)] mb-[9rem]">
+      <div className="bg-[#70877B] flex justify-center h-[inherit]">
         <div className="flex flex-col self-center">
           <h1 className="text-white font-bold text-4xl uppercase">
             tatra hills
@@ -20,15 +19,32 @@ export const Banner = () => {
           </Link>
         </div>
       </div>
-      <div className="col-span-2">
-        <div className="grid grid-cols-2 gap-3">
-          {photos.map((item) => {
-            return (
-              <div>
-                <img src={`./assets/banner/${item}.png`} alt={item} />
-              </div>
-            )
-          })}
+      <div className="col-span-2 h-[inherit]">
+        <div className="grid grid-cols-2 gap-3 h-[inherit]">
+          <div
+            className={`bg-[url('/assets/banner/photo-1.png')] bg-cover`}
+          ></div>
+          <div
+            className={`bg-[url('/assets/banner/photo-2.png')] bg-cover`}
+          ></div>
+          <div
+            className={`bg-[url('/assets/banner/photo-3.png')] bg-cover`}
+          ></div>
+          <div
+            className={`bg-[url('/assets/banner/photo-4.png')] bg-cover`}
+          ></div>
+        </div>
+        <div className="arrows flex justify-center mt-[1.2rem]">
+          <img
+            src="./arrow-icon.svg"
+            alt="arrow icon left"
+            className="cursor-pointer mx-[0.5rem]"
+          />
+          <img
+            src="./arrow-icon.svg"
+            alt="arrow icon right"
+            className="rotate-180 cursor-pointer mx-[0.5rem]"
+          />
         </div>
       </div>
     </div>
