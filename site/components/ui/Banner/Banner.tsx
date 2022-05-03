@@ -34,7 +34,7 @@ export const Banner = () => {
             className={`bg-[url('/assets/banner/photo-4.png')] bg-cover`}
           ></div>
         </div>
-        <div className="arrows flex justify-center mt-[1.2rem]">
+        <div className="arrows flex justify-center mt-[1rem]">
           <img
             src="./arrow-icon.svg"
             alt="arrow icon left"
