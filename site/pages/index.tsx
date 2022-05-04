@@ -1,7 +1,7 @@
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
-import { Grid, Marquee, Hero, Banner, Category } from '@components/ui'
+import { Grid, Marquee, Hero, Banner, Category, SignUp } from '@components/ui'
 import Link from 'next/link'
 
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
@@ -78,15 +78,13 @@ export default function Home({
           <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-2.png')] bg-cover mx-[0.5rem] justify-center items-center">
             <span className="text-white font-medium text-4xl">Travel</span>
           </div>
-          <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-2.png')] bg-cover mx-[0.5rem] justify-center items-center">
+          <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-3.png')] bg-cover mx-[0.5rem] justify-center items-center">
             <span className="text-white font-medium text-4xl">Mountains</span>
           </div>
         </Marquee>
       </div>
-      {/* <Hero
-        headline=" Dessert dragée halvah croissant."
-        description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
-      /> */}
+      <Hero />
+      <SignUp />
       {/* <Grid layout="B" variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
