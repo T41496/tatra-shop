@@ -4695,6 +4695,11 @@ jws@^3.2.2:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
 
+keen-slider@^6.6.12:
+  version "6.6.12"
+  resolved "https://registry.yarnpkg.com/keen-slider/-/keen-slider-6.6.12.tgz#2d96efdab52d26b20e694be04392b64b1592dc81"
+  integrity sha512-SStDXThkYeeB68IIdhg822csPruPx1P4WUsu6mHf/SK+wTuTLvFeCykwDZ+Hya0Mat7zGtM2YaDG5+cTjrjU2w==
+
 keen-slider@^6.6.3:
   version "6.6.3"
   resolved "https://registry.yarnpkg.com/keen-slider/-/keen-slider-6.6.3.tgz#b99eb61aa2c4f3cae5274a3424e2a010b26b7081"

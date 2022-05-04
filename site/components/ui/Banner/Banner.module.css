@@ -1,0 +1,7 @@
+.arrowSize {
+  width: 3rem;
+  height: 1rem;
+}
+.arrowDisabled {
+  fill: #c9c9c9;
+}
