@@ -3,11 +3,13 @@ import type { SearchPropsType } from '@lib/search-props'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import ClickOutside from '@lib/click-outside'
 
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import type { Product } from '@commerce/types/product'
 import { Container, Skeleton } from '@components/ui'
+import { Cross, ChevronUp } from '@components/icons'
 
 import useSearch from '@framework/product/use-search'
 
@@ -17,8 +19,8 @@ import rangeMap from '@lib/range-map'
 const SORT = {
   'trending-desc': 'Trending',
   'latest-desc': 'Latest arrivals',
-  'price-asc': 'Price: Low to high',
-  'price-desc': 'Price: High to low',
+  'price-asc': 'Low to high',
+  'price-desc': 'High to low',
 }
 
 import {
@@ -31,6 +33,8 @@ import {
 export default function Search({ categories, brands }: SearchPropsType) {
   const [activeFilter, setActiveFilter] = useState('')
   const [toggleFilter, setToggleFilter] = useState(false)
+  const [display, setDisplay] = useState(false)
+  const [sorting, setSorting] = useState('')
 
   const router = useRouter()
   const { asPath, locale } = router
@@ -61,6 +65,11 @@ export default function Search({ categories, brands }: SearchPropsType) {
       setToggleFilter(!toggleFilter)
     }
     setActiveFilter(filter)
+  }
+
+  const activeSort = (value: string) => {
+    setSorting(value)
+    setDisplay(false)
   }
 
   return (
@@ -386,7 +395,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     aria-labelledby="options-menu"
                   >
                     <ul>
-                      <li
+                      {/* <li
                         className={cn(
                           'block text-sm leading-5 text-accent-4 lg:text-base lg:no-underline lg:font-bold lg:tracking-wide hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
                           {
@@ -404,34 +413,64 @@ export default function Search({ categories, brands }: SearchPropsType) {
                             Relevance
                           </a>
                         </Link>
-                      </li>
-                      {Object.entries(SORT).map(([key, text]) => (
-                        <li
-                          key={key}
-                          className={cn(
-                            'block text-sm leading-5 text-accent-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
-                            {
-                              underline: sort === key,
-                            }
-                          )}
+                      </li> */}
+
+                      <li>
+                        <ClickOutside
+                          active={display}
+                          onClick={() => setDisplay(false)}
                         >
-                          <Link
-                            href={{
-                              pathname,
-                              query: filterQuery({ q, sort: key }),
-                            }}
-                          >
-                            <a
-                              onClick={(e) => handleClick(e, 'sort')}
-                              className={
-                                'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
-                              }
-                            >
-                              {text}
-                            </a>
-                          </Link>
-                        </li>
-                      ))}
+                          <div>
+                            <div className="flex items-center relative">
+                              <div
+                                className="cursor-pointer flex shadow-lg h-[3rem] w-[12rem] items-center p-[1rem]"
+                                onClick={() => setDisplay(!display)}
+                              >
+                                {sorting ? sorting : 'Sort'}
+                                <ChevronUp
+                                  className={cn(
+                                    'ml-[auto]',
+                                    display ? 'rotate-0' : 'rotate-180'
+                                  )}
+                                />
+                              </div>
+                            </div>
+                            <div className="absolute top-[3rem] left-0 shadow-lg w-[100%]">
+                              {display ? (
+                                <ul>
+                                  {Object.entries(SORT).map(([key, text]) => (
+                                    <li key={key} className="">
+                                      <Link
+                                        href={{
+                                          pathname,
+                                          query: filterQuery({
+                                            q,
+                                            sort: key,
+                                          }),
+                                        }}
+                                      >
+                                        <a
+                                          onClick={(e) => {
+                                            handleClick(e, 'sort'),
+                                              activeSort(
+                                                e.target.innerText as string
+                                              )
+                                          }}
+                                          className={
+                                            'h-[3rem] px-[1rem]  items-center flex hover:bg-[#70877B] focus:bg-[#70877B] hover:text-white w-[100%]'
+                                          }
+                                        >
+                                          {text}
+                                        </a>
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              ) : null}
+                            </div>
+                          </div>
+                        </ClickOutside>
+                      </li>
                     </ul>
                   </div>
                 </div>
