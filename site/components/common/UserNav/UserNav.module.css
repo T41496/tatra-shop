@@ -21,7 +21,7 @@
 }
 
 .bagCount {
-  @apply border border-accent-1 bg-secondary text-secondary absolute rounded-full right-3 top-3 flex items-center justify-center font-bold text-xs;
+  @apply border border-[#000000] bg-[#70877B] text-secondary absolute rounded-full right-[-0.45rem] top-[-0.25rem] flex items-center justify-center font-bold text-xs;
   padding-left: 2.5px;
   padding-right: 2.5px;
   min-width: 1.25rem;

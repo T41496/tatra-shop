@@ -63,23 +63,14 @@ const ProductCard: FC<Props> = ({
 
         {variant === 'simple' && (
           <>
-            {process.env.COMMERCE_WISHLIST_ENABLED && (
+            {/* {process.env.COMMERCE_WISHLIST_ENABLED && (
               <WishlistButton
                 className={s.wishlistButton}
                 productId={product.id}
                 variant={product.variants[0]}
               />
-            )}
-            {!noNameTag && (
-              <div className={s.header}>
-                <h3 className={s.name}>
-                  <span>{product.name}</span>
-                </h3>
-                <div className={s.price}>
-                  {`${price} ${product.price?.currencyCode}`}
-                </div>
-              </div>
-            )}
+            )} */}
+
             <div className={s.imageContainer}>
               {product?.images && (
                 <div>
@@ -93,6 +84,16 @@ const ProductCard: FC<Props> = ({
                     layout="responsive"
                     {...imgProps}
                   />
+                </div>
+              )}
+              {!noNameTag && (
+                <div className={s.header}>
+                  <h3 className="font-semibold text-base text-center pt-2">
+                    <span>{product.name}</span>
+                  </h3>
+                  <div className="text-center font-semibold ">
+                    {`${price} ${product.price?.currencyCode}`}
+                  </div>
                 </div>
               )}
             </div>

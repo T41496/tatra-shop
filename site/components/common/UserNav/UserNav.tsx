@@ -1,12 +1,12 @@
 import cn from 'clsx'
-import Link from 'next/link'
 import s from './UserNav.module.css'
 import { Avatar } from '@components/common'
 import useCart from '@framework/cart/use-cart'
 import { useUI } from '@components/ui/context'
-import { Heart, Bag, Menu } from '@components/icons'
+import { Bag, Menu } from '@components/icons'
 import CustomerMenuContent from './CustomerMenuContent'
 import useCustomer from '@framework/customer/use-customer'
+import { I18nWidget } from '@components/common'
 import React from 'react'
 import {
   Dropdown,
@@ -85,6 +85,9 @@ const UserNav: React.FC<{
           >
             <Menu />
           </Button>
+        </li>
+        <li>
+          <I18nWidget />
         </li>
       </ul>
     </nav>
