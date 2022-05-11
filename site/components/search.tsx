@@ -9,7 +9,8 @@ import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import type { Product } from '@commerce/types/product'
 import { Container, Skeleton } from '@components/ui'
-import { Cross, ChevronUp, Plus, Minus } from '@components/icons'
+import { ChevronUp, Plus, Minus } from '@components/icons'
+import { Range, getTrackBackground } from 'react-range'
 
 import useSearch from '@framework/product/use-search'
 
@@ -29,6 +30,7 @@ import {
   getDesignerPath,
   useSearchMeta,
 } from '@lib/search'
+import { divide } from 'lodash'
 
 export default function Search({ categories, brands }: SearchPropsType) {
   const [activeFilter, setActiveFilter] = useState('')
@@ -72,7 +74,13 @@ export default function Search({ categories, brands }: SearchPropsType) {
     setDisplay(false)
   }
 
-  const filterNames = ['Gender', 'Product category', 'Price', 'Size', 'Color']
+  const filterNames = ['Gender', 'Product category', 'Brand', 'Price', 'Size']
+  const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
+
+  const STEP = 1
+  const MIN = 0
+  const MAX = 1000
+  const [values, setValues] = useState([0, 200])
 
   return (
     <>
@@ -176,27 +184,6 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     aria-labelledby="options-menu"
                   >
                     <ul className="pr-[4rem]">
-                      {/* <li
-                        className={cn(
-                          'block text-sm leading-5 text-accent-4 lg:text-base lg:no-underline lg:font-bold lg:tracking-wide hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
-                          {
-                            underline: !activeCategory?.name,
-                          }
-                        )}
-                      >
-                        <Link
-                          href={{ pathname: getCategoryPath('', brand), query }}
-                        >
-                          <a
-                            onClick={(e) => handleClick(e, 'categories')}
-                            className={
-                              'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
-                            }
-                          >
-                            All Categories
-                          </a>
-                        </Link>
-                      </li> */}
                       {filterNames.map((name, index) => {
                         const [toggleThisElement, setToggleThisElement] =
                           useState(false)
@@ -217,43 +204,291 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                   {toggleThisElement && (
                                     <div className="categories">
                                       <ul className="mt-[1rem]">
-                                        {categories.map((cat: any) => (
-                                          <li
-                                            key={cat.path}
-                                            className={cn(
-                                              'block text-sm leading-5 text-accent-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
-                                              {
-                                                underline:
-                                                  activeCategory?.id === cat.id,
+                                        {categories
+                                          .slice(2, categories.length - 1)
+                                          .map((cat: any) => (
+                                            <li
+                                              key={cat.path}
+                                              className={
+                                                'block text-sm leading-5 text-accent-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8'
                                               }
-                                            )}
-                                          >
-                                            <Link
-                                              href={{
-                                                pathname: getCategoryPath(
-                                                  cat.path,
-                                                  brand
-                                                ),
-                                                query,
-                                              }}
                                             >
-                                              <a
-                                                onClick={(e) =>
-                                                  handleClick(e, 'categories')
-                                                }
-                                                className={
-                                                  'text-[#161616] font-medium text-base py-[0.25rem] inline-block'
-                                                }
+                                              <Link
+                                                href={{
+                                                  pathname: getCategoryPath(
+                                                    cat.path,
+                                                    brand
+                                                  ),
+                                                  query,
+                                                }}
                                               >
-                                                {cat.name}
-                                              </a>
-                                            </Link>
-                                          </li>
-                                        ))}
+                                                <a
+                                                  onClick={(e) =>
+                                                    handleClick(e, 'categories')
+                                                  }
+                                                  className={cn(
+                                                    'text-[#161616] font-medium text-base py-[0.25rem] inline-block',
+                                                    {
+                                                      'text-[#70877B]':
+                                                        activeCategory?.id ===
+                                                        cat.id,
+                                                    }
+                                                  )}
+                                                >
+                                                  {cat.name}
+                                                </a>
+                                              </Link>
+                                            </li>
+                                          ))}
                                       </ul>
                                     </div>
                                   )}
                                 </div>
+                              </li>
+                            )
+                          case 'Price':
+                            return (
+                              <li key={index}>
+                                <div
+                                  className="relative border-t  border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between"
+                                  onClick={() =>
+                                    setToggleThisElement((prev) => !prev)
+                                  }
+                                >
+                                  <span className="text-[#161616] font-semibold text-xl">
+                                    {name}
+                                  </span>
+                                  {toggleThisElement ? <Minus /> : <Plus />}
+                                </div>
+                                {toggleThisElement && (
+                                  <div className="categories mt-[-0.5rem]">
+                                    <Range
+                                      values={values}
+                                      step={STEP}
+                                      min={MIN}
+                                      max={MAX}
+                                      onChange={(values) => {
+                                        console.log(values)
+                                        setValues(values)
+                                      }}
+                                      renderTrack={({ props, children }) => (
+                                        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+                                        <div
+                                          onMouseDown={props.onMouseDown}
+                                          onTouchStart={props.onTouchStart}
+                                          style={{
+                                            ...props.style,
+                                            height: '36px',
+                                            display: 'flex',
+                                            width: '100%',
+                                          }}
+                                        >
+                                          <div
+                                            ref={props.ref}
+                                            style={{
+                                              height: '3px',
+                                              width: '100%',
+                                              outline: 'none',
+                                              background: getTrackBackground({
+                                                values,
+                                                colors: [
+                                                  '#161616',
+                                                  '#161616',
+                                                  '#161616',
+                                                ],
+                                                min: MIN,
+                                                max: MAX,
+                                              }),
+                                              alignSelf: 'center',
+                                            }}
+                                          >
+                                            {children}
+                                          </div>
+                                        </div>
+                                      )}
+                                      renderThumb={({ props, isDragged }) => (
+                                        <div
+                                          {...props}
+                                          style={{
+                                            ...props.style,
+                                            height: '18px',
+                                            width: '8px',
+                                            backgroundColor: '#70877B',
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            outline: 'none',
+                                          }}
+                                        >
+                                          <div
+                                            style={{
+                                              height: '16px',
+                                              width: '5px',
+                                              backgroundColor: '#70877B',
+                                              outline: 'none',
+                                            }}
+                                          />
+                                        </div>
+                                      )}
+                                    />
+                                    <div className="flex justify-between align-center pb-[1rem]">
+                                      <input
+                                        type="text"
+                                        pattern="[0-9]*"
+                                        value={values[0]}
+                                        className="bg-white outline-none border border-[#C9C9C9] font-semibold h-[2.5rem] w-[calc(50%_-_7px)] px-2"
+                                      />
+                                      <div className="w-[5px] h-[1px] bg-[#ccc] self-center"></div>
+                                      <input
+                                        type="text"
+                                        pattern="[0-9]*"
+                                        value={values[1]}
+                                        className="bg-white outline-none border border-[#C9C9C9] font-semibold h-[2.5rem] w-[calc(50%_-_7px)] px-2"
+                                      />
+                                    </div>
+                                  </div>
+                                )}
+                              </li>
+                            )
+                          case 'Gender':
+                            return (
+                              <li className="accordion" key={index}>
+                                <div
+                                  className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap"
+                                  onClick={() =>
+                                    setToggleThisElement((prev) => !prev)
+                                  }
+                                >
+                                  <span className="text-[#161616] font-semibold text-xl">
+                                    {name}
+                                  </span>
+                                  {toggleThisElement ? <Minus /> : <Plus />}
+                                  {toggleThisElement && (
+                                    <div className="categories w-[100%]">
+                                      <ul className="mt-[1rem]">
+                                        {categories
+                                          .slice(0, 2)
+                                          .map((cat: any) => (
+                                            <li
+                                              key={cat.path}
+                                              className={
+                                                'block text-sm leading-5 text-accent-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8'
+                                              }
+                                            >
+                                              <Link
+                                                href={{
+                                                  pathname: getCategoryPath(
+                                                    cat.path,
+                                                    brand
+                                                  ),
+                                                  query,
+                                                }}
+                                              >
+                                                <a
+                                                  onClick={(e) =>
+                                                    handleClick(e, 'categories')
+                                                  }
+                                                  className={cn(
+                                                    'text-[#161616] font-medium text-base py-[0.25rem] inline-block',
+                                                    {
+                                                      'text-[#70877B]':
+                                                        activeCategory?.id ===
+                                                        cat.id,
+                                                    }
+                                                  )}
+                                                >
+                                                  {cat.name}
+                                                </a>
+                                              </Link>
+                                            </li>
+                                          ))}
+                                      </ul>
+                                    </div>
+                                  )}
+                                </div>
+                              </li>
+                            )
+                          case 'Brand':
+                            return (
+                              <li className="accordion" key={index}>
+                                <div
+                                  className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap"
+                                  onClick={() =>
+                                    setToggleThisElement((prev) => !prev)
+                                  }
+                                >
+                                  <span className="text-[#161616] font-semibold text-xl">
+                                    {name}
+                                  </span>
+                                  {toggleThisElement ? <Minus /> : <Plus />}
+                                  {toggleThisElement && (
+                                    <div className="categories w-[100%]">
+                                      <ul className="mt-[1rem]">
+                                        {brands.flatMap(
+                                          ({ node }: { node: any }) => (
+                                            <li
+                                              key={node.path}
+                                              className={'block'}
+                                            >
+                                              <Link
+                                                href={{
+                                                  pathname: getDesignerPath(
+                                                    node.path,
+                                                    brand
+                                                  ),
+                                                  query,
+                                                }}
+                                              >
+                                                <a
+                                                  onClick={(e) =>
+                                                    handleClick(e, 'brands')
+                                                  }
+                                                  className={cn(
+                                                    'text-[#161616] font-medium text-base py-[0.25rem] inline-block',
+                                                    {
+                                                      'text-[#70877B] ':
+                                                        activeBrand?.id ===
+                                                        node.entityId,
+                                                    }
+                                                  )}
+                                                >
+                                                  {node.name}
+                                                </a>
+                                              </Link>
+                                            </li>
+                                          )
+                                        )}
+                                      </ul>
+                                    </div>
+                                  )}
+                                </div>
+                              </li>
+                            )
+                          case 'Size':
+                            return (
+                              <li key={index}>
+                                <div
+                                  className="relative border-t  border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between"
+                                  onClick={() =>
+                                    setToggleThisElement((prev) => !prev)
+                                  }
+                                >
+                                  <span className="text-[#161616] font-semibold text-xl">
+                                    {name}
+                                  </span>
+                                  {toggleThisElement ? <Minus /> : <Plus />}
+                                </div>
+                                {toggleThisElement && (
+                                  <div className="categories grid grid-cols-4 gap-y-[0.8rem]">
+                                    {sizes.map((item) => {
+                                      return (
+                                        <div className="border border-[#C9C9C9] w-[3rem] h-[2.5rem] hover:bg-[#70877B] hover:text-white hover:border-[#70877B] flex items-center justify-center cursor-pointer  font-medium  text-base uppercase">
+                                          {item}
+                                        </div>
+                                      )
+                                    })}
+                                  </div>
+                                )}
                               </li>
                             )
                           default:
@@ -325,63 +560,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="options-menu"
-                  >
-                    <ul>
-                      <li
-                        className={cn(
-                          'block text-sm leading-5 text-accent-4 lg:text-base lg:no-underline lg:font-bold lg:tracking-wide hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
-                          {
-                            underline: !activeBrand?.name,
-                          }
-                        )}
-                      >
-                        <Link
-                          href={{
-                            pathname: getDesignerPath('', category),
-                            query,
-                          }}
-                        >
-                          <a
-                            onClick={(e) => handleClick(e, 'brands')}
-                            className={
-                              'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
-                            }
-                          >
-                            All Designers
-                          </a>
-                        </Link>
-                      </li>
-                      {brands.flatMap(({ node }: { node: any }) => (
-                        <li
-                          key={node.path}
-                          className={cn(
-                            'block text-sm leading-5 text-accent-4 hover:bg-accent-1 lg:hover:bg-transparent hover:text-accent-8 focus:outline-none focus:bg-accent-1 focus:text-accent-8',
-                            {
-                              // @ts-ignore Shopify - Fix this types
-                              underline:
-                                activeBrand?.entityId === node.entityId,
-                            }
-                          )}
-                        >
-                          <Link
-                            href={{
-                              pathname: getDesignerPath(node.path, category),
-                              query,
-                            }}
-                          >
-                            <a
-                              onClick={(e) => handleClick(e, 'brands')}
-                              className={
-                                'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
-                              }
-                            >
-                              {node.name}
-                            </a>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  ></div>
                 </div>
               </div>
             </div>
