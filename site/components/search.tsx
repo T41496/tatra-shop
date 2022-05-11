@@ -480,9 +480,12 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 </div>
                                 {toggleThisElement && (
                                   <div className="categories grid grid-cols-4 gap-y-[0.8rem]">
-                                    {sizes.map((item) => {
+                                    {sizes.map((item, index) => {
                                       return (
-                                        <div className="border border-[#C9C9C9] w-[3rem] h-[2.5rem] hover:bg-[#70877B] hover:text-white hover:border-[#70877B] flex items-center justify-center cursor-pointer  font-medium  text-base uppercase">
+                                        <div
+                                          key={index}
+                                          className="border border-[#C9C9C9] w-[3rem] h-[2.5rem] hover:bg-[#70877B] hover:text-white hover:border-[#70877B] flex items-center justify-center cursor-pointer  font-medium  text-base uppercase"
+                                        >
                                           {item}
                                         </div>
                                       )
