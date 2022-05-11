@@ -69,8 +69,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
     setActiveFilter(filter)
   }
 
-  const activeSort = (value: string) => {
-    setSorting(value)
+  const activeSort = (value: HTMLElement) => {
+    setSorting(value.innerHTML)
     setDisplay(false)
   }
 
@@ -119,7 +119,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                             <a
                               onClick={(e) => {
                                 handleClick(e, 'sort'),
-                                  activeSort(e.target.innerText as string)
+                                  activeSort(e.target as HTMLElement)
                               }}
                               className={
                                 'h-[3rem] px-[1rem]  items-center flex hover:bg-[#70877B] focus:bg-[#70877B] hover:text-white w-[100%]'
