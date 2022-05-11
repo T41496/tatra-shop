@@ -30,11 +30,11 @@
   --accent-7: #333333;
   --accent-8: #111111;
   --accent-9: #000;
-  --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Helvetica Neue',
+  --font-sans: 'Raleway', -apple-system, system-ui, BlinkMacSystemFont,
     'Helvetica', sans-serif;
 }
 
-[data-theme='dark'] {
+[data-theme='light'] {
   --primary: #000000;
   --primary-2: #111;
   --secondary: #ffffff;

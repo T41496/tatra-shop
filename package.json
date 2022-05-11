@@ -23,5 +23,10 @@
       "pre-commit": "turbo run lint"
     }
   },
-  "packageManager": "yarn@1.22.17"
+  "packageManager": "yarn@1.22.17",
+  "dependencies": {
+    "keen-slider": "^6.6.12",
+    "react-range": "^1.8.12",
+    "rn-range-slider": "^2.1.1"
+  }
 }

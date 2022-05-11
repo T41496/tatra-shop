@@ -1,9 +1,9 @@
 {
-  "title": "ACME Storefront | Powered by Next.js Commerce",
-  "titleTemplate": "%s - ACME Storefront",
+  "title": "Tatra Hills | Shop",
+  "titleTemplate": "%s - Tatra Hills",
   "description": "Next.js Commerce - https://www.nextjs.org/commerce",
   "openGraph": {
-    "title": "ACME Storefront | Powered by Next.js Commerce",
+    "title": "Tatra Hills | Shop",
     "description": "Next.js Commerce - https://www.nextjs.org/commerce",
     "type": "website",
     "url": "https://nextjs.org/commerce",

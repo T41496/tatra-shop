@@ -1,7 +1,9 @@
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
-import { Grid, Marquee, Hero } from '@components/ui'
+import { Grid, Marquee, Hero, Banner, Category, SignUp } from '@components/ui'
+import Link from 'next/link'
+
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
@@ -40,7 +42,9 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Grid variant="filled">
+      <Banner />
+      <Category />
+      {/* <Grid variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
@@ -52,17 +56,36 @@ export default function Home({
             }}
           />
         ))}
-      </Grid>
-      <Marquee variant="secondary">
-        {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCard key={product.id} product={product} variant="slim" />
-        ))}
-      </Marquee>
-      <Hero
-        headline=" Dessert dragée halvah croissant."
-        description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
-      />
-      <Grid layout="B" variant="filled">
+      </Grid> */}
+      <div className="grid  grid-cols-[320px_minmax(900px,_1fr)_100px] ">
+        <div className="flex justify-center items-center flex-col">
+          <div>
+            <p className="text-[1.9rem] max-w-[14.2rem] font-medium mb-6">
+              Want to see the blog in detail?
+            </p>
+            <Link href={`/search}`}>
+              <a className="uppercase text-[#FFFFFF] bg-[#70877B]  px-11 py-2 text-2xl w-[11.2rem] text-center font-medium">
+                blog
+              </a>
+            </Link>
+          </div>
+        </div>
+
+        <Marquee>
+          <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-1.png')] bg-cover mx-[0.5rem] justify-center items-center">
+            <span className="text-white font-medium text-4xl">Brand</span>
+          </div>
+          <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-2.png')] bg-cover mx-[0.5rem] justify-center items-center">
+            <span className="text-white font-medium text-4xl">Travel</span>
+          </div>
+          <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-3.png')] bg-cover mx-[0.5rem] justify-center items-center">
+            <span className="text-white font-medium text-4xl">Mountains</span>
+          </div>
+        </Marquee>
+      </div>
+      <Hero />
+      <SignUp />
+      {/* <Grid layout="B" variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
@@ -73,12 +96,12 @@ export default function Home({
             }}
           />
         ))}
-      </Grid>
-      <Marquee>
+      </Grid> */}
+      {/* <Marquee>
         {products.slice(3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="slim" />
         ))}
-      </Marquee>
+      </Marquee> */}
       {/* <HomeAllProductsGrid
         newestProducts={products}
         categories={categories}

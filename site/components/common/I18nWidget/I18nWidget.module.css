@@ -19,12 +19,27 @@
 }
 
 .item {
-  @apply flex cursor-pointer px-6 py-3 transition ease-in-out duration-150 text-primary leading-6 font-medium items-center;
+  @apply flex cursor-pointer text-[#C9C9C9]  transition ease-in-out duration-150 leading-6 font-medium items-center;
   text-transform: capitalize;
 }
 
-.item:hover {
-  @apply bg-accent-1;
+.langActive {
+  @apply text-[#161616];
+}
+.langs > li {
+  @apply px-2;
+}
+.langs > li:last-child {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    background: #161616;
+    height: 20px;
+  }
 }
 
 .icon {

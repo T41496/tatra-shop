@@ -11,10 +11,6 @@
   @apply border-accent-9 bg-accent-6;
 }
 
-.root:focus {
-  @apply shadow-outline-normal outline-none;
-}
-
 .root[data-active] {
   @apply bg-accent-6;
 }
