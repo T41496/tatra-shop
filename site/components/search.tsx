@@ -81,6 +81,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
   const MIN = 0
   const MAX = 1000
   const [values, setValues] = useState([0, 200])
+  const [toggleThisElement, setToggleThisElement] = useState(false)
 
   return (
     <>
@@ -185,8 +186,6 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   >
                     <ul className="pr-[4rem]">
                       {filterNames.map((name, index) => {
-                        const [toggleThisElement, setToggleThisElement] =
-                          useState(false)
                         switch (name) {
                           case 'Product category':
                             return (
