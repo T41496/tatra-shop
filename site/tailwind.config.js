@@ -46,6 +46,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Raleway', ...defaultTheme.fontFamily.sans],
+        exo2: ['Exo 2', 'sans-serif'],
       },
       boxShadow: {
         'outline-normal': '0 0 0 2px var(--accent-2)',

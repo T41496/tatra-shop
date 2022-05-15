@@ -54,7 +54,7 @@
 }
 
 .button {
-  width: 100%;
+  @apply bg-[#70877B] w-[286px] h-20 text-[24px] font-medium;
 }
 
 .wishlistButton {

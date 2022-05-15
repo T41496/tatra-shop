@@ -43,7 +43,7 @@ const Swatch: React.FC<Omit<ButtonProps, 'variant'> & SwatchProps> = ({
     <Button
       role="option"
       aria-selected={active}
-      aria-label={variant && label ? `${variant} ${label}` : 'Variant Swatch'}
+      aria-label={variant && label ? `${variant} ${label}` : 'Variant slim'}
       className={swatchClassName}
       {...(label && color && { title: label })}
       style={color ? { backgroundColor: color } : {}}

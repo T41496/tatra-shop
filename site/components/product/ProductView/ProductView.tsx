@@ -10,6 +10,9 @@ import { Container, Text } from '@components/ui'
 import { SEO } from '@components/common'
 import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
+import ImageGallery from 'react-image-gallery'
+import ProductDescription from '../ProductDescription'
+
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -21,50 +24,47 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
     baseAmount: product.price.retailPrice,
     currencyCode: product.price.currencyCode!,
   })
-
+  const myRenderItem = (image: any) => {
+    return (
+      <div>
+        <Image
+          className={s.img}
+          src={image!}
+          alt={image.alt || 'Product Image'}
+          width={870}
+          height={865}
+          quality="85"
+        />
+      </div>
+    )
+  }
+  const images = product.images.map((image, i) => {
+    return {
+      original: image.url,
+      thumbnail: image.url,
+      renderItem: () => myRenderItem(image.url),
+    }
+  })
   return (
     <>
       <Container className="max-w-none w-full" clean>
         <div className={cn(s.root, 'fit')}>
           <div className={cn(s.main, 'fit')}>
-            <ProductTag
-              name={product.name}
-              price={`${price} ${product.price?.currencyCode}`}
-              fontSize={32}
-            />
             <div className={s.sliderContainer}>
-              <ProductSlider key={product.id}>
-                {product.images.map((image, i) => (
-                  <div key={image.url} className={s.imageContainer}>
-                    <Image
-                      className={s.img}
-                      src={image.url!}
-                      alt={image.alt || 'Product Image'}
-                      width={600}
-                      height={600}
-                      priority={i === 0}
-                      quality="85"
-                    />
-                  </div>
-                ))}
-              </ProductSlider>
+              <ImageGallery items={images} thumbnailPosition={'right'} />
             </div>
-            {process.env.COMMERCE_WISHLIST_ENABLED && (
-              <WishlistButton
-                className={s.wishlistButton}
-                productId={product.id}
-                variant={product.variants[0]}
-              />
-            )}
           </div>
-
           <ProductSidebar
             key={product.id}
             product={product}
+            price={price}
             className={s.sidebar}
           />
         </div>
-        <hr className="mt-7 border-accent-2" />
+        <div className="mb-10">
+          <ProductDescription />
+        </div>
+
         <section className="py-12 px-6 mb-10">
           <Text variant="sectionHeading">Related Products</Text>
           <div className={s.relatedProductsGrid}>
