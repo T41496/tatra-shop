@@ -47,8 +47,10 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
 
   return (
     <div className={className}>
-      <h1 className="text-[37px] font-medium pb-1">{product.name}</h1>
-      <h2 className="text-[30px] font-semibold text-[#70877B] font-exo2 pb-5">{`${price} ${product.price?.currencyCode}`}</h2>
+      <h1 className=" text-[30px] md:text-[37px] font-medium pb-1">
+        {product.name}
+      </h1>
+      <h2 className=" text-2xl md:text-[30px] font-semibold text-[#70877B] font-exo2 pb-5">{`${price} ${product.price?.currencyCode}`}</h2>
       <ProductOptions
         options={product.options}
         selectedOptions={selectedOptions}

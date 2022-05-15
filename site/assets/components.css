@@ -12,3 +12,22 @@
   .image-gallery-thumbnail {
   width: 194px !important;
 }
+
+@media only screen and (max-width: 768px) {
+  .image-gallery-slide-wrapper.right {
+    width: 75% !important;
+  }
+  .image-gallery-thumbnails {
+    width: 100% !important;
+  }
+  .image-gallery-thumbnails-wrapper.right
+    .image-gallery-thumbnails
+    .image-gallery-thumbnail {
+    width: 100% !important;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .image-gallery-slide-wrapper.right {
+    width: 70% !important;
+  }
+}
