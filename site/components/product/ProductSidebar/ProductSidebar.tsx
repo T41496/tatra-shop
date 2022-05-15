@@ -47,20 +47,20 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
 
   return (
     <div className={className}>
-      <h1 className=" text-[30px] md:text-[37px] font-medium pb-1">
+      <h1 className=" text-[30px] md:text-[37px] font-medium pb-2 md:pb-1">
         {product.name}
       </h1>
-      <h2 className=" text-2xl md:text-[30px] font-semibold text-[#70877B] font-exo2 pb-5">{`${price} ${product.price?.currencyCode}`}</h2>
+      <h2 className=" text-[30px] font-semibold text-[#70877B] font-exo2 pb-5">{`${price} ${product.price?.currencyCode}`}</h2>
       <ProductOptions
         options={product.options}
         selectedOptions={selectedOptions}
         setSelectedOptions={setSelectedOptions}
       />
       <Text
-        className="pb-4 break-words w-full max-w-xl"
+        className="pb-4 break-words w-full max-w-xl hidden sm:block"
         html={product.descriptionHtml || product.description}
       />
-      <div className="flex flex-row justify-between items-center">
+      <div className=" hidden sm:flex flex-row justify-between items-center">
         <Rating value={4} />
         <div className="text-accent-6 pr-1 font-medium text-sm">36 reviews</div>
       </div>
@@ -79,7 +79,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
               : 'Add To Cart'}
           </Button>
         )}
-        <div className="flex gap-x-1 mt-6">
+        <div className="flex gap-x-3 mt-6">
           <span className=" flex self-center w-3 h-3 rounded-full bg-[#70877B]"></span>
           <p className="flex self-center text-lg">
             Delivery in 3-8 working days.

@@ -54,7 +54,7 @@
 }
 
 .button {
-  @apply bg-[#70877B] w-[286px] h-20 text-[24px] font-medium;
+  @apply bg-[#70877B] w-[286px] h-20 text-lg md:text-[24px] font-medium;
 }
 
 .wishlistButton {

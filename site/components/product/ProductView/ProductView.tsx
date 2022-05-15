@@ -12,13 +12,16 @@ import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
 import ImageGallery from 'react-image-gallery'
 import ProductDescription from '../ProductDescription'
-
+import { useMediaQuery } from 'react-responsive'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
 }
 
 const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)',
+  })
   const { price } = usePrice({
     amount: product.price.value,
     baseAmount: product.price.retailPrice,
@@ -27,13 +30,12 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
   const myRenderItem = (image: any) => {
     return (
       <div>
-        <Image
-          className={s.img}
+        <img
+          className={
+            ' min-h-[300px] sm:min-h-[100%] sm:min-w-full object-cover'
+          }
           src={image!}
           alt={image.alt || 'Product Image'}
-          width={870}
-          height={865}
-          quality="85"
         />
       </div>
     )
