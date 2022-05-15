@@ -13,7 +13,7 @@ import {
 interface ProductSidebarProps {
   product: Product
   className?: string
-  price?: string
+  price: string
 }
 
 const ProductSidebar: FC<ProductSidebarProps> = ({
@@ -47,23 +47,20 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
 
   return (
     <div className={className}>
-      <h1 className=" text-[30px] md:text-[37px] font-medium pb-2 md:pb-1">
+      <h1 className="text-[37px]  font-medium uppercase text-[#161616]">
         {product.name}
       </h1>
-      <h2 className=" text-[30px] font-semibold text-[#70877B] font-exo2 pb-5">{`${price} ${product.price?.currencyCode}`}</h2>
-      <ProductOptions
-        options={product.options}
-        selectedOptions={selectedOptions}
-        setSelectedOptions={setSelectedOptions}
-      />
-      <Text
-        className="pb-4 break-words w-full max-w-xl hidden sm:block"
-        html={product.descriptionHtml || product.description}
-      />
-      <div className=" hidden sm:flex flex-row justify-between items-center">
-        <Rating value={4} />
-        <div className="text-accent-6 pr-1 font-medium text-sm">36 reviews</div>
+      <h2 className="text-[37px]  uppercase font-exo2 font-semibold text-[#70877B] mb-8">
+        {`${price} ${product.price?.currencyCode}`}
+      </h2>
+      <div className="mb-[100px]">
+        <ProductOptions
+          options={product.options}
+          selectedOptions={selectedOptions}
+          setSelectedOptions={setSelectedOptions}
+        />
       </div>
+
       <div>
         {process.env.COMMERCE_CART_ENABLED && (
           <Button
@@ -79,23 +76,12 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
               : 'Add To Cart'}
           </Button>
         )}
-        <div className="flex gap-x-3 mt-6">
-          <span className=" flex self-center w-3 h-3 rounded-full bg-[#70877B]"></span>
-          <p className="flex self-center text-lg">
-            Delivery in 3-8 working days.
-          </p>
-        </div>
       </div>
-      <div className="mt-6">
-        <Collapse title="Care">
-          This is a limited edition production run. Printing starts when the
-          drop ends.
-        </Collapse>
-        <Collapse title="Details">
-          This is a limited edition production run. Printing starts when the
-          drop ends. Reminder: Bad Boys For Life. Shipping may take 10+ days due
-          to COVID-19.
-        </Collapse>
+      <div className="flex gap-x-3 mt-6">
+        <span className=" flex self-center w-[17px] h-[17px] rounded-full bg-[#70877B]"></span>
+        <p className="flex self-center text-[25px]">
+          Delivery in 3-8 working days.
+        </p>
       </div>
     </div>
   )

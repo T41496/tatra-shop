@@ -1,13 +1,11 @@
 .swatch {
   box-sizing: border-box;
   composes: root from '@components/ui/Button/Button.module.css';
-  @apply h-10 w-10 bg-primary text-primary rounded-full mr-3 inline-flex
+  @apply bg-primary text-primary  mr-3 inline-flex
   items-center justify-center cursor-pointer transition duration-150 ease-in-out
-  p-0 shadow-none border-accent-3 border box-border select-none;
+  p-0 shadow-none border-accent-3 border box-border select-none w-[60px] h-[50px];
   margin-right: calc(0.75rem - 1px);
   overflow: hidden;
-  width: 48px;
-  height: 48px;
 }
 
 .swatch::before,
@@ -24,11 +22,11 @@
 }
 
 .color {
-  @apply text-black transition duration-150 ease-in-out;
+  @apply text-[#161616] transition duration-150 ease-in-out;
 }
 
 .color :hover {
-  @apply text-black;
+  @apply text-[#161616];
 }
 
 .color.dark,

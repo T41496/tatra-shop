@@ -1,5 +1,5 @@
 .root {
-  @apply relative w-full h-full select-none;
+  @apply px-6 relative w-full h-full select-none grid  grid-cols-4 gap-4;
   overflow: hidden;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .thumb {
-  @apply overflow-hidden inline-block cursor-pointer h-full;
+  @apply overflow-y-auto inline-block cursor-pointer h-full;
   width: 125px;
   width: calc(100% / 3);
 }
@@ -23,15 +23,43 @@
 }
 
 .thumb img {
-  height: 85% !important;
+  @apply w-[194px] h-[202px] object-cover;
+}
+.control {
+  @apply flex flex-row z-30 shadow-xl text-2xl;
+}
+.leftControl {
+  @apply absolute left-2 top-1/2  transform  -translate-y-1/2 text-[#161616] w-10 h-10 flex justify-center items-center bg-white rounded-full;
 }
 
+.rightControl {
+  @apply absolute right-2 top-1/2  transform  -translate-y-1/2 text-[#161616]  w-10 h-10 flex justify-center items-center bg-white rounded-full;
+  transition: background-color 0.2s ease;
+}
+
+.leftControl:hover,
+.rightControl:hover {
+  @apply transition-all duration-300 hover:opacity-70;
+}
+
+.leftControl:focus,
+.rightControl:focus {
+  @apply outline-none;
+}
+
+.rightControl {
+  @apply border-l border-accent-0;
+}
+
+.leftControl {
+  margin-right: -1px;
+}
 .album {
   width: 100%;
   height: 100%;
   box-sizing: content-box;
-  overflow-y: hidden;
-  overflow-x: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   white-space: nowrap;
   height: 125px;
   scrollbar-width: none;

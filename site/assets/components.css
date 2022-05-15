@@ -10,16 +10,3 @@
     @apply max-h-96 transition-all duration-1000 ease-in-out overflow-hidden;
   }
 }
-@media only screen and (min-width: 1440px) {
-  .image-gallery-slide-wrapper.right {
-    width: 80% !important;
-  }
-  .image-gallery-thumbnails {
-    width: 194px !important;
-  }
-  .image-gallery-thumbnails-wrapper.right
-    .image-gallery-thumbnails
-    .image-gallery-thumbnail {
-    width: 194px !important;
-  }
-}

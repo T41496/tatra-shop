@@ -9,7 +9,7 @@ import React, {
 import cn from 'clsx'
 import { a } from '@react-spring/web'
 import s from './ProductSlider.module.css'
-import ProductSliderControl from '../ProductSliderControl'
+import { ChevronLeft, ChevronRight } from '@components/icons'
 
 interface ProductSliderProps {
   children: React.ReactNode[]
@@ -81,9 +81,28 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
     <div className={cn(s.root, className)} ref={sliderContainerRef}>
       <div
         ref={ref}
-        className={cn(s.slider, { [s.show]: isMounted }, 'keen-slider')}
+        className={cn(
+          s.slider,
+          { [s.show]: isMounted },
+          'keen-slider col-span-3'
+        )}
       >
-        {slider && <ProductSliderControl onPrev={onPrev} onNext={onNext} />}
+        <div className={s.control}>
+          <button
+            className={cn(s.leftControl)}
+            onClick={onPrev}
+            aria-label="Previous Product Image"
+          >
+            <ChevronLeft />
+          </button>
+          <button
+            className={cn(s.rightControl)}
+            onClick={onNext}
+            aria-label="Next Product Image"
+          >
+            <ChevronRight />
+          </button>
+        </div>
         {Children.map(children, (child) => {
           // Add the keen-slider__slide className to children
           if (isValidElement(child)) {
@@ -101,7 +120,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
         })}
       </div>
 
-      <a.div className={s.album} ref={thumbsContainerRef}>
+      <a.div className="flex flex-col gap-y-4 " ref={thumbsContainerRef}>
         {slider &&
           Children.map(children, (child, idx) => {
             if (isValidElement(child)) {
