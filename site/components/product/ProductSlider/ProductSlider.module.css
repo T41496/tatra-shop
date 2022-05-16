@@ -14,8 +14,6 @@
 
 .thumb {
   @apply overflow-y-auto inline-block cursor-pointer h-full;
-  width: 125px;
-  width: calc(100% / 3);
 }
 
 .thumb.selected {
@@ -23,7 +21,7 @@
 }
 
 .thumb img {
-  @apply w-[194px] h-[202px] object-cover;
+  @apply w-full lg:w-[394px] lg:h-[202px] object-cover;
 }
 .control {
   @apply flex flex-row z-30 shadow-xl text-2xl;

@@ -28,11 +28,6 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
       <Container className="max-w-none w-full" clean>
         <div className={cn(s.root, 'fit')}>
           <div className={cn(s.main, 'fit')}>
-            {/* <ProductTag
-              name={product.name}
-              price={`${price} ${product.price?.currencyCode}`}
-              fontSize={32}
-            /> */}
             <div className={s.sliderContainer}>
               <ProductSlider key={product.id}>
                 {product.images.map((image, i) => (
@@ -46,13 +41,6 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                 ))}
               </ProductSlider>
             </div>
-            {/* {process.env.COMMERCE_WISHLIST_ENABLED && (
-              <WishlistButton
-                className={s.wishlistButton}
-                productId={product.id}
-                variant={product.variants[0]}
-              />
-            )} */}
           </div>
 
           <ProductSidebar
@@ -66,7 +54,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           <ProductDescription />
         </div>
         <section className="py-12 px-6 mb-10">
-          <h1 className="text-[30px] md:text-[50px] text-[#161616] font-medium pb-10">
+          <h1 className="text-[30px] md:text-[40px] text-[#161616] font-medium pb-10">
             Similar products
           </h1>
           <div className={s.relatedProductsGrid}>
