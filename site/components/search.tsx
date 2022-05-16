@@ -102,29 +102,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
   const MIN = 0
   const MAX = 1000
   const [values, setValues] = useState([0, 200])
-  const [toggleThisElement, setToggleThisElement] = useState<string>()
-  const [size, setSize] = useState<string>()
-  const [color, setColor] = useState<string>()
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([
-    'Women',
-    'Trousers / Shorts',
-  ])
-  const sizeHandler = (item: string) => {
-    setSize(item)
-    if (!selectedFilters.includes(item)) {
-      setSelectedFilters([...selectedFilters, item])
-    }
-  }
-  const colorHandler = (item: string) => {
-    setColor(item)
-    if (!selectedFilters.includes(item)) {
-      setSelectedFilters([...selectedFilters, item])
-    }
-  }
-  const removeFilter = (item: string) => {
-    const deleteFilters = selectedFilters.filter((f) => f !== item)
-    setSelectedFilters(deleteFilters)
-  }
+
   return (
     <>
       <div className="bg-[url('/catalog-bg.png')] bg-cover h-60"></div>
@@ -247,6 +225,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   >
                     <ul className="pr-[4rem]">
                       {filterNames.map((name, index) => {
+                        const [toggleThisElement, setToggleThisElement] =
+                          useState(false)
                         switch (name) {
                           case 'Product category':
                             return (
