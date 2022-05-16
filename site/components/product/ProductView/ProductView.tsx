@@ -54,7 +54,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           <ProductDescription />
         </div>
         <section className="py-12 px-6 mb-10">
-          <h1 className="text-[30px] md:text-[40px] text-[#161616] font-medium pb-10">
+          <h1 className="text-[1.8rem] md:text-[40px] text-[#161616] font-medium pb-10">
             Similar products
           </h1>
           <div className={s.relatedProductsGrid}>

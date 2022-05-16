@@ -54,7 +54,7 @@
 }
 
 .button {
-  @apply bg-[#70877B] min-w-[283px] min-h-[40px] md:min-w-[300px] md:min-h-[60px] text-lg md:text-[28px] font-medium;
+  @apply uppercase text-[#FFFFFF] bg-[#70877B] px-6 py-2 text-2xl w-[fit-content] mt-[3rem] text-center font-medium;
 }
 
 .wishlistButton {

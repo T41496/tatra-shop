@@ -1,5 +1,5 @@
 .root {
-  @apply relative grid items-start gap-1 grid-cols-1 overflow-x-hidden;
+  @apply relative grid items-start gap-1 grid-cols-1 overflow-x-hidden mt-[2rem];
   min-height: auto;
 }
 
@@ -8,7 +8,7 @@
 }
 
 .sidebar {
-  @apply flex flex-col col-span-1 mx-auto max-w-8xl px-6 py-6 w-full h-full;
+  @apply flex flex-col col-span-1 mx-auto max-w-8xl w-full h-full;
 }
 
 .sliderContainer {
@@ -45,11 +45,11 @@
   }
 
   .main {
-    @apply mx-0 col-span-8;
+    @apply mx-0 col-span-7;
   }
 
   .sidebar {
-    @apply col-span-4 py-6;
+    @apply col-span-5;
   }
 
   .imageContainer {

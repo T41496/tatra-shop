@@ -59,7 +59,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
     sort: typeof sort === 'string' ? sort : '',
     locale,
   })
-  console.log(data, 'data')
+
   const handleClick = (event: any, filter: string) => {
     if (filter !== activeFilter) {
       setToggleFilter(true)
@@ -74,34 +74,14 @@ export default function Search({ categories, brands }: SearchPropsType) {
     setDisplay(false)
   }
 
-  const filterNames = [
-    'Gender',
-    'Product category',
-    'Brand',
-    'Price',
-    'Size',
-    'Color',
-  ]
+  const filterNames = ['Gender', 'Product category', 'Brand', 'Price', 'Size']
   const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
-  const colors = [
-    '#FFFFFF',
-    '#000000',
-    '#9C9C9C',
-    '#644426',
-    '#A0489D',
-    '#558FD9',
-    '#6FCE24',
-    '#01A5A1',
-    '#FAFF00',
-    '#FF9900',
-    '#F538C0',
-    '#FF0000',
-  ]
 
   const STEP = 1
   const MIN = 0
   const MAX = 1000
   const [values, setValues] = useState([0, 200])
+  const [toggleThisElement, setToggleThisElement] = useState(false)
 
   return (
     <>
@@ -158,25 +138,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
           </ClickOutside>
         </div>
-        {/* Selected Filters */}
-        <div className="flex flex-wrap gap-4 mb-4">
-          {selectedFilters.map((item, index) => {
-            return (
-              <div
-                key={index}
-                className="flex gap-x-6 border border-[#C9C9C9] p-3"
-                onClick={() => removeFilter(item)}
-              >
-                <span className="text-2xl font-normal capitalize text-[#161616]">
-                  {item}
-                </span>
-                <span className="flex self-center cursor-pointer">
-                  <img src="/filtercross.svg" className="w-[20px]" />
-                </span>
-              </div>
-            )
-          })}
-        </div>
+
         <div className="grid grid-cols-4">
           <div className="">
             {/* Categories */}
@@ -209,7 +171,6 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   </button>
                 </span>
               </div>
-
               <div
                 className={`origin-top-left absolute lg:relative left-0 mt-1 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                   activeFilter !== 'categories' || toggleFilter !== true
@@ -225,21 +186,21 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   >
                     <ul className="pr-[4rem]">
                       {filterNames.map((name, index) => {
-                        const [toggleThisElement, setToggleThisElement] =
-                          useState(false)
                         switch (name) {
                           case 'Product category':
                             return (
                               <li className="accordion" key={index}>
                                 <div
                                   className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap"
-                                  onClick={() => setToggleThisElement(name)}
+                                  onClick={() =>
+                                    setToggleThisElement((prev) => !prev)
+                                  }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     Product category
                                   </span>
                                   {toggleThisElement ? <Minus /> : <Plus />}
-                                  {toggleThisElement === name && (
+                                  {toggleThisElement && (
                                     <div className="categories">
                                       <ul className="mt-[1rem]">
                                         {categories
@@ -289,14 +250,16 @@ export default function Search({ categories, brands }: SearchPropsType) {
                               <li key={index}>
                                 <div
                                   className="relative border-t  border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between"
-                                  onClick={() => setToggleThisElement(name)}
+                                  onClick={() =>
+                                    setToggleThisElement((prev) => !prev)
+                                  }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
                                   {toggleThisElement ? <Minus /> : <Plus />}
                                 </div>
-                                {toggleThisElement === name && (
+                                {toggleThisElement && (
                                   <div className="categories mt-[-0.5rem]">
                                     <Range
                                       values={values}
@@ -391,13 +354,15 @@ export default function Search({ categories, brands }: SearchPropsType) {
                               <li className="accordion" key={index}>
                                 <div
                                   className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap"
-                                  onClick={() => setToggleThisElement(name)}
+                                  onClick={() =>
+                                    setToggleThisElement((prev) => !prev)
+                                  }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
                                   {toggleThisElement ? <Minus /> : <Plus />}
-                                  {toggleThisElement === name && (
+                                  {toggleThisElement && (
                                     <div className="categories w-[100%]">
                                       <ul className="mt-[1rem]">
                                         {categories
@@ -447,13 +412,15 @@ export default function Search({ categories, brands }: SearchPropsType) {
                               <li className="accordion" key={index}>
                                 <div
                                   className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap"
-                                  onClick={() => setToggleThisElement(name)}
+                                  onClick={() =>
+                                    setToggleThisElement((prev) => !prev)
+                                  }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
                                   {toggleThisElement ? <Minus /> : <Plus />}
-                                  {toggleThisElement === name && (
+                                  {toggleThisElement && (
                                     <div className="categories w-[100%]">
                                       <ul className="mt-[1rem]">
                                         {brands.flatMap(
@@ -501,55 +468,25 @@ export default function Search({ categories, brands }: SearchPropsType) {
                               <li key={index}>
                                 <div
                                   className="relative border-t  border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between"
-                                  onClick={() => setToggleThisElement(name)}
+                                  onClick={() =>
+                                    setToggleThisElement((prev) => !prev)
+                                  }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
                                   {toggleThisElement ? <Minus /> : <Plus />}
                                 </div>
-                                {toggleThisElement === name && (
-                                  <div className="categories grid grid-cols-4 gap-y-[0.8rem] pb-5">
+                                {toggleThisElement && (
+                                  <div className="categories grid grid-cols-4 gap-y-[0.8rem]">
                                     {sizes.map((item, index) => {
                                       return (
                                         <div
                                           key={index}
-                                          className={`
-                                           border border-[#C9C9C9] w-[3rem] text-black h-[2.5rem] hover:bg-[#70877B] hover:text-white hover:border-[#70877B] transition-all duration-300  flex items-center justify-center cursor-pointer  font-medium  text-base uppercase`}
-                                          onClick={() => sizeHandler(item)}
+                                          className="border border-[#C9C9C9] w-[3rem] h-[2.5rem] hover:bg-[#70877B] hover:text-white hover:border-[#70877B] flex items-center justify-center cursor-pointer  font-medium  text-base uppercase"
                                         >
                                           {item}
                                         </div>
-                                      )
-                                    })}
-                                  </div>
-                                )}
-                              </li>
-                            )
-                          case 'Color':
-                            return (
-                              <li key={index}>
-                                <div
-                                  className="relative border-t  border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between"
-                                  onClick={() => setToggleThisElement(name)}
-                                >
-                                  <span className="text-[#161616] font-semibold text-xl">
-                                    {name}
-                                  </span>
-                                  {toggleThisElement ? <Minus /> : <Plus />}
-                                </div>
-                                {toggleThisElement === name && (
-                                  <div className="categories grid grid-cols-4 gap-y-[0.8rem]">
-                                    {colors.map((item, index) => {
-                                      return (
-                                        <div
-                                          key={index}
-                                          style={{
-                                            backgroundColor: item,
-                                          }}
-                                          className={`border border-[#C9C9C9] w-[3rem]  h-[2.5rem]   hover:border-[#70877B] transition-all duration-300  flex items-center justify-center cursor-pointer  font-medium  text-base uppercase`}
-                                          onClick={() => colorHandler(item)}
-                                        />
                                       )
                                     })}
                                   </div>
@@ -561,14 +498,16 @@ export default function Search({ categories, brands }: SearchPropsType) {
                               <li key={index}>
                                 <div
                                   className="relative border-t  border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between"
-                                  onClick={() => setToggleThisElement(name)}
+                                  onClick={() =>
+                                    setToggleThisElement((prev) => !prev)
+                                  }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
                                   {toggleThisElement ? <Minus /> : <Plus />}
                                 </div>
-                                {toggleThisElement === name && (
+                                {toggleThisElement && (
                                   <div className="categories"></div>
                                 )}
                               </li>

@@ -1,5 +1,5 @@
 .root {
-  @apply px-6 relative w-full h-full select-none grid  grid-cols-4 gap-4;
+  @apply px-6 relative w-full h-full select-none grid  grid-cols-4 gap-4 lg:h-[559px];
   overflow: hidden;
 }
 
@@ -10,6 +10,7 @@
 
 .slider.show {
   opacity: 1;
+  @apply lg:h-[559px];
 }
 
 .thumb {
@@ -21,7 +22,7 @@
 }
 
 .thumb img {
-  @apply w-full lg:w-[394px] lg:h-[202px] object-cover;
+  @apply w-full lg:w-[394px] lg:h-[128px] object-cover;
 }
 .control {
   @apply flex flex-row z-30 shadow-xl text-2xl;
@@ -77,6 +78,6 @@
     height: 182px;
   }
   .thumb {
-    width: 235px;
+    width: 128px;
   }
 }
