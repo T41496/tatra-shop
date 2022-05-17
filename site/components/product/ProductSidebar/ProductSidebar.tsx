@@ -47,13 +47,13 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
 
   return (
     <div className={className}>
-      <h1 className=" text-[30px] md:text-[37px]  font-medium uppercase text-[#161616]">
+      <h1 className=" text-[1.8rem] md:text-[1.8rem]  font-medium uppercase text-[#161616]">
         {product.name}
       </h1>
-      <h2 className=" text-[30px] md:text-[37px]  uppercase font-exo2 font-semibold text-[#70877B] mb-8">
-        {`${price} ${product.price?.currencyCode}`}
+      <h2 className=" text-[30px] md:text-[1.8rem] mt-[0.5rem] uppercase font-exo2 font-semibold text-[#70877B] mb-8">
+        {`${price} `}
       </h2>
-      <div className=" mb-[12px] md:mb-[100px]">
+      <div className=" mb-[12px] md:mb-[auto]">
         <ProductOptions
           options={product.options}
           selectedOptions={selectedOptions}
@@ -78,8 +78,8 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
         )}
       </div>
       <div className="flex gap-x-3 mt-6">
-        <span className=" flex self-center w-[17px] h-[17px] rounded-full bg-[#70877B]"></span>
-        <p className="flex self-center  text-xl md:text-[22px]">
+        <span className=" flex self-center w-[14px] h-[14px] rounded-full bg-[#70877B] leading-[1rem]"></span>
+        <p className="flex self-center  text-xl md:text-[1.1rem] font-medium">
           Delivery in 3-8 working days.
         </p>
       </div>
