@@ -1,6 +1,6 @@
 import cn from 'clsx'
-import Image from 'next/image'
 import s from './ProductView.module.css'
+import Link from 'next/link'
 import { FC } from 'react'
 import type { Product } from '@commerce/types/product'
 import usePrice from '@framework/product/use-price'
@@ -53,8 +53,8 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
         <div>
           <ProductDescription />
         </div>
-        <section className="py-12 px-6 mb-10">
-          <h1 className="text-[1.8rem] md:text-[40px] text-[#161616] font-medium pb-10">
+        <section className="px-6 mb-[5rem] md:mt-[10rem]">
+          <h1 className="text-[1.8rem] md:text-[40px] text-[#161616] font-medium pb-6">
             Similar products
           </h1>
           <div className={s.relatedProductsGrid}>
@@ -76,6 +76,13 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                 />
               </div>
             ))}
+          </div>
+          <div className="flex">
+            <Link href="/search">
+              <a className="uppercase inline-block m-auto text-[#FFFFFF] bg-[#70877B] mt-[2.5rem] px-11 py-2 text-2xl font-medium">
+                catalog
+              </a>
+            </Link>
           </div>
         </section>
       </Container>

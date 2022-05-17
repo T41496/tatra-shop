@@ -1,5 +1,5 @@
 .title {
-  @apply text-[30px] md:text-[50px] text-[#161616] font-medium pb-10;
+  @apply text-[30px] md:text-4xl text-[#161616] font-medium pb-10;
 }
 .productName {
   @apply text-[15px] text-center md:text-2xl text-[#161616] md:pb-2;

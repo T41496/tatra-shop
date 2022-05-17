@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const SimilarProducts: FC = () => {
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <h1 className={s.title}>Similar products</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10 md:mb-20">
         {data.map((item, index) => {

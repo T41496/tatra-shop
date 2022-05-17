@@ -10,12 +10,12 @@ const ProductDescription = () => {
   console.log(open, 'v')
   return (
     <div className=" px-5 md:px-8">
-      <h1 className=" hidden mt-[60px] md:mt-[160px] mb-10 md:block text-xl md:text-[40px] font-medium text-[#161616]">
+      <h1 className=" hidden mt-[60px] md:mt-[10rem] mb-10 md:block text-4xl md:text-4xl font-medium text-[#161616]">
         Product description
       </h1>
       <div
         onClick={() => setOpen(!open)}
-        className="flex md:hidden justify-between cursor-pointer bg-[#F1F1F1] py-6 px-4 mt-[60px] md:mt-[160px] mb-10"
+        className="flex md:hidden justify-between cursor-pointer bg-[#F1F1F1] py-6 px-4 mt-[60px] md:mt-[10rem] mb-10"
       >
         <h1 className=" text-xl md:text-[40px] font-medium text-[#161616]">
           Product description
@@ -45,7 +45,7 @@ const ProductDescription = () => {
             />
           </div>
           <div className="flex self-center ">
-            <p className=" text-xs md:text-[22px] leading-[30px] text-[#161616] font-normal">
+            <p className="text-xs md:text-[1.25rem] leading-[30px] text-[#161616] font-normal">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a
               dolor, ut lacus erat. Purus diam et risus elementum elementum.
             </p>
@@ -61,7 +61,7 @@ const ProductDescription = () => {
             />
           </div>
           <div className="flex self-center ">
-            <p className=" text-sm md:text-[22px] leading-[30px] text-[#161616] font-normal">
+            <p className=" text-sm  md:text-[1.25rem] leading-[30px] text-[#161616] font-normal">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a
               dolor, ut lacus erat. Purus diam et risus elementum elementum.
             </p>
@@ -77,7 +77,7 @@ const ProductDescription = () => {
             />
           </div>
           <div className="flex self-center ">
-            <p className=" text-sm md:text-[22px] leading-[30px] text-[#161616] font-normal">
+            <p className="text-sm md:text-[1.25rem]  leading-[30px] text-[#161616] font-normal">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas
               nibh magna quis consequat cum. Etiam egestas eu suscipit egestas.
               Scelerisque nibh eleifend phasellus eu. Nunc sit sed aliquet
