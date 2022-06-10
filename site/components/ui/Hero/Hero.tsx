@@ -18,7 +18,7 @@ const Hero: FC = () => {
               those who choose us, and we also care about the planet!
             </p>
           </div>
-          <div>
+          <div className="mt-[8rem] md:mt-[0rem]">
             <h2 className={s.title}>Why Eco</h2>
             <p className={s.description}>
               So, why choose Recycled Clothing? In the world of fast fashion,

@@ -25,10 +25,10 @@ export const Banner = () => {
           height: 100%;
       }
       `}</style>
-      <div className="grid grid-cols-3 h-[calc(100vh_-_104px)] mb-[9rem]">
-        <div className="bg-[#70877B] flex justify-center h-[inherit]">
+      <div className="grid grid-cols-1 md:grid-cols-3 h-[calc(50vh_-_52px)] md:h-[calc(100vh_-_104px)] mb-[calc(50vh_+_104px)] md:mb-[9rem]">
+        <div className="bg-[#70877B] flex justify-center h-[inherit] p-6">
           <div className="flex flex-col self-center">
-            <h1 className="text-white font-bold text-4xl uppercase font-bold">
+            <h1 className="text-white font-bold text-4xl uppercase">
               tatra hills
             </h1>
             <p className="text-white text-2xl font-normal max-w-[21rem] mt-2">
@@ -41,37 +41,37 @@ export const Banner = () => {
             </Link>
           </div>
         </div>
-        <div className="col-span-2 h-[inherit]">
+        <div className="col-span-2 h-[inherit] mt-[26px] md:mt-[0px]">
           <div ref={sliderRef} className="keen-slider">
             <div className="keen-slider__slide">
-              <div className="grid grid-cols-2 gap-3 h-[inherit]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-[inherit] p-6 md:p-0">
                 <div
                   className={`bg-[url('/assets/banner/photo-1.png')] bg-cover`}
                 ></div>
                 <div
-                  className={`bg-[url('/assets/banner/photo-2.png')] bg-cover`}
+                  className={`bg-[url('/assets/banner/photo-2.png')] bg-cover hidden md:block`}
                 ></div>
                 <div
-                  className={`bg-[url('/assets/banner/photo-3.png')] bg-cover`}
+                  className={`bg-[url('/assets/banner/photo-3.png')] bg-cover hidden md:block`}
                 ></div>
                 <div
-                  className={`bg-[url('/assets/banner/photo-4.png')] bg-cover`}
+                  className={`bg-[url('/assets/banner/photo-4.png')] bg-cover hidden md:block`}
                 ></div>
               </div>
             </div>
             <div className="keen-slider__slide">
-              <div className="grid grid-cols-2 gap-3 h-[inherit]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-[inherit] p-6 md:p-0">
                 <div
                   className={`bg-[url('/assets/banner/photo-1.png')] bg-cover`}
                 ></div>
                 <div
-                  className={`bg-[url('/assets/banner/photo-2.png')] bg-cover`}
+                  className={`bg-[url('/assets/banner/photo-2.png')] bg-cover hidden md:block`}
                 ></div>
                 <div
-                  className={`bg-[url('/assets/banner/photo-3.png')] bg-cover`}
+                  className={`bg-[url('/assets/banner/photo-3.png')] bg-cover hidden md:block`}
                 ></div>
                 <div
-                  className={`bg-[url('/assets/banner/photo-4.png')] bg-cover`}
+                  className={`bg-[url('/assets/banner/photo-4.png')] bg-cover hidden md:block`}
                 ></div>
               </div>
             </div>
