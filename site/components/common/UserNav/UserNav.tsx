@@ -86,7 +86,7 @@ const UserNav: React.FC<{
             <Menu />
           </Button>
         </li>
-        <li>
+        <li className="hidden md:block">
           <I18nWidget />
         </li>
       </ul>

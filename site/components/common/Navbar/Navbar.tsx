@@ -29,10 +29,10 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
               <a className={s.link}>Catalog</a>
             </Link>
             <Link href="/blog">
-              <a className={s.link}>About Us</a>
+              <a className={s.link}>Blog</a>
             </Link>
             <Link href="/about">
-              <a className={s.link}>Catalog</a>
+              <a className={s.link}>About Us</a>
             </Link>
             {/* {links?.map((l) => (
               <Link href={l.href} key={l.href}>
@@ -51,7 +51,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
         </div>
       </div>
       {process.env.COMMERCE_SEARCH_ENABLED && (
-        <div className="flex pb-4 lg:px-6 lg:hidden">
+        <div className="flex pb-4 lg:px-6 lg:hidden hidden">
           <Searchbar id="mobile-search" />
         </div>
       )}

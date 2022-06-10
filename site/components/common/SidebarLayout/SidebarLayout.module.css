@@ -4,13 +4,18 @@
 
 .header {
   @apply sticky top-0 pl-4 py-4 pr-6
-  flex items-center justify-between 
+  flex items-center justify-end 
   bg-accent-0 box-border w-full z-10;
   min-height: 66px;
 }
 
 .container {
-  @apply flex flex-col flex-1 box-border;
+  @apply flex flex-col flex-1 box-border w-3/4 ml-[25%] bg-white;
+}
+
+.logo {
+  @apply cursor-pointer  transform duration-100 ease-in-out;
+  max-width: 4.5rem;
 }
 
 @screen lg {
