@@ -87,90 +87,94 @@ export default function Search({ categories, brands }: SearchPropsType) {
     <>
       <div className="bg-[url('/catalog-bg.png')] bg-cover h-60"></div>
       <Container>
-        <div className="flex space-between">
-          <ClickOutside active={display} onClick={() => setDisplay(false)}>
-            <div className="ml-[auto] py-[1.5rem]">
-              <div className="flex items-center relative">
-                <div
-                  className="cursor-pointer flex h-[3rem] w-[12rem] items-center p-[1rem] border border-[#C9C9C9]"
-                  onClick={() => setDisplay(!display)}
+        <div className="flex space-between justify-between">
+          <div className="w-[calc(50%-10px)] md:0">
+            <div className="block md:hidden pt-[1.5rem]">
+              <span className="rounded-md shadow-sm">
+                <button
+                  type="button"
+                  onClick={(e) => handleClick(e, 'categories')}
+                  className="flex justify-between w-full rounded-sm border border-accent-3 px-4 py-3 bg-accent-0 text-sm leading-5 font-medium text-accent-4 hover:text-accent-5 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-accent-1 active:text-accent-8 transition ease-in-out duration-150"
+                  id="options-menu"
+                  aria-haspopup="true"
+                  aria-expanded="true"
                 >
-                  {sorting ? sorting : 'Sort'}
-                  <ChevronUp
-                    className={cn(
-                      'ml-[auto]',
-                      display ? 'rotate-0' : 'rotate-180'
-                    )}
-                  />
-                </div>
-                <div className="absolute top-[3rem] left-0 shadow-lg w-[100%] z-40 bg-white">
-                  {display ? (
-                    <ul>
-                      {Object.entries(SORT).map(([key, text]) => (
-                        <li key={key} className="">
-                          <Link
-                            href={{
-                              pathname,
-                              query: filterQuery({
-                                q,
-                                sort: key,
-                              }),
-                            }}
-                          >
-                            <a
-                              onClick={(e) => {
-                                handleClick(e, 'sort'),
-                                  activeSort(e.target as HTMLElement)
+                  {activeCategory?.name
+                    ? `Category: ${activeCategory?.name}`
+                    : 'All Categories'}
+                  <svg
+                    className="-mr-1 ml-2 h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </span>
+            </div>
+          </div>
+          <div className="w-[calc(50%-10px)] md:w-full">
+            <ClickOutside active={display} onClick={() => setDisplay(false)}>
+              <div className="pt-[1.5rem] md:pb-[1.5rem]">
+                <div className="flex items-center relative justify-end">
+                  <div
+                    className="cursor-pointer flex h-[3rem] w-[12rem] items-center p-[1rem] border border-[#C9C9C9]"
+                    onClick={() => setDisplay(!display)}
+                  >
+                    {sorting ? sorting : 'Sort'}
+                    <ChevronUp
+                      className={cn(
+                        'ml-[auto]',
+                        display ? 'rotate-0' : 'rotate-180'
+                      )}
+                    />
+                  </div>
+                  <div className="absolute top-[3rem] right-0 shadow-lg w-[12rem] z-40 bg-white">
+                    {display ? (
+                      <ul>
+                        {Object.entries(SORT).map(([key, text]) => (
+                          <li key={key} className="">
+                            <Link
+                              href={{
+                                pathname,
+                                query: filterQuery({
+                                  q,
+                                  sort: key,
+                                }),
                               }}
-                              className={
-                                'h-[3rem] px-[1rem]  items-center flex hover:bg-[#70877B] focus:bg-[#70877B] hover:text-white w-[100%]'
-                              }
                             >
-                              {text}
-                            </a>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
+                              <a
+                                onClick={(e) => {
+                                  handleClick(e, 'sort'),
+                                    activeSort(e.target as HTMLElement)
+                                }}
+                                className={
+                                  'h-[3rem] px-[1rem]  items-center flex hover:bg-[#70877B] focus:bg-[#70877B] hover:text-white w-[100%]'
+                                }
+                              >
+                                {text}
+                              </a>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
                 </div>
               </div>
-            </div>
-          </ClickOutside>
+            </ClickOutside>
+          </div>
         </div>
 
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-4">
           <div className="">
             {/* Categories */}
             <div className="relative inline-block w-full">
-              <div className="lg:hidden">
-                <span className="rounded-md shadow-sm">
-                  <button
-                    type="button"
-                    onClick={(e) => handleClick(e, 'categories')}
-                    className="flex justify-between w-full rounded-sm border border-accent-3 px-4 py-3 bg-accent-0 text-sm leading-5 font-medium text-accent-4 hover:text-accent-5 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-accent-1 active:text-accent-8 transition ease-in-out duration-150"
-                    id="options-menu"
-                    aria-haspopup="true"
-                    aria-expanded="true"
-                  >
-                    {activeCategory?.name
-                      ? `Category: ${activeCategory?.name}`
-                      : 'All Categories'}
-                    <svg
-                      className="-mr-1 ml-2 h-5 w-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </button>
-                </span>
-              </div>
               <div
                 className={`origin-top-left absolute lg:relative left-0 mt-1 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
                   activeFilter !== 'categories' || toggleFilter !== true
@@ -184,7 +188,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     aria-orientation="vertical"
                     aria-labelledby="options-menu"
                   >
-                    <ul className="pr-[4rem]">
+                    <ul className="pr-0 md:pr-[4rem]">
                       {filterNames.map((name, index) => {
                         switch (name) {
                           case 'Product category':
@@ -521,7 +525,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
 
             {/* Designs */}
-            <div className="relative inline-block w-full">
+            <div className="relative inline-block w-full hidden">
               <div className="lg:hidden mt-3">
                 <span className="rounded-md shadow-sm">
                   <button
@@ -616,7 +620,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </div>
             )}
             {data ? (
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
                 {data.products.map((product: Product) => (
                   <ProductCard
                     variant="simple"
@@ -631,7 +635,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
                 {rangeMap(12, (i) => (
                   <Skeleton key={i}>
                     <div className="w-60 h-60" />

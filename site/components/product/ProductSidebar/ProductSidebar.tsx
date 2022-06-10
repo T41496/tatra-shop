@@ -1,4 +1,5 @@
 import s from './ProductSidebar.module.css'
+import cn from 'clsx'
 import { useAddItem } from '@framework/cart'
 import { FC, useEffect, useState } from 'react'
 import { ProductOptions } from '@components/product'
@@ -46,7 +47,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   }
 
   return (
-    <div className={className}>
+    <div className={cn('px-6 md:px-0 mt-10 md:mt-0', className)}>
       <h1 className=" text-[1.8rem] md:text-[1.8rem]  font-medium uppercase text-[#161616]">
         {product.name}
       </h1>
