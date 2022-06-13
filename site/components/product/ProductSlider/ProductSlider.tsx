@@ -141,7 +141,43 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
             return child
           })}
       </a.div>
+      <Arrow
+        left
+        className={cn(s.leftControlMobile)}
+        onClick={onPrev}
+        ariaLabel="Previous Product Image"
+      />
+      <Arrow
+        right
+        className={cn(s.rightControlMobile)}
+        onClick={onNext}
+        ariaLabel="Next Product Image"
+      />
     </div>
+  )
+}
+
+function Arrow(props: any) {
+  const disabeld = props.disabled ? s.arrowDisabled : ''
+  return (
+    <svg
+      onClick={props.onClick}
+      className={cn(
+        `mx-[0.5rem] cursor-pointer ${s.arrowSize} ${
+          props.left ? 'arrow--left' : 'rotate-180'
+        } ${disabeld}`,
+        props.className
+      )}
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label={props.ariaLabel}
+    >
+      {props.left && (
+        <path d="M0.293922 8.70711C-0.0965996 8.31658 -0.0965996 7.68342 0.293922 7.29289L6.65788 0.928932C7.04841 0.538408 7.68157 0.538408 8.0721 0.928932C8.46262 1.31946 8.46262 1.95262 8.0721 2.34315L2.41525 8L8.0721 13.6569C8.46262 14.0474 8.46262 14.6805 8.0721 15.0711C7.68157 15.4616 7.04841 15.4616 6.65788 15.0711L0.293922 8.70711ZM51.5273 9H1.00103V7H51.5273V9Z" />
+      )}
+      {!props.left && (
+        <path d="M0.293922 8.70711C-0.0965996 8.31658 -0.0965996 7.68342 0.293922 7.29289L6.65788 0.928932C7.04841 0.538408 7.68157 0.538408 8.0721 0.928932C8.46262 1.31946 8.46262 1.95262 8.0721 2.34315L2.41525 8L8.0721 13.6569C8.46262 14.0474 8.46262 14.6805 8.0721 15.0711C7.68157 15.4616 7.04841 15.4616 6.65788 15.0711L0.293922 8.70711ZM51.5273 9H1.00103V7H51.5273V9Z" />
+      )}
+    </svg>
   )
 }
 

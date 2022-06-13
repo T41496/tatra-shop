@@ -47,7 +47,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   }
 
   return (
-    <div className={cn('px-6 md:px-0 mt-10 md:mt-0', className)}>
+    <div className={cn('px-6 md:pl-0 mt-10 md:mt-0', className)}>
       <h1 className=" text-[1.8rem] md:text-[1.8rem]  font-medium uppercase text-[#161616]">
         {product.name}
       </h1>
