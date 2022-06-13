@@ -94,7 +94,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 <button
                   type="button"
                   onClick={(e) => handleClick(e, 'categories')}
-                  className="flex justify-between w-full rounded-sm border border-accent-3 px-4 py-3 bg-accent-0 text-sm leading-5 font-medium text-accent-4 hover:text-accent-5 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-accent-1 active:text-accent-8 transition ease-in-out duration-150"
+                  className="flex justify-between w-full rounded-sm border border-[#C9C9C9] px-4 py-3 bg-accent-0 text-sm leading-5 font-medium hover:text-accent-5 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-accent-1 active:text-accent-8 transition ease-in-out duration-150"
                   id="options-menu"
                   aria-haspopup="true"
                   aria-expanded="true"
@@ -171,18 +171,18 @@ export default function Search({ categories, brands }: SearchPropsType) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 mb-6">
           <div className="">
             {/* Categories */}
             <div className="relative inline-block w-full">
               <div
-                className={`origin-top-left absolute lg:relative left-0 mt-1 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
+                className={`origin-top-left absolute lg:relative left-0 mt-1 w-full rounded-md z-10 mb-10 lg:block ${
                   activeFilter !== 'categories' || toggleFilter !== true
                     ? 'hidden'
                     : ''
                 }`}
               >
-                <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
+                <div className="rounded-sm bg-accent-0 pb-10">
                   <div
                     role="menu"
                     aria-orientation="vertical"
@@ -205,7 +205,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                   </span>
                                   {toggleThisElement ? <Minus /> : <Plus />}
                                   {toggleThisElement && (
-                                    <div className="categories">
+                                    <div className="categories w-[100%]">
                                       <ul className="mt-[1rem]">
                                         {categories
                                           .slice(2, categories.length - 1)
