@@ -30,9 +30,9 @@ const Hero: FC = () => {
             </p>
           </div>
         </div>
-        <Link href="/">
+        <Link href="/about">
           <a className="uppercase text-[#FFFFFF] bg-[#70877B] px-6 py-2 text-2xl w-[fit-content] mt-[3rem] text-center font-medium mx-auto block">
-            Read more
+            About us
           </a>
         </Link>
       </Container>

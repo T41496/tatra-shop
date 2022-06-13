@@ -6,7 +6,7 @@ const SignUp: FC = () => {
   return (
     <div className="flex flex-col justify-center mt-[7rem] mb-[7rem] pl-6 pr-6">
       <h2 className="text-center font-medium text-3xl">
-        Sign up Tatra hills emails
+        Sign up TATRA HILLS emails
       </h2>
       <div className="flex flex-col md:flex-row justify-center mt-[2rem]">
         <input

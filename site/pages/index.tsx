@@ -63,7 +63,7 @@ export default function Home({
             Want to see the blog in detail?
           </p>
           <div className="hidden md:block">
-            <Link href={`/search}`}>
+            <Link href="/blog">
               <a className="invisible md:visible uppercase text-[#FFFFFF] bg-[#70877B]  px-11 py-2 text-2xl w-[11.2rem] text-center font-medium">
                 blog
               </a>
@@ -72,18 +72,18 @@ export default function Home({
         </div>
         <div className="w-full md:w-3/4 ">
           <Marquee>
-            <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-1.png')] bg-cover mx-[0.5rem] justify-center items-center">
+            <div className="flex w-[200px] md:w-[320px] h-[200px] md:h-[320px] bg-[url('/assets/topics/photo-1.png')] bg-cover mx-[0.5rem] justify-center items-center">
               <span className="text-white font-medium text-4xl">Brand</span>
             </div>
-            <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-2.png')] bg-cover mx-[0.5rem] justify-center items-center">
+            <div className="flex w-[200px] md:w-[320px] h-[200px] md:h-[320px] bg-[url('/assets/topics/photo-2.png')] bg-cover mx-[0.5rem] justify-center items-center">
               <span className="text-white font-medium text-4xl">Travel</span>
             </div>
-            <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-3.png')] bg-cover mx-[0.5rem] justify-center items-center">
+            <div className="flex w-[200px] md:w-[320px] h-[200px] md:h-[320px] bg-[url('/assets/topics/photo-3.png')] bg-cover mx-[0.5rem] justify-center items-center">
               <span className="text-white font-medium text-4xl">Mountains</span>
             </div>
           </Marquee>
           <div className="block md:hidden text-center mt-10">
-            <Link href={`/search}`}>
+            <Link href="/blog">
               <a className="uppercase text-[#FFFFFF] bg-[#70877B]  px-11 py-2 text-2xl w-[11.2rem] text-center font-medium">
                 blog
               </a>
