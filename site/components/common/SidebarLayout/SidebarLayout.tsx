@@ -4,6 +4,8 @@ import { UserNav } from '@components/common'
 import { Logo } from '@components/ui'
 import cn from 'clsx'
 import s from './SidebarLayout.module.css'
+import { I18nWidget } from '@components/common'
+import Link from 'next/link'
 
 type ComponentProps = { className?: string } & (
   | { handleClose: () => any; handleBack?: never }
@@ -19,10 +21,12 @@ const SidebarLayout: FC<ComponentProps> = ({
   return (
     <div className={cn(s.root, className)}>
       <header className={s.header}>
-        <a className={s.logo} aria-label="Logo">
-          <Logo />
-        </a>
-        <UserNav />
+        <Link href="/">
+          <a className={s.logo} aria-label="Logo">
+            <Logo />
+          </a>
+        </Link>
+        <UserNav className={s.usernav} />
         {handleClose && (
           <button
             onClick={handleClose}
@@ -44,7 +48,12 @@ const SidebarLayout: FC<ComponentProps> = ({
           </button>
         )}
       </header>
-      <div className={s.container}>{children}</div>
+      <div className={s.container}>
+        {children}
+        <div className={s.mobileLanguageSwitch}>
+          <I18nWidget />
+        </div>
+      </div>
     </div>
   )
 }

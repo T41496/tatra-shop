@@ -4,9 +4,13 @@
 
 .header {
   @apply sticky top-0 pl-4 py-4 pr-6
-  flex items-center justify-end 
+  flex items-center justify-between 
   bg-accent-0 box-border w-full z-10;
   min-height: 66px;
+}
+
+.usernav {
+  @apply flex items-center justify-end flex-1 space-x-8;
 }
 
 .container {
@@ -16,6 +20,12 @@
 .logo {
   @apply cursor-pointer  transform duration-100 ease-in-out;
   max-width: 4.5rem;
+}
+
+.mobileLanguageSwitch {
+  position: absolute;
+  top: calc(100% - 50px);
+  z-index: 9999;
 }
 
 @screen lg {

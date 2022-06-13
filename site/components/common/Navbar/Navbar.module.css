@@ -29,3 +29,8 @@
   @apply cursor-pointer  transform duration-100 ease-in-out;
   max-width: 4.5rem;
 }
+
+.item {
+  @apply ml-6 cursor-pointer relative transition ease-in-out
+  duration-100 flex md:hidden items-center outline-none text-primary;
+}
