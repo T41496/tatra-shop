@@ -119,28 +119,29 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
           return child
         })}
       </div>
-
-      <a.div className="flex flex-col gap-y-4 " ref={thumbsContainerRef}>
-        {slider &&
-          Children.map(children, (child, idx) => {
-            if (isValidElement(child)) {
-              return {
-                ...child,
-                props: {
-                  ...child.props,
-                  className: cn(child.props.className, s.thumb, {
-                    [s.selected]: currentSlide === idx,
-                  }),
-                  id: `thumb-${idx}`,
-                  onClick: () => {
-                    slider.current?.moveToIdx(idx)
+      <div className="flex flex-col gap-y-4 overflow-y-scroll md:overflow-y-hidden">
+        <a.div className="flex flex-col gap-y-4 " ref={thumbsContainerRef}>
+          {slider &&
+            Children.map(children, (child, idx) => {
+              if (isValidElement(child)) {
+                return {
+                  ...child,
+                  props: {
+                    ...child.props,
+                    className: cn(child.props.className, s.thumb, {
+                      [s.selected]: currentSlide === idx,
+                    }),
+                    id: `thumb-${idx}`,
+                    onClick: () => {
+                      slider.current?.moveToIdx(idx)
+                    },
                   },
-                },
+                }
               }
-            }
-            return child
-          })}
-      </a.div>
+              return child
+            })}
+        </a.div>
+      </div>
       <Arrow
         left
         className={cn(s.leftControlMobile)}

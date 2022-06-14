@@ -1,5 +1,5 @@
 .root {
-  @apply px-6 pb-10 relative w-full h-full select-none grid  grid-cols-4 gap-4 lg:h-[559px];
+  @apply px-6 pb-10 relative w-full h-64 md:h-full select-none grid  grid-cols-4 gap-4 lg:h-[559px];
   overflow: hidden;
 }
 
