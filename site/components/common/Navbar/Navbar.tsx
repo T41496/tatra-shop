@@ -59,7 +59,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           )}
           <div className="flex items-center justify-end flex-1 space-x-8">
             <img
-              src="./search-icon.svg"
+              src="/search-icon.svg"
               alt="search icon"
               className="block md:hidden"
               onClick={function () {
