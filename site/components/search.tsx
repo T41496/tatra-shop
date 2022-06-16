@@ -82,6 +82,12 @@ export default function Search({ categories, brands }: SearchPropsType) {
   const MAX = 1000
   const [values, setValues] = useState([0, 200])
   const [toggleThisElement, setToggleThisElement] = useState(false)
+  const [toggleGenderElement, setToggleGenderElement] = useState(false)
+  const [togglePriceElement, setTogglePriceElement] = useState(false)
+  const [toggleProductCategoryElement, setToggleProductCategoryElement] =
+    useState(false)
+  const [toggleBrandElement, setToggleBrandElement] = useState(false)
+  const [toggleSizeElement, setToggleSizeElement] = useState(false)
 
   return (
     <>
@@ -197,14 +203,20 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 <div
                                   className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap"
                                   onClick={() =>
-                                    setToggleThisElement((prev) => !prev)
+                                    setToggleProductCategoryElement(
+                                      (prev) => !prev
+                                    )
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     Product category
                                   </span>
-                                  {toggleThisElement ? <Minus /> : <Plus />}
-                                  {toggleThisElement && (
+                                  {toggleProductCategoryElement ? (
+                                    <Minus />
+                                  ) : (
+                                    <Plus />
+                                  )}
+                                  {toggleProductCategoryElement && (
                                     <div className="categories w-[100%]">
                                       <ul className="mt-[1rem]">
                                         {categories
@@ -255,15 +267,15 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 <div
                                   className="relative border-t  border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between"
                                   onClick={() =>
-                                    setToggleThisElement((prev) => !prev)
+                                    setTogglePriceElement((prev) => !prev)
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
-                                  {toggleThisElement ? <Minus /> : <Plus />}
+                                  {togglePriceElement ? <Minus /> : <Plus />}
                                 </div>
-                                {toggleThisElement && (
+                                {togglePriceElement && (
                                   <div className="categories mt-[-0.5rem]">
                                     <Range
                                       values={values}
@@ -359,14 +371,14 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 <div
                                   className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap"
                                   onClick={() =>
-                                    setToggleThisElement((prev) => !prev)
+                                    setToggleGenderElement((prev) => !prev)
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
-                                  {toggleThisElement ? <Minus /> : <Plus />}
-                                  {toggleThisElement && (
+                                  {toggleGenderElement ? <Minus /> : <Plus />}
+                                  {toggleGenderElement && (
                                     <div className="categories w-[100%]">
                                       <ul className="mt-[1rem]">
                                         {categories
@@ -417,14 +429,14 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 <div
                                   className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap"
                                   onClick={() =>
-                                    setToggleThisElement((prev) => !prev)
+                                    setToggleBrandElement((prev) => !prev)
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
-                                  {toggleThisElement ? <Minus /> : <Plus />}
-                                  {toggleThisElement && (
+                                  {toggleBrandElement ? <Minus /> : <Plus />}
+                                  {toggleBrandElement && (
                                     <div className="categories w-[100%]">
                                       <ul className="mt-[1rem]">
                                         {brands.flatMap(
@@ -473,15 +485,15 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 <div
                                   className="relative border-t  border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between"
                                   onClick={() =>
-                                    setToggleThisElement((prev) => !prev)
+                                    setToggleSizeElement((prev) => !prev)
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
-                                  {toggleThisElement ? <Minus /> : <Plus />}
+                                  {toggleSizeElement ? <Minus /> : <Plus />}
                                 </div>
-                                {toggleThisElement && (
+                                {toggleSizeElement && (
                                   <div className="categories grid grid-cols-4 gap-y-[0.8rem]">
                                     {sizes.map((item, index) => {
                                       return (
