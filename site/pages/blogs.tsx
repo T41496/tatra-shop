@@ -47,7 +47,7 @@ export default function Blogs() {
               >
                 {item.description}
                 <div>
-                  <Link href="/">
+                  <Link href="/blog-detail">
                     <span className=" text-xl md:text-[28px] text-[#70877B] leading-[40px] md:leading-[48px] font-normal cursor-pointer">
                       Read more...
                     </span>
