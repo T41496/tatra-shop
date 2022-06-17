@@ -63,7 +63,7 @@ export default function Home({
             Want to see the blog in detail?
           </p>
           <div className="hidden md:block">
-            <Link href="/blog">
+            <Link href="/blogs">
               <a className="invisible md:visible uppercase text-[#FFFFFF] bg-[#70877B]  px-11 py-2 text-2xl w-[11.2rem] text-center font-medium">
                 blog
               </a>
@@ -83,7 +83,7 @@ export default function Home({
             </div>
           </Marquee>
           <div className="block md:hidden text-center mt-10">
-            <Link href="/blog">
+            <Link href="/blogs">
               <a className="uppercase text-[#FFFFFF] bg-[#70877B]  px-11 py-2 text-2xl w-[11.2rem] text-center font-medium">
                 blog
               </a>
