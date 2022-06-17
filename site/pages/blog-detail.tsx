@@ -24,7 +24,7 @@ export default function BlogDetail() {
                       src={item.picture}
                       alt={item.title}
                       width={860}
-                      height={896}
+                      height={696}
                     />
                     <div className="absolute top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.1)]">
                       <div className="flex flex-col justify-center items-center h-full w-full">
@@ -47,7 +47,7 @@ export default function BlogDetail() {
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-x-5 mb-20">
-                <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+                <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] font-normal">
                   Åke knew there must be a way. With his mother's sewing machine
                   and his father's tools, Åke created a wooden-framed backpack
                   in his basement. And with it, the seed was sown. 10 years
@@ -138,7 +138,7 @@ const data = [
     title: 'Fjallraven',
     subTitle: 'history',
     description: (
-      <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] font-normal">
         Fjällräven was born out of one man’s vision: a vision to make nature
         accessible to more people.
         <br />
