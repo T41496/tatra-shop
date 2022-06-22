@@ -2,7 +2,7 @@ import cn from 'clsx'
 import type { SearchPropsType } from '@lib/search-props'
 import Link from 'next/link'
 import { useState } from 'react'
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 import ClickOutside from '@lib/click-outside'
 
 import { Layout } from '@components/common'
@@ -40,7 +40,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
 
   const router = useRouter()
   const { asPath, locale } = router
-  const { q, sort } = router.query
+  const { q, sort, price_min, price_max } = router.query
+  const routeQuery = router.query
   // `q` can be included but because categories and designers can't be searched
   // in the same way of products, it's better to ignore the search input if one
   // of those is selected
@@ -58,6 +59,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
     brandId: (activeBrand as any)?.entityId,
     sort: typeof sort === 'string' ? sort : '',
     locale,
+    priceMin: typeof price_min === 'string' ? price_min : '',
+    priceMax: typeof price_max === 'string' ? price_max : '',
   })
 
   const handleClick = (event: any, filter: string) => {
@@ -283,8 +286,13 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                       min={MIN}
                                       max={MAX}
                                       onChange={(values) => {
-                                        console.log(values)
                                         setValues(values)
+                                        routeQuery['price_min'] = values[0]
+                                        routeQuery['price_max'] = values[1]
+                                        Router.push({
+                                          pathname: pathname,
+                                          query: routeQuery,
+                                        })
                                       }}
                                       renderTrack={({ props, children }) => (
                                         // eslint-disable-next-line jsx-a11y/no-static-element-interactions

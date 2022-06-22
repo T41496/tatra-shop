@@ -7,6 +7,8 @@ export const getSearchVariables = ({
   categoryId,
   sort,
   locale,
+  priceMin,
+  priceMax,
 }: SearchProductsBody) => {
   let query = ''
 

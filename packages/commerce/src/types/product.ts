@@ -52,6 +52,8 @@ export type SearchProductsBody = {
   brandId?: string | number
   sort?: string
   locale?: string
+  priceMin?: string | number
+  priceMax?: string | number
 }
 
 export type ProductTypes = {
