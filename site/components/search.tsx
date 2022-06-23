@@ -77,7 +77,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
     setDisplay(false)
   }
 
-  const filterNames = ['Gender', 'Product category', 'Brand', 'Price', 'Size']
+  const filterNames = ['Gender', 'Product category', 'Brand', 'Price'] // , 'Size'
   const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
 
   const STEP = 1
@@ -289,10 +289,14 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                         setValues(values)
                                         routeQuery['price_min'] = values[0]
                                         routeQuery['price_max'] = values[1]
-                                        Router.push({
-                                          pathname: pathname,
-                                          query: routeQuery,
-                                        })
+                                        Router.push(
+                                          {
+                                            pathname: pathname,
+                                            query: routeQuery,
+                                          },
+                                          undefined,
+                                          { shallow: true }
+                                        )
                                       }}
                                       renderTrack={({ props, children }) => (
                                         // eslint-disable-next-line jsx-a11y/no-static-element-interactions
