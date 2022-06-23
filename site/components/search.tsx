@@ -643,7 +643,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 )}
               </div>
             )}
-            {data ? (
+            {data && data.found == true ? (
               <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
                 {data.products.map((product: Product) => (
                   <ProductCard
