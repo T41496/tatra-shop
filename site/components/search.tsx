@@ -2,7 +2,7 @@ import cn from 'clsx'
 import type { SearchPropsType } from '@lib/search-props'
 import Link from 'next/link'
 import { useState } from 'react'
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 import ClickOutside from '@lib/click-outside'
 
 import { Layout } from '@components/common'
@@ -40,7 +40,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
 
   const router = useRouter()
   const { asPath, locale } = router
-  const { q, sort } = router.query
+  const { q, sort, price_min, price_max } = router.query
+  const routeQuery = router.query
   // `q` can be included but because categories and designers can't be searched
   // in the same way of products, it's better to ignore the search input if one
   // of those is selected
@@ -58,6 +59,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
     brandId: (activeBrand as any)?.entityId,
     sort: typeof sort === 'string' ? sort : '',
     locale,
+    priceMin: typeof price_min === 'string' ? price_min : '',
+    priceMax: typeof price_max === 'string' ? price_max : '',
   })
 
   const handleClick = (event: any, filter: string) => {
@@ -74,7 +77,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
     setDisplay(false)
   }
 
-  const filterNames = ['Gender', 'Product category', 'Brand', 'Price', 'Size']
+  const filterNames = ['Gender', 'Product category', 'Brand', 'Price'] // , 'Size'
   const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
 
   const STEP = 1
@@ -82,109 +85,119 @@ export default function Search({ categories, brands }: SearchPropsType) {
   const MAX = 1000
   const [values, setValues] = useState([0, 200])
   const [toggleThisElement, setToggleThisElement] = useState(false)
+  const [toggleGenderElement, setToggleGenderElement] = useState(false)
+  const [togglePriceElement, setTogglePriceElement] = useState(false)
+  const [toggleProductCategoryElement, setToggleProductCategoryElement] =
+    useState(false)
+  const [toggleBrandElement, setToggleBrandElement] = useState(false)
+  const [toggleSizeElement, setToggleSizeElement] = useState(false)
 
   return (
     <>
       <div className="bg-[url('/catalog-bg.png')] bg-cover h-60"></div>
       <Container>
-        <div className="flex space-between">
-          <ClickOutside active={display} onClick={() => setDisplay(false)}>
-            <div className="ml-[auto] py-[1.5rem]">
-              <div className="flex items-center relative">
-                <div
-                  className="cursor-pointer flex h-[3rem] w-[12rem] items-center p-[1rem] border border-[#C9C9C9]"
-                  onClick={() => setDisplay(!display)}
+        <div className="flex space-between justify-between">
+          <div className="w-[calc(50%-10px)] md:0">
+            <div className="block md:hidden pt-[1.5rem]">
+              <span className="rounded-md shadow-sm">
+                <button
+                  type="button"
+                  onClick={(e) => handleClick(e, 'categories')}
+                  className="flex justify-between w-full rounded-sm border border-[#C9C9C9] px-4 py-3 bg-accent-0 text-sm leading-5 font-medium hover:text-accent-5 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-accent-1 active:text-accent-8 transition ease-in-out duration-150"
+                  id="options-menu"
+                  aria-haspopup="true"
+                  aria-expanded="true"
                 >
-                  {sorting ? sorting : 'Sort'}
-                  <ChevronUp
-                    className={cn(
-                      'ml-[auto]',
-                      display ? 'rotate-0' : 'rotate-180'
-                    )}
-                  />
-                </div>
-                <div className="absolute top-[3rem] left-0 shadow-lg w-[100%] z-40 bg-white">
-                  {display ? (
-                    <ul>
-                      {Object.entries(SORT).map(([key, text]) => (
-                        <li key={key} className="">
-                          <Link
-                            href={{
-                              pathname,
-                              query: filterQuery({
-                                q,
-                                sort: key,
-                              }),
-                            }}
-                          >
-                            <a
-                              onClick={(e) => {
-                                handleClick(e, 'sort'),
-                                  activeSort(e.target as HTMLElement)
+                  {activeCategory?.name
+                    ? `Category: ${activeCategory?.name}`
+                    : 'All Categories'}
+                  <svg
+                    className="-mr-1 ml-2 h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </span>
+            </div>
+          </div>
+          <div className="w-[calc(50%-10px)] md:w-full">
+            <ClickOutside active={display} onClick={() => setDisplay(false)}>
+              <div className="pt-[1.5rem] md:pb-[1.5rem]">
+                <div className="flex items-center relative justify-end">
+                  <div
+                    className="cursor-pointer flex h-[3rem] w-[12rem] items-center p-[1rem] border border-[#C9C9C9]"
+                    onClick={() => setDisplay(!display)}
+                  >
+                    {sorting ? sorting : 'Sort'}
+                    <ChevronUp
+                      className={cn(
+                        'ml-[auto]',
+                        display ? 'rotate-0' : 'rotate-180'
+                      )}
+                    />
+                  </div>
+                  <div className="absolute top-[3rem] right-0 shadow-lg w-[12rem] z-40 bg-white">
+                    {display ? (
+                      <ul>
+                        {Object.entries(SORT).map(([key, text]) => (
+                          <li key={key} className="">
+                            <Link
+                              href={{
+                                pathname,
+                                query: filterQuery({
+                                  q,
+                                  sort: key,
+                                }),
                               }}
-                              className={
-                                'h-[3rem] px-[1rem]  items-center flex hover:bg-[#70877B] focus:bg-[#70877B] hover:text-white w-[100%]'
-                              }
                             >
-                              {text}
-                            </a>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
+                              <a
+                                onClick={(e) => {
+                                  handleClick(e, 'sort'),
+                                    activeSort(e.target as HTMLElement)
+                                }}
+                                className={
+                                  'h-[3rem] px-[1rem]  items-center flex hover:bg-[#70877B] focus:bg-[#70877B] hover:text-white w-[100%]'
+                                }
+                              >
+                                {text}
+                              </a>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
                 </div>
               </div>
-            </div>
-          </ClickOutside>
+            </ClickOutside>
+          </div>
         </div>
 
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 mb-6">
           <div className="">
             {/* Categories */}
             <div className="relative inline-block w-full">
-              <div className="lg:hidden">
-                <span className="rounded-md shadow-sm">
-                  <button
-                    type="button"
-                    onClick={(e) => handleClick(e, 'categories')}
-                    className="flex justify-between w-full rounded-sm border border-accent-3 px-4 py-3 bg-accent-0 text-sm leading-5 font-medium text-accent-4 hover:text-accent-5 focus:outline-none focus:border-blue-300 focus:shadow-outline-normal active:bg-accent-1 active:text-accent-8 transition ease-in-out duration-150"
-                    id="options-menu"
-                    aria-haspopup="true"
-                    aria-expanded="true"
-                  >
-                    {activeCategory?.name
-                      ? `Category: ${activeCategory?.name}`
-                      : 'All Categories'}
-                    <svg
-                      className="-mr-1 ml-2 h-5 w-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </button>
-                </span>
-              </div>
               <div
-                className={`origin-top-left absolute lg:relative left-0 mt-1 w-full rounded-md shadow-lg lg:shadow-none z-10 mb-10 lg:block ${
+                className={`origin-top-left absolute lg:relative left-0 mt-1 w-full rounded-md z-10 mb-10 lg:block ${
                   activeFilter !== 'categories' || toggleFilter !== true
                     ? 'hidden'
                     : ''
                 }`}
               >
-                <div className="rounded-sm bg-accent-0 shadow-xs lg:bg-none lg:shadow-none">
+                <div className="rounded-sm bg-accent-0 pb-10">
                   <div
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="options-menu"
                   >
-                    <ul className="pr-[4rem]">
+                    <ul className="pr-0 md:pr-[4rem]">
                       {filterNames.map((name, index) => {
                         switch (name) {
                           case 'Product category':
@@ -193,15 +206,21 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 <div
                                   className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap"
                                   onClick={() =>
-                                    setToggleThisElement((prev) => !prev)
+                                    setToggleProductCategoryElement(
+                                      (prev) => !prev
+                                    )
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     Product category
                                   </span>
-                                  {toggleThisElement ? <Minus /> : <Plus />}
-                                  {toggleThisElement && (
-                                    <div className="categories">
+                                  {toggleProductCategoryElement ? (
+                                    <Minus />
+                                  ) : (
+                                    <Plus />
+                                  )}
+                                  {toggleProductCategoryElement && (
+                                    <div className="categories w-[100%]">
                                       <ul className="mt-[1rem]">
                                         {categories
                                           .slice(2, categories.length - 1)
@@ -251,15 +270,15 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 <div
                                   className="relative border-t  border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between"
                                   onClick={() =>
-                                    setToggleThisElement((prev) => !prev)
+                                    setTogglePriceElement((prev) => !prev)
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
-                                  {toggleThisElement ? <Minus /> : <Plus />}
+                                  {togglePriceElement ? <Minus /> : <Plus />}
                                 </div>
-                                {toggleThisElement && (
+                                {togglePriceElement && (
                                   <div className="categories mt-[-0.5rem]">
                                     <Range
                                       values={values}
@@ -267,8 +286,17 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                       min={MIN}
                                       max={MAX}
                                       onChange={(values) => {
-                                        console.log(values)
                                         setValues(values)
+                                        routeQuery['price_min'] = values[0]
+                                        routeQuery['price_max'] = values[1]
+                                        Router.push(
+                                          {
+                                            pathname: pathname,
+                                            query: routeQuery,
+                                          },
+                                          undefined,
+                                          { shallow: true }
+                                        )
                                       }}
                                       renderTrack={({ props, children }) => (
                                         // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -355,14 +383,14 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 <div
                                   className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap"
                                   onClick={() =>
-                                    setToggleThisElement((prev) => !prev)
+                                    setToggleGenderElement((prev) => !prev)
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
-                                  {toggleThisElement ? <Minus /> : <Plus />}
-                                  {toggleThisElement && (
+                                  {toggleGenderElement ? <Minus /> : <Plus />}
+                                  {toggleGenderElement && (
                                     <div className="categories w-[100%]">
                                       <ul className="mt-[1rem]">
                                         {categories
@@ -413,14 +441,14 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 <div
                                   className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap"
                                   onClick={() =>
-                                    setToggleThisElement((prev) => !prev)
+                                    setToggleBrandElement((prev) => !prev)
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
-                                  {toggleThisElement ? <Minus /> : <Plus />}
-                                  {toggleThisElement && (
+                                  {toggleBrandElement ? <Minus /> : <Plus />}
+                                  {toggleBrandElement && (
                                     <div className="categories w-[100%]">
                                       <ul className="mt-[1rem]">
                                         {brands.flatMap(
@@ -469,15 +497,15 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 <div
                                   className="relative border-t  border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between"
                                   onClick={() =>
-                                    setToggleThisElement((prev) => !prev)
+                                    setToggleSizeElement((prev) => !prev)
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
                                     {name}
                                   </span>
-                                  {toggleThisElement ? <Minus /> : <Plus />}
+                                  {toggleSizeElement ? <Minus /> : <Plus />}
                                 </div>
-                                {toggleThisElement && (
+                                {toggleSizeElement && (
                                   <div className="categories grid grid-cols-4 gap-y-[0.8rem]">
                                     {sizes.map((item, index) => {
                                       return (
@@ -521,7 +549,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
             </div>
 
             {/* Designs */}
-            <div className="relative inline-block w-full">
+            <div className="relative inline-block w-full hidden">
               <div className="lg:hidden mt-3">
                 <span className="rounded-md shadow-sm">
                   <button
@@ -615,8 +643,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 )}
               </div>
             )}
-            {data ? (
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {data && data.found == true ? (
+              <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
                 {data.products.map((product: Product) => (
                   <ProductCard
                     variant="simple"
@@ -631,7 +659,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
                 {rangeMap(12, (i) => (
                   <Skeleton key={i}>
                     <div className="w-60 h-60" />

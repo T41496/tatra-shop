@@ -10,7 +10,7 @@ const Avatar: FC<Props> = ({}) => {
 
   return (
     <div ref={ref} className="inline-block h-7 w-7">
-      <img src="./user-icon.svg" alt="user icon" />
+      <img src="/user-icon.svg" alt="user icon" />
     </div>
   )
 }

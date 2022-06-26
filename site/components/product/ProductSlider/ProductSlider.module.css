@@ -1,5 +1,5 @@
 .root {
-  @apply px-6 relative w-full h-full select-none grid  grid-cols-4 gap-4 lg:h-[559px];
+  @apply px-6 pb-10 relative w-full h-64 md:h-full select-none grid  grid-cols-4 gap-4 lg:h-[559px];
   overflow: hidden;
 }
 
@@ -28,11 +28,11 @@
   @apply flex flex-row z-30 shadow-xl text-2xl;
 }
 .leftControl {
-  @apply absolute left-2 top-1/2  transform  -translate-y-1/2 text-[#161616] w-10 h-10 flex justify-center items-center bg-white rounded-full;
+  @apply absolute left-2 top-1/2  transform  -translate-y-1/2 text-[#161616] w-10 h-10 hidden md:flex justify-center items-center bg-white rounded-full;
 }
 
 .rightControl {
-  @apply absolute right-2 top-1/2  transform  -translate-y-1/2 text-[#161616]  w-10 h-10 flex justify-center items-center bg-white rounded-full;
+  @apply absolute right-2 top-1/2  transform  -translate-y-1/2 text-[#161616]  w-10 h-10 hidden md:flex justify-center items-center bg-white rounded-full;
   transition: background-color 0.2s ease;
 }
 
@@ -67,6 +67,23 @@
 /* Hide scrollbar for Chrome, Safari and Opera */
 .album::-webkit-scrollbar {
   display: none;
+}
+
+.leftControlMobile {
+  @apply absolute left-2 top-full transform -translate-y-6 translate-x-2 w-10 h-10 flex md:hidden justify-center items-center;
+}
+
+.rightControlMobile {
+  @apply absolute right-2 top-full transform -translate-y-6 -translate-x-2 w-10 h-10 flex md:hidden justify-center items-center;
+}
+
+.arrowSize {
+  width: 3rem;
+  height: 1rem;
+}
+
+.arrowDisabled {
+  fill: #c9c9c9;
 }
 
 @screen md {

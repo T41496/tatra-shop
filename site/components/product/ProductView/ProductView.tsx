@@ -11,6 +11,8 @@ import { SEO } from '@components/common'
 import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
 import ProductDescription from '../ProductDescription'
+import 'keen-slider/keen-slider.min.css'
+import SimilarProducts from '@components/product/SimilarProducts'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -54,36 +56,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           <ProductDescription />
         </div>
         <section className="px-6 mb-[5rem] md:mt-[10rem]">
-          <h1 className="text-[1.8rem] md:text-[40px] text-[#161616] font-medium pb-6">
-            Similar products
-          </h1>
-          <div className={s.relatedProductsGrid}>
-            {relatedProducts.map((p) => (
-              <div
-                key={p.path}
-                className="animated fadeIn bg-accent-0 border border-accent-2"
-              >
-                <ProductCard
-                  noNameTag
-                  product={p}
-                  key={p.path}
-                  variant="simple"
-                  className="animated fadeIn"
-                  imgProps={{
-                    width: 300,
-                    height: 300,
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-          <div className="flex">
-            <Link href="/search">
-              <a className="uppercase inline-block m-auto text-[#FFFFFF] bg-[#70877B] mt-[2.5rem] px-11 py-2 text-2xl font-medium">
-                catalog
-              </a>
-            </Link>
-          </div>
+          <SimilarProducts />
         </section>
       </Container>
       <SEO
@@ -104,6 +77,26 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
         }}
       />
     </>
+  )
+}
+
+function Arrow(props: any) {
+  const disabeld = props.disabled ? s.arrowDisabled : ''
+  return (
+    <svg
+      onClick={props.onClick}
+      className={`cursor-pointer ${s.arrowSize} ${
+        props.left ? 'arrow--left' : 'rotate-180'
+      } ${disabeld}`}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {props.left && (
+        <path d="M0.293922 8.70711C-0.0965996 8.31658 -0.0965996 7.68342 0.293922 7.29289L6.65788 0.928932C7.04841 0.538408 7.68157 0.538408 8.0721 0.928932C8.46262 1.31946 8.46262 1.95262 8.0721 2.34315L2.41525 8L8.0721 13.6569C8.46262 14.0474 8.46262 14.6805 8.0721 15.0711C7.68157 15.4616 7.04841 15.4616 6.65788 15.0711L0.293922 8.70711ZM51.5273 9H1.00103V7H51.5273V9Z" />
+      )}
+      {!props.left && (
+        <path d="M0.293922 8.70711C-0.0965996 8.31658 -0.0965996 7.68342 0.293922 7.29289L6.65788 0.928932C7.04841 0.538408 7.68157 0.538408 8.0721 0.928932C8.46262 1.31946 8.46262 1.95262 8.0721 2.34315L2.41525 8L8.0721 13.6569C8.46262 14.0474 8.46262 14.6805 8.0721 15.0711C7.68157 15.4616 7.04841 15.4616 6.65788 15.0711L0.293922 8.70711ZM51.5273 9H1.00103V7H51.5273V9Z" />
+      )}
+    </svg>
   )
 }
 

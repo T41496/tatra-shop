@@ -10,6 +10,8 @@ export type SearchProductsInput = {
   brandId?: number
   sort?: string
   locale?: string
+  priceMin?: number | string
+  priceMax?: number | string
 }
 
 export const handler: SWRHook<SearchProductsHook> = {
@@ -17,7 +19,11 @@ export const handler: SWRHook<SearchProductsHook> = {
     url: '/api/catalog/products',
     method: 'GET',
   },
-  fetcher({ input: { search, categoryId, brandId, sort }, options, fetch }) {
+  fetcher({
+    input: { search, categoryId, brandId, sort, priceMin, priceMax },
+    options,
+    fetch,
+  }) {
     // Use a dummy base as we only care about the relative path
     const url = new URL(options.url!, 'http://a')
 
@@ -27,6 +33,10 @@ export const handler: SWRHook<SearchProductsHook> = {
     if (Number.isInteger(brandId))
       url.searchParams.set('brandId', String(brandId))
     if (sort) url.searchParams.set('sort', sort)
+    if (Number.isInteger(Number(priceMin)))
+      url.searchParams.set('priceMin', String(priceMin))
+    if (Number.isInteger(Number(priceMax)))
+      url.searchParams.set('priceMax', String(priceMax))
 
     return fetch({
       url: url.pathname + url.search,
@@ -42,6 +52,8 @@ export const handler: SWRHook<SearchProductsHook> = {
           ['categoryId', input.categoryId],
           ['brandId', input.brandId],
           ['sort', input.sort],
+          ['priceMin', input.priceMin],
+          ['priceMax', input.priceMax],
         ],
         swrOptions: {
           revalidateOnFocus: false,

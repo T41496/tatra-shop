@@ -35,6 +35,13 @@ module.exports = withCommerceConfig({
         },
     ].filter(Boolean)
   },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
 })
 
 // Don't delete this console log, useful to see the commerce config in Vercel deployments

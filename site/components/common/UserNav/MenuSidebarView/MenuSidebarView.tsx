@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import s from './MenuSidebarView.module.css'
 import { useUI } from '@components/ui/context'
-import SidebarLayout from '@components/common/SidebarLayout'
+import MobilebarLayout from '@components/common/MobilebarLayout'
 import type { Link as LinkProps } from './index'
 
 export default function MenuSidebarView({
@@ -12,7 +12,10 @@ export default function MenuSidebarView({
   const { closeSidebar } = useUI()
 
   return (
-    <SidebarLayout handleClose={() => closeSidebar()}>
+    <MobilebarLayout
+      className="bg-[rgba(0,0,0,.6)]"
+      handleClose={() => closeSidebar()}
+    >
       <div className={s.root}>
         <nav>
           <ul>
@@ -35,7 +38,7 @@ export default function MenuSidebarView({
           </ul>
         </nav>
       </div>
-    </SidebarLayout>
+    </MobilebarLayout>
   )
 }
 

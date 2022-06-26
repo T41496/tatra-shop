@@ -45,7 +45,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
         onKeyUp={handleKeyUp}
       />
       <div className={s.iconContainer}>
-        <img src="./search-icon.svg" alt="search icon" className={s.icon} />
+        <img src="/search-icon.svg" alt="search icon" className={s.icon} />
       </div>
     </div>
   )

@@ -18,7 +18,7 @@ const Hero: FC = () => {
               those who choose us, and we also care about the planet!
             </p>
           </div>
-          <div>
+          <div className="mt-[8rem] md:mt-[0rem]">
             <h2 className={s.title}>Why Eco</h2>
             <p className={s.description}>
               So, why choose Recycled Clothing? In the world of fast fashion,
@@ -30,9 +30,9 @@ const Hero: FC = () => {
             </p>
           </div>
         </div>
-        <Link href="/">
+        <Link href="/about">
           <a className="uppercase text-[#FFFFFF] bg-[#70877B] px-6 py-2 text-2xl w-[fit-content] mt-[3rem] text-center font-medium mx-auto block">
-            Read more
+            About us
           </a>
         </Link>
       </Container>

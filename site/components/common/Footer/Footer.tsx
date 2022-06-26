@@ -29,7 +29,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
   return (
     <footer className={rootClassName}>
       <Container>
-        <div className="grid grid-cols-3 pt-[1.5rem] bg-[#161616]">
+        <div className="grid grid-cols-1 md:grid-cols-3 pt-[1.5rem] bg-[#161616]">
           <div>
             <Link href="/">
               <a className="flex flex-initial items-center font-bold md:mr-24 items-end">
@@ -40,7 +40,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               </a>
             </Link>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-left md:justify-center mt-5 md:mt-0">
             <ul>
               <li className="pb-1">
                 <Link href="/">
@@ -64,7 +64,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               </li>
             </ul>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-left md:justify-center">
             <ul>
               <li className="pb-1">
                 <Link href="/">
@@ -125,10 +125,10 @@ const Footer: FC<Props> = ({ className, pages }) => {
         <div className="w-[100%] h-px bg-[#C9C9C9] mt-[2rem] mb-[1.5rem]"></div>
         <div className="flex items-center justify-center">
           <a href="#" className="mx-[1rem]">
-            <img src="./instagram-icon.svg" alt="instagram" />
+            <img src="/instagram-icon.svg" alt="instagram" className="w-8" />
           </a>
           <a href="#" className="mx-[1rem]">
-            <img src="./facebook-icon.svg" alt="facebook" />
+            <img src="/facebook-icon.svg" alt="facebook" className="w-10" />
           </a>
         </div>
         <div className="pt-[1.2rem] pb-[1rem] flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">

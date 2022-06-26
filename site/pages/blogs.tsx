@@ -26,7 +26,7 @@ export default function Blogs() {
                     src={item.picture}
                     alt={item.title}
                     width={860}
-                    height={896}
+                    height={696}
                   />
                   <div className="absolute top-0 left-0 right-0 bottom-0 bg-[rgba(0,0,0,0.1)]">
                     <div className="flex flex-col justify-center items-center h-full w-full">
@@ -47,8 +47,8 @@ export default function Blogs() {
               >
                 {item.description}
                 <div>
-                  <Link href="/">
-                    <span className=" text-xl md:text-[28px] text-[#70877B] leading-[40px] md:leading-[48px] font-normal cursor-pointer">
+                  <Link href="/blog-detail">
+                    <span className=" text-xl md:text-[22px] text-[#70877B] leading-[40px] md:leading-[40px] font-normal cursor-pointer">
                       Read more...
                     </span>
                   </Link>
@@ -70,7 +70,7 @@ const data = [
     title: 'Fjallraven',
     subTitle: 'history',
     description: (
-      <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
         Fjällräven was born out of one man’s vision: a vision to make nature
         accessible to more people.
         <br />
@@ -88,7 +88,7 @@ const data = [
     title: 'Arteryx',
     subTitle: 'history',
     description: (
-      <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
         Originaly named Rock Solid by founder Dave Lane, the company's first
         line of products was climbing gear. Dave Lane sold his 50% interest to
         Blair Murdoch and Tim Duholke who became silent partners in 1989.
@@ -103,7 +103,7 @@ const data = [
     title: 'Fjallraven',
     subTitle: 'history',
     description: (
-      <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
         Fjällräven was born out of one man’s vision: a vision to make nature
         accessible to more people.
         <br />
@@ -121,7 +121,7 @@ const data = [
     title: 'Arteryx',
     subTitle: 'history',
     description: (
-      <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
         Originaly named Rock Solid by founder Dave Lane, the company's first
         line of products was climbing gear. Dave Lane sold his 50% interest to
         Blair Murdoch and Tim Duholke who became silent partners in 1989.
@@ -136,7 +136,7 @@ const data = [
     title: 'Fjallraven',
     subTitle: 'history',
     description: (
-      <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
         Fjällräven was born out of one man’s vision: a vision to make nature
         accessible to more people.
         <br />
@@ -154,7 +154,7 @@ const data = [
     title: 'Arteryx',
     subTitle: 'history',
     description: (
-      <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
         Originaly named Rock Solid by founder Dave Lane, the company's first
         line of products was climbing gear. Dave Lane sold his 50% interest to
         Blair Murdoch and Tim Duholke who became silent partners in 1989.
@@ -169,7 +169,7 @@ const data = [
     title: 'Fjallraven',
     subTitle: 'history',
     description: (
-      <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
         Fjällräven was born out of one man’s vision: a vision to make nature
         accessible to more people.
         <br />
@@ -187,7 +187,7 @@ const data = [
     title: 'Arteryx',
     subTitle: 'history',
     description: (
-      <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
         Originaly named Rock Solid by founder Dave Lane, the company's first
         line of products was climbing gear. Dave Lane sold his 50% interest to
         Blair Murdoch and Tim Duholke who became silent partners in 1989.
@@ -202,7 +202,7 @@ const data = [
     title: 'Fjallraven',
     subTitle: 'history',
     description: (
-      <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
         Fjällräven was born out of one man’s vision: a vision to make nature
         accessible to more people.
         <br />
@@ -220,7 +220,7 @@ const data = [
     title: 'Arteryx',
     subTitle: 'history',
     description: (
-      <p className=" text-xl md:text-[26px] text-[#161616] leading-[40px] md:leading-[48px] font-normal">
+      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
         Originaly named Rock Solid by founder Dave Lane, the company's first
         line of products was climbing gear. Dave Lane sold his 50% interest to
         Blair Murdoch and Tim Duholke who became silent partners in 1989.

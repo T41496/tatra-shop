@@ -57,31 +57,39 @@ export default function Home({
           />
         ))}
       </Grid> */}
-      <div className="grid  grid-cols-[320px_minmax(900px,_1fr)_100px] ">
-        <div className="flex justify-center items-center flex-col">
-          <div>
-            <p className="text-[1.9rem] max-w-[14.2rem] font-medium mb-6">
-              Want to see the blog in detail?
-            </p>
-            <Link href={`/search}`}>
+      <div className="flex flex-col md:flex-row w-full">
+        <div className="w-full md:w-1/4 justify-center items-center p-6 m-auto">
+          <p className="text-[1.9rem] max-w-[14.2rem] font-medium md:mb-6">
+            Want to see the blog in detail?
+          </p>
+          <div className="hidden md:block">
+            <Link href="/blogs">
+              <a className="invisible md:visible uppercase text-[#FFFFFF] bg-[#70877B]  px-11 py-2 text-2xl w-[11.2rem] text-center font-medium">
+                blog
+              </a>
+            </Link>
+          </div>
+        </div>
+        <div className="w-full md:w-3/4 ">
+          <Marquee>
+            <div className="flex w-[200px] md:w-[320px] h-[200px] md:h-[320px] bg-[url('/assets/topics/photo-1.png')] bg-cover mx-[0.5rem] justify-center items-center">
+              <span className="text-white font-medium text-4xl">Brand</span>
+            </div>
+            <div className="flex w-[200px] md:w-[320px] h-[200px] md:h-[320px] bg-[url('/assets/topics/photo-2.png')] bg-cover mx-[0.5rem] justify-center items-center">
+              <span className="text-white font-medium text-4xl">Travel</span>
+            </div>
+            <div className="flex w-[200px] md:w-[320px] h-[200px] md:h-[320px] bg-[url('/assets/topics/photo-3.png')] bg-cover mx-[0.5rem] justify-center items-center">
+              <span className="text-white font-medium text-4xl">Mountains</span>
+            </div>
+          </Marquee>
+          <div className="block md:hidden text-center mt-10">
+            <Link href="/blogs">
               <a className="uppercase text-[#FFFFFF] bg-[#70877B]  px-11 py-2 text-2xl w-[11.2rem] text-center font-medium">
                 blog
               </a>
             </Link>
           </div>
         </div>
-
-        <Marquee>
-          <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-1.png')] bg-cover mx-[0.5rem] justify-center items-center">
-            <span className="text-white font-medium text-4xl">Brand</span>
-          </div>
-          <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-2.png')] bg-cover mx-[0.5rem] justify-center items-center">
-            <span className="text-white font-medium text-4xl">Travel</span>
-          </div>
-          <div className="flex w-[320px] h-[320px] bg-[url('/assets/topics/photo-3.png')] bg-cover mx-[0.5rem] justify-center items-center">
-            <span className="text-white font-medium text-4xl">Mountains</span>
-          </div>
-        </Marquee>
       </div>
       <Hero />
       <SignUp />

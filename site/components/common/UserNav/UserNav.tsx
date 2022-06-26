@@ -73,7 +73,7 @@ const UserNav: React.FC<{
             </Button>
           </li>
         )}
-        <li className={s.mobileMenu}>
+        {/* <li className={s.mobileMenu}>
           <Button
             className={s.item}
             aria-label="Menu"
@@ -85,8 +85,8 @@ const UserNav: React.FC<{
           >
             <Menu />
           </Button>
-        </li>
-        <li>
+        </li> */}
+        <li className="hidden md:block">
           <I18nWidget />
         </li>
       </ul>
