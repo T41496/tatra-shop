@@ -1,11 +1,11 @@
 {
-  "name": "Next.js Commerce",
-  "short_name": "Next.js Commerce",
+  "name": "Tatra Hills Shop",
+  "short_name": "Tatra Hills Shop",
   "description": "Next.js Commerce -> https://www.nextjs.org/commerce",
   "display": "standalone",
   "start_url": "/",
   "theme_color": "#fff",
-  "background_color": "#000000",
+  "background_color": "#ffffff",
   "orientation": "portrait",
   "icons": [
     {
