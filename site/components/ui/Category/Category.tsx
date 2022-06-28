@@ -8,7 +8,7 @@ export const Category = () => {
       <div className="flex flex-col">
         {links.map((item, index) => {
           return (
-            <Link key={index} href={`/${item}`}>
+            <Link key={index} href={`/search/${item}`}>
               <a className="uppercase text-[#70877B] bg-[#FFFFFF] mr-auto mt-6 px-11 py-2 text-2xl w-[11.2rem] text-center font-medium">
                 {item}
               </a>
