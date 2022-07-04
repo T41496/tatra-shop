@@ -1,0 +1,48 @@
+{
+  "banner": {
+    "header": "Tatra Hills",
+    "description": "Zachráňte planétu - dajte šatám druhý život",
+    "button": "Katalóg"
+  },
+  "navbar": {
+    "catalog": "Katalóg",
+    "blog": "Blog",
+    "about_us": "O nás"
+  },
+  "footer": {
+    "text": "Zachráňte planétu - dajte šatám druhý život",
+    "catalog": "Katalóg",
+    "blog": "Blog",
+    "about_us": "O nás",
+    "contact_us": "Kontaktuj nás",
+    "business_terms_and_conditions": "Obchodné podmienky",
+    "shipping_and_payment": "Doprava a platba",
+    "privacy_policy": "Zásady ochrany osobných údajov",
+    "refund_and_Returns": "Vrátenie peňazí a vrátenie tovaru",
+    "title": "Tatra Hills",
+    "all_rights_reserved": "Všetky práva vyhradené."
+  },
+  "category": {
+    "men": "muži",
+    "women": "ženy"
+  },
+  "index": {
+    "blog_text": "Chcete vidieť blog podrobne?",
+    "blog_link": "Blog",
+    "blog_brand": "Značka",
+    "blog_travel": "Cestovanie",
+    "blog_mountains": "hory"
+  },
+  "hero": {
+    "about_us_title": "O nás",
+    "about_us_description": "Tatra Hills je značka založená na kvalite, šetrnosti k životnému prostrediu a spoľahlivosti. Vďaka tomu majú turisti pohodlie a športovci víťazstvo. Ceníme si nielen proces, ale aj konečný výsledok. Vážime si dôveru tých, ktorí si nás vyberajú a záleží nám aj na planéte!",
+    "why_eco_title": "Prečo Eco",
+    "why_eco_description": "Prečo si teda vybrať recyklované oblečenie? Vo svete rýchlej módy, kde trendy neustále prichádzajú a odchádzajú, každoročne končí na európskych skládkach neuveriteľných 12,8 milióna ton vyradeného oblečenia. Naším cieľom je znížiť výrobu odevov, keďže 70 % výrobkov je možné opätovne použiť bez straty kvality a funkčnosti. Menej starého oblečenia na skládkach.",
+    "about_us_link": "O nás"
+  },
+  "signup": {
+    "title": "Prihláste sa na emaily TATRA HILLS",
+    "placeholder": "Vložte svoju e-mailovú adresu",
+    "button": "Prihlás ma!"
+  }
+}

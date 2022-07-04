@@ -2,37 +2,27 @@ import React, { FC } from 'react'
 import { Container } from '@components/ui'
 import s from './Hero.module.css'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 const Hero: FC = () => {
+  const t = useTranslations('hero')
+
   return (
     <div className="mt-[8rem]">
       <Container>
         <div className={`${s.root}`}>
           <div>
-            <h2 className={s.title}>About Us</h2>
-            <p className={s.description}>
-              Tatra Hills is a brand based on quality, environmental
-              friendliness, and reliability. Thank to this, the tourists get
-              comfort, and the athletes get victory. We value not only the
-              process, but the final result as well. We appreciate the trust of
-              those who choose us, and we also care about the planet!
-            </p>
+            <h2 className={s.title}>{t('about_us_title')}</h2>
+            <p className={s.description}>{t('about_us_description')}</p>
           </div>
           <div className="mt-[8rem] md:mt-[0rem]">
-            <h2 className={s.title}>Why Eco</h2>
-            <p className={s.description}>
-              So, why choose Recycled Clothing? In the world of fast fashion,
-              where trends consistently come and go, a whopping 12.8 million
-              tons of discarded clothing end up in Europe landfills every year.
-              Our goal is to reduce clothing production as 70% of products can
-              be reused without losing quality and functionality. Less old
-              clothes in landfills.
-            </p>
+            <h2 className={s.title}>{t('why_eco_title')}</h2>
+            <p className={s.description}>{t('why_eco_description')}</p>
           </div>
         </div>
         <Link href="/about">
           <a className="uppercase text-[#FFFFFF] bg-[#70877B] px-6 py-2 text-2xl w-[fit-content] mt-[3rem] text-center font-medium mx-auto block">
-            About us
+            {t('about_us_link')}
           </a>
         </Link>
       </Container>

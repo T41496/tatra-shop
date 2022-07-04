@@ -1,0 +1,48 @@
+{
+  "banner": {
+    "header": "Tatra Hills",
+    "description": "Save the planet - give clothes a second life",
+    "button": "Catalog"
+  },
+  "navbar": {
+    "catalog": "Catalog",
+    "blog": "Blog",
+    "about_us": "About Us"
+  },
+  "footer": {
+    "text": "Save the planet - give clothes a second life",
+    "catalog": "Catalog",
+    "blog": "Blog",
+    "about_us": "About Us",
+    "contact_us": "Contact Us",
+    "business_terms_and_conditions": "Business terms and conditions",
+    "shipping_and_payment": "Shipping and payment",
+    "privacy_policy": "Privacy policy",
+    "refund_and_Returns": "Refund and Returns",
+    "title": "Tatra Hills",
+    "all_rights_reserved": "All rights reserved."
+  },
+  "category": {
+    "men": "men",
+    "women": "women"
+  },
+  "index": {
+    "blog_text": "Want to see the blog in detail?",
+    "blog_link": "Blog",
+    "blog_brand": "Brand",
+    "blog_travel": "Travel",
+    "blog_mountains": "Mountains"
+  },
+  "hero": {
+    "about_us_title": "About Us",
+    "about_us_description": "Tatra Hills is a brand based on quality, environmental friendliness, and reliability. Thank to this, the tourists get comfort, and the athletes get victory. We value not only the process, but the final result as well. We appreciate the trust of those who choose us, and we also care about the planet!",
+    "why_eco_title": "Why Eco",
+    "why_eco_description": "So, why choose Recycled Clothing? In the world of fast fashion, where trends consistently come and go, a whopping 12.8 million tons of discarded clothing end up in Europe landfills every year. Our goal is to reduce clothing production as 70% of products can be reused without losing quality and functionality. Less old clothes in landfills.",
+    "about_us_link": "About Us"
+  },
+  "signup": {
+    "title": "Sign up TATRA HILLS emails",
+    "placeholder": "Enter your email address",
+    "button": "sign me up!"
+  }
+}
