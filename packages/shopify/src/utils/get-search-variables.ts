@@ -5,6 +5,7 @@ export const getSearchVariables = ({
   brandId,
   search,
   categoryId,
+  categoryIds,
   sort,
   locale,
   priceMin,

@@ -40,22 +40,28 @@ export default function Search({ categories, brands }: SearchPropsType) {
 
   const router = useRouter()
   const { asPath, locale } = router
-  const { q, sort, price_min, price_max } = router.query
+  const { q, sort, price_min, price_max, g, c, b } = router.query
   const routeQuery = router.query
   // `q` can be included but because categories and designers can't be searched
   // in the same way of products, it's better to ignore the search input if one
   // of those is selected
-  const query = filterQuery({ sort })
+  const query = filterQuery({ sort, g, c, b })
 
   const { pathname, category, brand } = useSearchMeta(asPath)
-  const activeCategory = categories.find((cat: any) => cat.slug === category)
+  const activeGender = categories.find((cat: any) => cat.slug === g)
+  const activeCategory = categories.find((cat: any) => cat.slug === c)
   const activeBrand = brands.find(
-    (b: any) => getSlug(b.node.path) === `brands/${brand}`
+    (_b: any) => getSlug(_b.node.path) === b
   )?.node
 
   const { data } = useSearch({
     search: typeof q === 'string' ? q : '',
-    categoryId: activeCategory?.id,
+    categoryIds: [
+      typeof activeGender?.id === 'string' ? activeGender?.id : '',
+      typeof activeCategory?.id === 'string' ? activeCategory?.id : '',
+    ]
+      .filter((a) => a)
+      .join(),
     brandId: (activeBrand as any)?.entityId,
     sort: typeof sort === 'string' ? sort : '',
     locale,
@@ -153,6 +159,9 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 pathname,
                                 query: filterQuery({
                                   q,
+                                  g,
+                                  c,
+                                  b,
                                   sort: key,
                                 }),
                               }}
@@ -233,11 +242,17 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                             >
                                               <Link
                                                 href={{
-                                                  pathname: getCategoryPath(
-                                                    cat.path,
-                                                    brand
-                                                  ),
-                                                  query,
+                                                  pathname,
+                                                  query: filterQuery({
+                                                    q,
+                                                    g,
+                                                    c: cat.path.replace(
+                                                      /^\/|\/$/g,
+                                                      ''
+                                                    ),
+                                                    b,
+                                                    sort,
+                                                  }),
                                                 }}
                                               >
                                                 <a
@@ -245,7 +260,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                                     handleClick(e, 'categories')
                                                   }
                                                   className={cn(
-                                                    'text-[#161616] font-medium text-base py-[0.25rem] inline-block',
+                                                    'text-[#161616] font-medium leading-6 text-[1rem] py-[0.25rem] inline-block',
                                                     {
                                                       'text-[#70877B]':
                                                         activeCategory?.id ===
@@ -404,11 +419,17 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                             >
                                               <Link
                                                 href={{
-                                                  pathname: getCategoryPath(
-                                                    cat.path,
-                                                    brand
-                                                  ),
-                                                  query,
+                                                  pathname,
+                                                  query: filterQuery({
+                                                    q,
+                                                    g: cat.path.replace(
+                                                      /^\/|\/$/g,
+                                                      ''
+                                                    ),
+                                                    c,
+                                                    b,
+                                                    sort,
+                                                  }),
                                                 }}
                                               >
                                                 <a
@@ -416,10 +437,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                                     handleClick(e, 'categories')
                                                   }
                                                   className={cn(
-                                                    'text-[#161616] font-medium text-base py-[0.25rem] inline-block',
+                                                    'text-[#161616] font-medium leading-6 text-[1rem] py-[0.25rem] inline-block',
                                                     {
                                                       'text-[#70877B]':
-                                                        activeCategory?.id ===
+                                                        activeGender?.id ===
                                                         cat.id,
                                                     }
                                                   )}
@@ -459,11 +480,17 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                             >
                                               <Link
                                                 href={{
-                                                  pathname: getDesignerPath(
-                                                    node.path,
-                                                    brand
-                                                  ),
-                                                  query,
+                                                  pathname,
+                                                  query: filterQuery({
+                                                    q,
+                                                    g,
+                                                    c,
+                                                    b: node.path.replace(
+                                                      /^\/|\/$/g,
+                                                      ''
+                                                    ),
+                                                    sort,
+                                                  }),
                                                 }}
                                               >
                                                 <a
@@ -471,10 +498,11 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                                     handleClick(e, 'brands')
                                                   }
                                                   className={cn(
-                                                    'text-[#161616] font-medium text-base py-[0.25rem] inline-block',
+                                                    'text-[#161616] font-medium leading-6 text-[1rem] py-[0.25rem] inline-block',
                                                     {
                                                       'text-[#70877B] ':
-                                                        activeBrand?.id ===
+                                                        (activeBrand as any)
+                                                          ?.entityId ===
                                                         node.entityId,
                                                     }
                                                   )}
@@ -511,7 +539,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                       return (
                                         <div
                                           key={index}
-                                          className="border border-[#C9C9C9] w-[3rem] h-[2.5rem] hover:bg-[#70877B] hover:text-white hover:border-[#70877B] flex items-center justify-center cursor-pointer  font-medium  text-base uppercase"
+                                          className="border border-[#C9C9C9] w-[3rem] h-[2.5rem] hover:bg-[#70877B] hover:text-white hover:border-[#70877B] flex items-center justify-center cursor-pointer  font-medium  leading-6 text-[1rem] uppercase"
                                         >
                                           {item}
                                         </div>

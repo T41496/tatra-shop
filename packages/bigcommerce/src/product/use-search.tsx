@@ -20,7 +20,15 @@ export const handler: SWRHook<SearchProductsHook> = {
     method: 'GET',
   },
   fetcher({
-    input: { search, categoryId, brandId, sort, priceMin, priceMax },
+    input: {
+      search,
+      categoryId,
+      categoryIds,
+      brandId,
+      sort,
+      priceMin,
+      priceMax,
+    },
     options,
     fetch,
   }) {
@@ -30,6 +38,7 @@ export const handler: SWRHook<SearchProductsHook> = {
     if (search) url.searchParams.set('search', search)
     if (Number.isInteger(Number(categoryId)))
       url.searchParams.set('categoryId', String(categoryId))
+    if (categoryIds) url.searchParams.set('categoryIds', String(categoryIds))
     if (Number.isInteger(brandId))
       url.searchParams.set('brandId', String(brandId))
     if (sort) url.searchParams.set('sort', sort)
@@ -50,6 +59,7 @@ export const handler: SWRHook<SearchProductsHook> = {
         input: [
           ['search', input.search],
           ['categoryId', input.categoryId],
+          ['categoryIds', input.categoryIds],
           ['brandId', input.brandId],
           ['sort', input.sort],
           ['priceMin', input.priceMin],
