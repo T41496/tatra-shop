@@ -16,13 +16,7 @@ import useSearch from '@framework/product/use-search'
 
 import getSlug from '@lib/get-slug'
 import rangeMap from '@lib/range-map'
-
-const SORT = {
-  'trending-desc': 'Trending',
-  'latest-desc': 'Latest arrivals',
-  'price-asc': 'Low to high',
-  'price-desc': 'High to low',
-}
+import { useTranslations } from 'next-intl'
 
 import {
   filterQuery,
@@ -33,6 +27,15 @@ import {
 import { divide } from 'lodash'
 
 export default function Search({ categories, brands }: SearchPropsType) {
+  const t = useTranslations('search')
+
+  const SORT = {
+    'trending-desc': t('trending'),
+    'latest-desc': t('latest_arrivals'),
+    'price-asc': t('low_to_high'),
+    'price-desc': t('high_to_low'),
+  }
+
   const [activeFilter, setActiveFilter] = useState('')
   const [toggleFilter, setToggleFilter] = useState(false)
   const [display, setDisplay] = useState(false)
@@ -83,7 +86,12 @@ export default function Search({ categories, brands }: SearchPropsType) {
     setDisplay(false)
   }
 
-  const filterNames = ['Gender', 'Product category', 'Brand', 'Price'] // , 'Size'
+  const filterNames = [
+    t('gender'),
+    t('product_category'),
+    t('brand'),
+    t('price'),
+  ] // , 'Size'
   const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
 
   const STEP = 1
@@ -115,8 +123,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   aria-expanded="true"
                 >
                   {activeCategory?.name
-                    ? `Category: ${activeCategory?.name}`
-                    : 'All Categories'}
+                    ? `${t('category')}: ${activeCategory?.name}`
+                    : t('all_categories')}
                   <svg
                     className="-mr-1 ml-2 h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +149,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     className="cursor-pointer flex h-[3rem] w-[12rem] items-center p-[1rem] border border-[#C9C9C9]"
                     onClick={() => setDisplay(!display)}
                   >
-                    {sorting ? sorting : 'Sort'}
+                    {sorting ? sorting : t('sort')}
                     <ChevronUp
                       className={cn(
                         'ml-[auto]',
@@ -209,7 +217,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     <ul className="pr-0 md:pr-[4rem]">
                       {filterNames.map((name, index) => {
                         switch (name) {
-                          case 'Product category':
+                          case t('product_category'):
                             return (
                               <li className="accordion" key={index}>
                                 <div
@@ -221,7 +229,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
-                                    Product category
+                                    {t('product_category')}
                                   </span>
                                   {toggleProductCategoryElement ? (
                                     <Minus />
@@ -279,7 +287,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 </div>
                               </li>
                             )
-                          case 'Price':
+                          case t('price'):
                             return (
                               <li key={index}>
                                 <div
@@ -392,7 +400,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 )}
                               </li>
                             )
-                          case 'Gender':
+                          case t('gender'):
                             return (
                               <li className="accordion" key={index}>
                                 <div
@@ -456,7 +464,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 </div>
                               </li>
                             )
-                          case 'Brand':
+                          case t('brand'):
                             return (
                               <li className="accordion" key={index}>
                                 <div
@@ -636,10 +644,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                         hidden: !data.found,
                       })}
                     >
-                      Showing {data.products.length} results{' '}
+                      {t('showing')} {data.products.length} {t('results')}{' '}
                       {q && (
                         <>
-                          for "<strong>{q}</strong>"
+                          {t('for')} "<strong>{q}</strong>"
                         </>
                       )}
                     </span>
@@ -651,23 +659,24 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     >
                       {q ? (
                         <>
-                          There are no products that match "<strong>{q}</strong>
-                          "
+                          {t('there_are_no_products_that_match')} "
+                          <strong>{q}</strong>"
                         </>
                       ) : (
                         <>
-                          There are no products that match the selected
-                          category.
+                          {t(
+                            'there_are_no_products_that_match_the_selected_category'
+                          )}
                         </>
                       )}
                     </span>
                   </>
                 ) : q ? (
                   <>
-                    Searching for: "<strong>{q}</strong>"
+                    {t('searching_for')}: "<strong>{q}</strong>"
                   </>
                 ) : (
-                  <>Searching...</>
+                  <>{t('searching')}</>
                 )}
               </div>
             )}

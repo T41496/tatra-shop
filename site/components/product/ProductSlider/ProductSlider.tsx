@@ -10,6 +10,7 @@ import cn from 'clsx'
 import { a } from '@react-spring/web'
 import s from './ProductSlider.module.css'
 import { ChevronLeft, ChevronRight } from '@components/icons'
+import { useTranslations } from 'next-intl'
 
 interface ProductSliderProps {
   children: React.ReactNode[]
@@ -20,6 +21,8 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
   children,
   className = '',
 }) => {
+  const t = useTranslations('productslider')
+
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isMounted, setIsMounted] = useState(false)
   const sliderContainerRef = useRef<HTMLDivElement>(null)
@@ -91,14 +94,14 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
           <button
             className={cn(s.leftControl)}
             onClick={onPrev}
-            aria-label="Previous Product Image"
+            aria-label={t('previous_product_image')}
           >
             <ChevronLeft />
           </button>
           <button
             className={cn(s.rightControl)}
             onClick={onNext}
-            aria-label="Next Product Image"
+            aria-label={t('next_product_image')}
           >
             <ChevronRight />
           </button>
@@ -146,13 +149,13 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
         left
         className={cn(s.leftControlMobile)}
         onClick={onPrev}
-        ariaLabel="Previous Product Image"
+        ariaLabel={t('previous_product_image')}
       />
       <Arrow
         right
         className={cn(s.rightControlMobile)}
         onClick={onNext}
-        ariaLabel="Next Product Image"
+        ariaLabel={t('next_product_image')}
       />
     </div>
   )

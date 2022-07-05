@@ -4,7 +4,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import SimilarProducts from '@components/product/SimilarProducts'
+import { useTranslations } from 'next-intl'
 export default function Blogs() {
+  const t = useTranslations('blogs')
+
   return (
     <div className="mt-10">
       <Container>
@@ -49,7 +52,7 @@ export default function Blogs() {
                 <div>
                   <Link href="/blog-detail">
                     <span className=" text-xl md:text-[22px] text-[#70877B] leading-[40px] md:leading-[40px] font-normal cursor-pointer">
-                      Read more...
+                      {t('read_more')}
                     </span>
                   </Link>
                 </div>

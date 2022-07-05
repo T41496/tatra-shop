@@ -33,7 +33,6 @@ export async function getStaticProps({
       categories,
       brands,
       pages,
-      messages: (await import(`../lang/${locale}.json`)).default,
     },
     revalidate: 60,
   }

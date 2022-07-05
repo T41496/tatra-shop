@@ -13,6 +13,7 @@ import ProductTag from '../ProductTag'
 import ProductDescription from '../ProductDescription'
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
+import { useTranslations } from 'next-intl'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -39,6 +40,9 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
     },
   })
 
+  const t = useTranslations('productview')
+  const similarproducts = useTranslations('similarproducts')
+
   return (
     <>
       <Container className="max-w-none w-full" clean>
@@ -51,7 +55,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                     <img
                       className={s.img}
                       src={image.url!}
-                      alt={image.alt || 'Product Image'}
+                      alt={image.alt || t('product_image')}
                     />
                   </div>
                 ))}
@@ -71,7 +75,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
         </div>
         <section className="px-6 mb-[5rem] md:mt-[10rem]">
           <h1 className="text-[1.8rem] md:text-[40px] text-[#161616] font-medium pb-6">
-            Similar products
+            {similarproducts('similar_products')}
           </h1>
           <div className="hidden md:block">
             <div className={s.relatedProductsGrid}>
@@ -139,7 +143,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           <div className="flex">
             <Link href="/search">
               <a className="uppercase inline-block m-auto text-[#FFFFFF] bg-[#70877B] mt-[2.5rem] px-11 py-2 text-2xl font-medium">
-                catalog
+                {similarproducts('catalog')}
               </a>
             </Link>
           </div>

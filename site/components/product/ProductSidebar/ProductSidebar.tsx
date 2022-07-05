@@ -10,6 +10,7 @@ import {
   selectDefaultOptionFromProduct,
   SelectedOptions,
 } from '../helpers'
+import { useTranslations } from 'next-intl'
 
 interface ProductSidebarProps {
   product: Product
@@ -22,6 +23,8 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   className,
   price,
 }) => {
+  const t = useTranslations('productsidebar')
+
   const addItem = useAddItem()
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
@@ -65,7 +68,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
       <div>
         {process.env.COMMERCE_CART_ENABLED && (
           <Button
-            aria-label="Add to Cart"
+            aria-label={t('add_to_cart')}
             type="button"
             className={s.button}
             onClick={addToCart}
@@ -73,15 +76,15 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
             disabled={variant?.availableForSale === false}
           >
             {variant?.availableForSale === false
-              ? 'Not Available'
-              : 'Add To Cart'}
+              ? t('not_available')
+              : t('add_to_cart')}
           </Button>
         )}
       </div>
       <div className="flex gap-x-3 mt-6">
         <span className=" flex self-center w-[14px] h-[14px] rounded-full bg-[#70877B] leading-[1rem]"></span>
         <p className="flex self-center  text-xl md:text-[1.1rem] font-medium">
-          Delivery in 3-8 working days.
+          {t('delivery_working_days')}
         </p>
       </div>
     </div>

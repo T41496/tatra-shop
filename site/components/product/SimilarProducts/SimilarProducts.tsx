@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useKeenSlider } from 'keen-slider/react'
 import cn from 'clsx'
+import { useTranslations } from 'next-intl'
 
 const SimilarProducts: FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -20,9 +21,11 @@ const SimilarProducts: FC = () => {
       perView: 2,
     },
   })
+  const t = useTranslations('similarproducts')
+
   return (
     <div className="w-full ">
-      <h1 className={s.title}>Similar products</h1>
+      <h1 className={s.title}>{t('similar_products')}</h1>
       <div className="hidden md:block">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10 md:mb-20">
           {data.map((item, index) => {
@@ -81,7 +84,7 @@ const SimilarProducts: FC = () => {
       <div className="flex justify-center mb-10 md:mb-20">
         <Link href={'/'}>
           <span className="text-white text-lg sm:text-2xl text-center flex justify-center items-center bg-[#70877B] w-[135px] h-[40px] sm:w-[280px] sm:h-[80px] cursor-pointer">
-            Catalog
+            {t('catalog')}
           </span>
         </Link>
       </div>
