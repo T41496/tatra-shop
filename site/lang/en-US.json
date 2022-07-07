@@ -23,8 +23,8 @@
     "all_rights_reserved": "All rights reserved."
   },
   "category": {
-    "men": "men",
-    "women": "women"
+    "men": "Men",
+    "women": "Women"
   },
   "index": {
     "blog_text": "Want to see the blog in detail?",
@@ -63,7 +63,10 @@
     "searching": "Searching...",
     "showing": "Showing",
     "results": "results",
-    "for": "for"
+    "for": "for",
+    "men": "Men",
+    "women": "Women",
+    "reset_all": "Reset all"
   },
   "searchbar": {
     "search": "Search"

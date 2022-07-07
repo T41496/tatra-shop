@@ -11,6 +11,7 @@ import type { Product } from '@commerce/types/product'
 import { Container, Skeleton } from '@components/ui'
 import { ChevronUp, Plus, Minus } from '@components/icons'
 import { Range, getTrackBackground } from 'react-range'
+import { Cross } from '@components/icons'
 
 import useSearch from '@framework/product/use-search'
 
@@ -48,7 +49,33 @@ export default function Search({ categories, brands }: SearchPropsType) {
   // `q` can be included but because categories and designers can't be searched
   // in the same way of products, it's better to ignore the search input if one
   // of those is selected
-  const query = filterQuery({ sort, g, c, b })
+  const query = filterQuery({ q, sort, price_min, price_max, g, c, b })
+
+  const tagsGender: Any[] = []
+  const slugsGender =
+    typeof g === 'undefined' ? [] : [...new Set(String(g).split(','))]
+  slugsGender.map((item, index) => {
+    tagsGender.push(categories.find((cat: any) => cat.slug === item))
+  })
+
+  const tagsCategory: Any[] = []
+  const slugsCategory =
+    typeof c === 'undefined' ? [] : [...new Set(String(c).split(','))]
+  slugsCategory.map((item, index) => {
+    tagsCategory.push(categories.find((cat: any) => cat.slug === item))
+  })
+
+  const categoryIds: Number[] = []
+  if (tagsGender.length > 0) {
+    tagsGender.map((item, index) => {
+      categoryIds.push(Number(item.id))
+    })
+  }
+  if (tagsCategory.length > 0) {
+    tagsCategory.map((item, index) => {
+      categoryIds.push(Number(item.id))
+    })
+  }
 
   const { pathname, category, brand } = useSearchMeta(asPath)
   const activeGender = categories.find((cat: any) => cat.slug === g)
@@ -59,12 +86,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
 
   const { data } = useSearch({
     search: typeof q === 'string' ? q : '',
-    categoryIds: [
-      typeof activeGender?.id === 'string' ? activeGender?.id : '',
-      typeof activeCategory?.id === 'string' ? activeCategory?.id : '',
-    ]
-      .filter((a) => a)
-      .join(),
+    categoryIds: categoryIds.filter((a) => a).join(),
     brandId: (activeBrand as any)?.entityId,
     sort: typeof sort === 'string' ? sort : '',
     locale,
@@ -91,6 +113,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
     t('product_category'),
     t('brand'),
     t('price'),
+    t('reset_all'),
   ] // , 'Size'
   const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
 
@@ -111,7 +134,79 @@ export default function Search({ categories, brands }: SearchPropsType) {
       <div className="bg-[url('/catalog-bg.png')] bg-cover h-60"></div>
       <Container>
         <div className="flex space-between justify-between">
-          <div className="w-[calc(50%-10px)] md:0">
+          <div className="w-[calc(50%-10px)] md:w-[calc(100%-200px)]">
+            <div className="hidden md:block pt-[1.5rem]">
+              {tagsGender.map((item, index) => {
+                return (
+                  <div className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative">
+                    {t(item.slug)}
+                    <button
+                      onClick={(e) => {
+                        tagsGender.splice(index, 1)
+                        let genderIds: String[] = []
+                        tagsGender.map((item, index) => {
+                          genderIds.push(item.slug)
+                        })
+                        router.push(
+                          {
+                            pathname,
+                            query: filterQuery({
+                              q,
+                              g: String(genderIds.toString()),
+                              c,
+                              b,
+                              sort,
+                              price_min,
+                              price_max,
+                            }),
+                          },
+                          '',
+                          { scroll: false }
+                        )
+                      }}
+                      className="hover:text-accent-5 transition ease-in-out duration-150 focus:outline-none cursor-pointer"
+                    >
+                      <Cross className="h-6 w-6 absolute top-2 right-2" />
+                    </button>
+                  </div>
+                )
+              })}
+              {tagsCategory.map((item, index) => {
+                return (
+                  <div className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative">
+                    {item.name}
+                    <button
+                      onClick={(e) => {
+                        tagsCategory.splice(index, 1)
+                        let categoryIds: String[] = []
+                        tagsCategory.map((item, index) => {
+                          categoryIds.push(item.slug)
+                        })
+                        router.push(
+                          {
+                            pathname,
+                            query: filterQuery({
+                              q,
+                              g,
+                              c: String(categoryIds.toString()),
+                              b,
+                              sort,
+                              price_min,
+                              price_max,
+                            }),
+                          },
+                          '',
+                          { scroll: false }
+                        )
+                      }}
+                      className="hover:text-accent-5 transition ease-in-out duration-150 focus:outline-none cursor-pointer"
+                    >
+                      <Cross className="h-6 w-6 absolute top-2 right-2" />
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
             <div className="block md:hidden pt-[1.5rem]">
               <span className="rounded-md shadow-sm">
                 <button
@@ -141,7 +236,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </span>
             </div>
           </div>
-          <div className="w-[calc(50%-10px)] md:w-full">
+          <div className="w-[calc(50%-10px)] md:w-[200px]">
             <ClickOutside active={display} onClick={() => setDisplay(false)}>
               <div className="pt-[1.5rem] md:pb-[1.5rem]">
                 <div className="flex items-center relative justify-end">
@@ -171,13 +266,15 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                   c,
                                   b,
                                   sort: key,
+                                  price_min,
+                                  price_max,
                                 }),
                               }}
                             >
                               <a
                                 onClick={(e) => {
-                                  handleClick(e, 'sort'),
-                                    activeSort(e.target as HTMLElement)
+                                  handleClick(e, 'sort')
+                                  activeSort(e.target as HTMLElement)
                                 }}
                                 className={
                                   'h-[3rem] px-[1rem]  items-center flex hover:bg-[#70877B] focus:bg-[#70877B] hover:text-white w-[100%]'
@@ -254,23 +351,37 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                                   query: filterQuery({
                                                     q,
                                                     g,
-                                                    c: cat.path.replace(
-                                                      /^\/|\/$/g,
-                                                      ''
+                                                    c: String(
+                                                      typeof c === 'undefined'
+                                                        ? cat.slug
+                                                        : c + ',' + cat.slug
                                                     ),
                                                     b,
                                                     sort,
+                                                    price_min,
+                                                    price_max,
                                                   }),
                                                 }}
                                               >
                                                 <a
-                                                  onClick={(e) =>
-                                                    handleClick(e, 'categories')
-                                                  }
+                                                  onClick={(e) => {
+                                                    e.preventDefault()
+                                                    router.push(
+                                                      e.target.getAttribute(
+                                                        'href'
+                                                      ),
+                                                      '',
+                                                      { scroll: false }
+                                                    )
+                                                    // handleClick(e, 'categories')
+                                                    setToggleProductCategoryElement(
+                                                      false
+                                                    )
+                                                  }}
                                                   className={cn(
                                                     'text-[#161616] font-medium leading-6 text-[1rem] py-[0.25rem] inline-block',
                                                     {
-                                                      'text-[#70877B]':
+                                                      'text--[#70877B]':
                                                         activeCategory?.id ===
                                                         cat.id,
                                                     }
@@ -400,6 +511,22 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 )}
                               </li>
                             )
+                          case t('reset_all'):
+                            return (
+                              <li key={index} className="hidden md:block">
+                                <div className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap">
+                                  <Link
+                                    href={{
+                                      pathname,
+                                    }}
+                                  >
+                                    <a className="underline">
+                                      {t('reset_all')}
+                                    </a>
+                                  </Link>
+                                </div>
+                              </li>
+                            )
                           case t('gender'):
                             return (
                               <li className="accordion" key={index}>
@@ -430,24 +557,38 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                                   pathname,
                                                   query: filterQuery({
                                                     q,
-                                                    g: cat.path.replace(
-                                                      /^\/|\/$/g,
-                                                      ''
+                                                    g: String(
+                                                      typeof g === 'undefined'
+                                                        ? cat.slug
+                                                        : g + ',' + cat.slug
                                                     ),
                                                     c,
                                                     b,
                                                     sort,
+                                                    price_min,
+                                                    price_max,
                                                   }),
                                                 }}
                                               >
                                                 <a
-                                                  onClick={(e) =>
-                                                    handleClick(e, 'categories')
-                                                  }
+                                                  onClick={(e) => {
+                                                    e.preventDefault()
+                                                    router.push(
+                                                      e.target.getAttribute(
+                                                        'href'
+                                                      ),
+                                                      '',
+                                                      { scroll: false }
+                                                    )
+                                                    // handleClick(e, 'categories')
+                                                    setToggleGenderElement(
+                                                      false
+                                                    )
+                                                  }}
                                                   className={cn(
                                                     'text-[#161616] font-medium leading-6 text-[1rem] py-[0.25rem] inline-block',
                                                     {
-                                                      'text-[#70877B]':
+                                                      'text--[#70877B]':
                                                         activeGender?.id ===
                                                         cat.id,
                                                     }
@@ -498,13 +639,24 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                                       ''
                                                     ),
                                                     sort,
+                                                    price_min,
+                                                    price_max,
                                                   }),
                                                 }}
                                               >
                                                 <a
-                                                  onClick={(e) =>
-                                                    handleClick(e, 'brands')
-                                                  }
+                                                  onClick={(e) => {
+                                                    e.preventDefault()
+                                                    router.push(
+                                                      e.target.getAttribute(
+                                                        'href'
+                                                      ),
+                                                      '',
+                                                      { scroll: false }
+                                                    )
+                                                    // handleClick(e, 'brands')
+                                                    setToggleBrandElement(false)
+                                                  }}
                                                   className={cn(
                                                     'text-[#161616] font-medium leading-6 text-[1rem] py-[0.25rem] inline-block',
                                                     {
@@ -634,6 +786,78 @@ export default function Search({ categories, brands }: SearchPropsType) {
 
           {/* Products */}
           <div className="col-span-3">
+            <div className="block md:hidden">
+              {tagsGender.map((item, index) => {
+                return (
+                  <div className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative">
+                    {t(item.slug)}
+                    <button
+                      onClick={(e) => {
+                        tagsGender.splice(index, 1)
+                        let genderIds: String[] = []
+                        tagsGender.map((item, index) => {
+                          genderIds.push(item.slug)
+                        })
+                        router.push(
+                          {
+                            pathname,
+                            query: filterQuery({
+                              q,
+                              g: String(genderIds.toString()),
+                              c,
+                              b,
+                              sort,
+                              price_min,
+                              price_max,
+                            }),
+                          },
+                          '',
+                          { scroll: false }
+                        )
+                      }}
+                      className="hover:text-accent-5 transition ease-in-out duration-150 focus:outline-none cursor-pointer"
+                    >
+                      <Cross className="h-6 w-6 absolute top-2 right-2" />
+                    </button>
+                  </div>
+                )
+              })}
+              {tagsCategory.map((item, index) => {
+                return (
+                  <div className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative">
+                    {item.name}
+                    <button
+                      onClick={(e) => {
+                        tagsCategory.splice(index, 1)
+                        let categoryIds: String[] = []
+                        tagsCategory.map((item, index) => {
+                          categoryIds.push(item.slug)
+                        })
+                        router.push(
+                          {
+                            pathname,
+                            query: filterQuery({
+                              q,
+                              g,
+                              c: String(categoryIds.toString()),
+                              b,
+                              sort,
+                              price_min,
+                              price_max,
+                            }),
+                          },
+                          '',
+                          { scroll: false }
+                        )
+                      }}
+                      className="hover:text-accent-5 transition ease-in-out duration-150 focus:outline-none cursor-pointer"
+                    >
+                      <Cross className="h-6 w-6 absolute top-2 right-2" />
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
             {(q || activeCategory || activeBrand) && (
               <div className="mb-12 transition ease-in duration-75">
                 {data ? (
@@ -680,6 +904,16 @@ export default function Search({ categories, brands }: SearchPropsType) {
                 )}
               </div>
             )}
+            <div className="block md:hidden pb-[1rem] float-right">
+              <Link
+                href={{
+                  pathname,
+                }}
+              >
+                <a className="underline">{t('reset_all')}</a>
+              </Link>
+            </div>
+            <div className="clear-both"></div>
             {data && data.found == true ? (
               <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
                 {data.products.map((product: Product) => (

@@ -63,7 +63,10 @@
     "searching": "Hľadá sa...",
     "showing": "Zobrazuje sa",
     "results": "výsledky",
-    "for": "pre"
+    "for": "pre",
+    "men": "muži",
+    "women": "ženy",
+    "reset_all": "Resetovať všetko"
   },
   "searchbar": {
     "search": "Vyhľadávanie"
