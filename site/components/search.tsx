@@ -138,7 +138,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
             <div className="hidden md:block pt-[1.5rem]">
               {tagsGender.map((item, index) => {
                 return (
-                  <div className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative">
+                  <div
+                    key={index}
+                    className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative"
+                  >
                     {t(item.slug)}
                     <button
                       onClick={(e) => {
@@ -173,7 +176,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
               })}
               {tagsCategory.map((item, index) => {
                 return (
-                  <div className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative">
+                  <div
+                    key={index}
+                    className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative"
+                  >
                     {item.name}
                     <button
                       onClick={(e) => {
@@ -789,7 +795,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
             <div className="block md:hidden">
               {tagsGender.map((item, index) => {
                 return (
-                  <div className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative">
+                  <div
+                    key={index}
+                    className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative"
+                  >
                     {t(item.slug)}
                     <button
                       onClick={(e) => {
@@ -824,7 +833,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
               })}
               {tagsCategory.map((item, index) => {
                 return (
-                  <div className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative">
+                  <div
+                    key={index}
+                    className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative"
+                  >
                     {item.name}
                     <button
                       onClick={(e) => {
