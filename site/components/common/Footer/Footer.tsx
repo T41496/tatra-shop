@@ -76,7 +76,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="flex justify-left md:justify-center">
             <ul>
               <li className="pb-1">
-                <Link href="/">
+                <Link href="/terms-and-conditions">
                   <a className="text-white font-normal text-lg">
                     {t('business_terms_and_conditions')}
                   </a>

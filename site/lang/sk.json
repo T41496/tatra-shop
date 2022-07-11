@@ -146,5 +146,23 @@
     "description_3": "Náš príbeh sa začal pred 5 rokmi, keď sme prekročili hranice Slovenska a zostali tu žiť. Ako študenti sme hľadali akékoľvek spôsoby zárobku. Tak sa zrodil start-up Tatra Hills – predaj turistického vybavenia. Vďaka starostlivému prístupu ľudí k oblečeniu chránime prírodu a pomáhame turistom byť v komfortných podmienkach v každom ročnom období.",
     "abour_vlad": "Ahoj! Volám sa Vlad a som zakladateľom značky Tatry Hills. Mojím zdrojom inšpirácie je už viac ako 15 rokov príroda a to som ja, cez koho prechádza celý produkt, ktorý dostávate.",
     "abour_daria": "A toto je Daria, spoluzakladateľka Tatra Hills a moja asistentka. Je tiež hlavným motorom všetkých procesov obsahu. Konečný výsledok, ktorý naši klienti dostávajú, je vďaka Darii."
+  },
+  "termsandconditions": {
+    "how_my_order_will_delivered": "Ako bude moja objednávka doručená?",
+    "how_my_order_will_delivered_description_1": "Vaša objednávka bude zabalená a odoslaná z nášho skladu v priebehu niekoľkých pracovných dní, zvyčajne 1-2 dní, ale môže sa to líšiť.",
+    "how_my_order_will_delivered_description_2": "Tovar bude odoslaný s Vami zvolenou možnosťou doručenia Slovenska pošta či Packeta. Dodacie lehoty sa budú líšiť v závislosti od vášho výberu a miesta.",
+    "how_my_order_will_delivered_description_3": "Po odoslaní balíka z nášho skladu dostanete aktualizáciu.",
+    "within_slovakia": "V ramci Slovenska:",
+    "within_slovakia_1": "Slovenska pošta – 3,5€",
+    "within_slovakia_2": "Dobierka – 4,5€",
+    "within_slovakia_3": "Packeta – 3€",
+    "within_slovakia_4": "Dobierka – 3,5€",
+    "to_czech": "Do Česká:",
+    "to_czech_1": "Packeta – 4€",
+    "to_czech_2": "Dobierka – 4,5€",
+    "how_can_you_pay_order": "Ako viete zaplatit za objednavku:",
+    "how_can_you_pay_order_description_1": "Online cez platobnú bránu Global payment a to kartou alebo bankovým prevodom – ZADARMO.",
+    "how_can_you_pay_order_description_2": "Klasickým bankovým prevodom – ZADARMO",
+    "how_can_you_pay_order_description_email": "Pokiaľ mate nejaké otázky k doručeniu či platobným metódam, pokojne sa ozvi na náš e-mail: tatrahills@gmail.com"
   }
 }
