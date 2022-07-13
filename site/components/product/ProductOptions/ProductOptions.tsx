@@ -2,6 +2,7 @@ import { memo } from 'react'
 import { Swatch } from '@components/product'
 import type { ProductOption } from '@commerce/types/product'
 import { SelectedOptions } from '../helpers'
+import { useTranslations } from 'next-intl'
 
 interface ProductOptionsProps {
   options: ProductOption[]
@@ -14,6 +15,8 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
   selectedOptions,
   setSelectedOptions,
 }) => {
+  const t = useTranslations('productoptions')
+
   return (
     <div>
       {options.map((opt) => (
@@ -22,7 +25,9 @@ const ProductOptions: React.FC<ProductOptionsProps> = ({
           key={opt.displayName}
         >
           <h2 className="uppercase font-medium text-sm tracking-wide">
-            {opt.displayName}
+            {t(opt.displayName.toLowerCase()).length == ''
+              ? opt.displayName
+              : t(opt.displayName.toLowerCase())}
           </h2>
           <div role="listbox" className="flex flex-row py-4">
             {opt.values.map((v, i: number) => {

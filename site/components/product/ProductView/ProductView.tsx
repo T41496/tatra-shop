@@ -1,7 +1,7 @@
 import cn from 'clsx'
 import s from './ProductView.module.css'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import type { Product } from '@commerce/types/product'
 import usePrice from '@framework/product/use-price'
 import { WishlistButton } from '@components/wishlist'
@@ -12,7 +12,8 @@ import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
 import ProductDescription from '../ProductDescription'
 import 'keen-slider/keen-slider.min.css'
-import SimilarProducts from '@components/product/SimilarProducts'
+import { useKeenSlider } from 'keen-slider/react'
+import { useTranslations } from 'next-intl'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -24,6 +25,23 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
     baseAmount: product.price.retailPrice,
     currencyCode: product.price.currencyCode!,
   })
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [loaded, setLoaded] = useState(false)
+  const [sliderRef, instanceRef] = useKeenSlider({
+    initial: 0,
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel)
+    },
+    created() {
+      setLoaded(true)
+    },
+    slides: {
+      perView: 2,
+    },
+  })
+
+  const t = useTranslations('productview')
+  const similarproducts = useTranslations('similarproducts')
 
   return (
     <>
@@ -37,7 +55,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                     <img
                       className={s.img}
                       src={image.url!}
-                      alt={image.alt || 'Product Image'}
+                      alt={image.alt || t('product_image')}
                     />
                   </div>
                 ))}
@@ -56,7 +74,79 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
           <ProductDescription />
         </div>
         <section className="px-6 mb-[5rem] md:mt-[10rem]">
-          <SimilarProducts />
+          <h1 className="text-[1.8rem] md:text-[40px] text-[#161616] font-medium pb-6">
+            {similarproducts('similar_products')}
+          </h1>
+          <div className="hidden md:block">
+            <div className={s.relatedProductsGrid}>
+              {relatedProducts.map((p) => (
+                <div key={p.path} className="animated fadeIn bg-accent-0">
+                  <ProductCard
+                    product={p}
+                    key={p.path}
+                    variant="simple"
+                    className="animated fadeIn"
+                    imgProps={{
+                      width: 300,
+                      height: 300,
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="block md:hidden">
+            <div
+              className={cn('keen-slider', s.relatedProductsGrid)}
+              ref={sliderRef}
+            >
+              {relatedProducts.map((p) => (
+                <div
+                  key={p.path}
+                  className="animated fadeIn bg-accent-0 keen-slider__slide"
+                >
+                  <ProductCard
+                    product={p}
+                    key={p.path}
+                    variant="simple"
+                    className="animated fadeIn"
+                    imgProps={{
+                      width: 300,
+                      height: 300,
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+            {loaded && instanceRef.current && (
+              <div className="arrows flex justify-center mt-[1rem]">
+                <Arrow
+                  left
+                  onClick={(e: any) =>
+                    e.stopPropagation() || instanceRef.current?.prev()
+                  }
+                  disabled={currentSlide === 0}
+                />
+
+                <Arrow
+                  onClick={(e: any) =>
+                    e.stopPropagation() || instanceRef.current?.next()
+                  }
+                  disabled={
+                    currentSlide ===
+                    instanceRef.current.track.details.slides.length - 2
+                  }
+                />
+              </div>
+            )}
+          </div>
+          <div className="flex">
+            <Link href="/search">
+              <a className="uppercase inline-block m-auto text-[#FFFFFF] bg-[#70877B] mt-[2.5rem] px-11 py-2 text-2xl font-medium">
+                {similarproducts('catalog')}
+              </a>
+            </Link>
+          </div>
         </section>
       </Container>
       <SEO

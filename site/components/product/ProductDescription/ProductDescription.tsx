@@ -1,24 +1,26 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { useMediaQuery } from 'react-responsive'
+import { useTranslations } from 'next-intl'
 
 const ProductDescription = () => {
   const isMobile = useMediaQuery({
     query: '(max-width: 768px)',
   })
   const [open, setOpen] = useState(false)
-  console.log(open, 'v')
+  const t = useTranslations('productdescription')
+
   return (
     <div className=" px-5 md:px-8">
       <h1 className=" hidden mt-[60px] md:mt-[10rem] mb-10 md:block text-4xl md:text-4xl font-medium text-[#161616]">
-        Product description
+        {t('text')}
       </h1>
       <div
         onClick={() => setOpen(!open)}
         className="flex md:hidden justify-between cursor-pointer bg-[#F1F1F1] py-6 px-4 mt-[60px] md:mt-[10rem] mb-10"
       >
         <h1 className=" text-xl md:text-[40px] font-medium text-[#161616]">
-          Product description
+          {t('text')}
         </h1>
         <div
           className={`flex self-center transition-all duration-300 ${
@@ -46,8 +48,7 @@ const ProductDescription = () => {
           </div>
           <div className="flex self-center ">
             <p className="text-xs md:text-[1.25rem] leading-[30px] text-[#161616] font-normal">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a
-              dolor, ut lacus erat. Purus diam et risus elementum elementum.
+              {t('description_1')}
             </p>
           </div>
         </div>
@@ -62,8 +63,7 @@ const ProductDescription = () => {
           </div>
           <div className="flex self-center ">
             <p className=" text-sm  md:text-[1.25rem] leading-[30px] text-[#161616] font-normal">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a
-              dolor, ut lacus erat. Purus diam et risus elementum elementum.
+              {t('description_2')}
             </p>
           </div>
         </div>
@@ -78,11 +78,7 @@ const ProductDescription = () => {
           </div>
           <div className="flex self-center ">
             <p className="text-sm md:text-[1.25rem]  leading-[30px] text-[#161616] font-normal">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas
-              nibh magna quis consequat cum. Etiam egestas eu suscipit egestas.
-              Scelerisque nibh eleifend phasellus eu. Nunc sit sed aliquet
-              egestas vel laoreet massa ultrices. Eget id ipsum sit tincidunt
-              ullamcorper diam purus, eget.
+              {t('description_3')}
             </p>
           </div>
         </div>

@@ -12,7 +12,7 @@ const LIMIT = 12
 // Return current cart info
 const getProducts: ProductsEndpoint['handlers']['getProducts'] = async ({
   res,
-  body: { search, categoryId, brandId, sort, priceMin, priceMax },
+  body: { search, categoryId, categoryIds, brandId, sort, priceMin, priceMax },
   config,
   commerce,
 }) => {
@@ -26,6 +26,8 @@ const getProducts: ProductsEndpoint['handlers']['getProducts'] = async ({
 
   if (categoryId && Number.isInteger(Number(categoryId)))
     url.searchParams.set('categories:in', String(categoryId))
+
+  if (categoryIds) url.searchParams.set('categories:in', String(categoryIds))
 
   if (brandId && Number.isInteger(Number(brandId)))
     url.searchParams.set('brand_id', String(brandId))

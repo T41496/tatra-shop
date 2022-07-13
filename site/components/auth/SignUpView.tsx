@@ -4,6 +4,7 @@ import { Info } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import { Logo, Button, Input } from '@components/ui'
 import useSignup from '@framework/auth/use-signup'
+import { useTranslations } from 'next-intl'
 
 interface Props {}
 
@@ -60,6 +61,8 @@ const SignUpView: FC<Props> = () => {
     handleValidation()
   }, [handleValidation])
 
+  const t = useTranslations('signupview')
+
   return (
     <form
       onSubmit={handleSignup}
@@ -72,17 +75,20 @@ const SignUpView: FC<Props> = () => {
         {message && (
           <div className="text-red border border-red p-3">{message}</div>
         )}
-        <Input placeholder="First Name" onChange={setFirstName} />
-        <Input placeholder="Last Name" onChange={setLastName} />
-        <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
+        <Input placeholder={t('first_name')} onChange={setFirstName} />
+        <Input placeholder={t('last_name')} onChange={setLastName} />
+        <Input type="email" placeholder={t('email')} onChange={setEmail} />
+        <Input
+          type="password"
+          placeholder={t('password')}
+          onChange={setPassword}
+        />
         <span className="text-accent-8">
           <span className="inline-block align-middle ">
             <Info width="15" height="15" />
           </span>{' '}
           <span className="leading-6 text-sm">
-            <strong>Info</strong>: Passwords must be longer than 7 chars and
-            include numbers.{' '}
+            <strong>{t('info')}</strong>: {t('password_must_be_longer')}{' '}
           </span>
         </span>
         <div className="pt-2 w-full flex flex-col">
@@ -92,18 +98,18 @@ const SignUpView: FC<Props> = () => {
             loading={loading}
             disabled={disabled}
           >
-            Sign Up
+            {t('sign_up')}
           </Button>
         </div>
 
         <span className="pt-1 text-center text-sm">
-          <span className="text-accent-7">Do you have an account?</span>
+          <span className="text-accent-7">{t('do_you_have_an_account')}</span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('LOGIN_VIEW')}
           >
-            Log In
+            {t('log_in')}
           </a>
         </span>
       </div>

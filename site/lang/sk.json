@@ -1,0 +1,168 @@
+{
+  "banner": {
+    "header": "Tatra Hills",
+    "description": "Zachráňte planétu - dajte šatám druhý život",
+    "button": "Katalóg"
+  },
+  "navbar": {
+    "catalog": "Katalóg",
+    "blog": "Blog",
+    "about_us": "O nás"
+  },
+  "footer": {
+    "text": "Zachráňte planétu - dajte šatám druhý život",
+    "catalog": "Katalóg",
+    "blog": "Blog",
+    "about_us": "O nás",
+    "contact_us": "Kontaktuj nás",
+    "business_terms_and_conditions": "Obchodné podmienky",
+    "shipping_and_payment": "Doprava a platba",
+    "privacy_policy": "Zásady ochrany osobných údajov",
+    "refund_and_Returns": "Vrátenie peňazí a vrátenie tovaru",
+    "title": "Tatra Hills",
+    "all_rights_reserved": "Všetky práva vyhradené."
+  },
+  "category": {
+    "men": "muži",
+    "women": "ženy"
+  },
+  "index": {
+    "blog_text": "Chcete vidieť blog podrobne?",
+    "blog_link": "Blog",
+    "blog_brand": "Značka",
+    "blog_travel": "Cestovanie",
+    "blog_mountains": "hory"
+  },
+  "hero": {
+    "about_us_title": "O nás",
+    "about_us_description": "Tatra Hills je značka založená na kvalite, šetrnosti k životnému prostrediu a spoľahlivosti. Vďaka tomu majú turisti pohodlie a športovci víťazstvo. Ceníme si nielen proces, ale aj konečný výsledok. Vážime si dôveru tých, ktorí si nás vyberajú a záleží nám aj na planéte!",
+    "why_eco_title": "Prečo Eco",
+    "why_eco_description": "Prečo si teda vybrať recyklované oblečenie? Vo svete rýchlej módy, kde trendy neustále prichádzajú a odchádzajú, každoročne končí na európskych skládkach neuveriteľných 12,8 milióna ton vyradeného oblečenia. Naším cieľom je znížiť výrobu odevov, keďže 70 % výrobkov je možné opätovne použiť bez straty kvality a funkčnosti. Menej starého oblečenia na skládkach.",
+    "about_us_link": "O nás"
+  },
+  "signup": {
+    "title": "Prihláste sa na emaily TATRA HILLS",
+    "placeholder": "Vložte svoju e-mailovú adresu",
+    "button": "Prihlás ma!"
+  },
+  "search": {
+    "gender": "rod",
+    "product_category": "Kategória produktu",
+    "brand": "Značka",
+    "price": "cena",
+    "category": "Kategória",
+    "all_categories": "Všetky kategórie",
+    "sort": "Triediť",
+    "trending": "Trendy",
+    "latest_arrivals": "Najnovšie príchody",
+    "low_to_high": "Nízka až vysoká",
+    "high_to_low": "Vysoká až nízka",
+    "there_are_no_products_that_match": "Neexistujú žiadne zodpovedajúce produkty",
+    "there_are_no_products_that_match_the_selected_category": "Vybratej kategórii nezodpovedajú žiadne produkty.",
+    "searching_for": "Hľadanie",
+    "searching": "Hľadá sa...",
+    "showing": "Zobrazuje sa",
+    "results": "výsledky",
+    "for": "pre",
+    "men": "muži",
+    "women": "ženy",
+    "reset_all": "Resetovať všetko"
+  },
+  "searchbar": {
+    "search": "Vyhľadávanie"
+  },
+  "similarproducts": {
+    "similar_products": "Podobné produkty",
+    "catalog": "Katalóg"
+  },
+  "blogs": {
+    "read_more": "Čítaj viac..."
+  },
+  "productview": {
+    "product_image": "Obrázok produktu"
+  },
+  "productslider": {
+    "previous_product_image": "Predchádzajúci obrázok produktu",
+    "next_product_image": "Nasledujúci obrázok produktu"
+  },
+  "productsidebar": {
+    "add_to_cart": "Pridať do košíka",
+    "not_available": "Nie je k dispozícií",
+    "delivery_working_days": "Dodanie do 3-8 pracovných dní."
+  },
+  "productoptions": {
+    "size": "Veľkosť",
+    "color": "Farba"
+  },
+  "productdescription": {
+    "text": "Popis produktu",
+    "description_1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a dolor, ut lacus erat. Purus diam et risus elementum elementum.",
+    "description_2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a dolor, ut lacus erat. Purus diam et risus elementum elementum.",
+    "description_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas nibh magna quis consequat cum. Etiam egestas eu suscipit egestas. Scelerisque nibh eleifend phasellus eu. Nunc sit sed aliquet egestas vel laoreet massa ultrices. Eget id ipsum sit tincidunt ullamcorper diam purus, eget."
+  },
+  "cart": {
+    "your_cart_is_empty": "vaša karta je prázdna",
+    "your_cart_is_empty_description": "Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.",
+    "cart_couldnt_process_purchase": "Nákup sa nám nepodarilo spracovať. Skontrolujte informácie o svojej karte a skúste to znova.",
+    "thank_you_for_order": "ďakujeme za Vašu objednávku.",
+    "my_cart": "Môj košík",
+    "review_your_order": "Ohodnoť svoju objednávku",
+    "before_you_leave_cart": "Než odídete, pozrite sa na tieto položky. Vybrali sme ich práve pre vás",
+    "add_shipping_address": "+ Pridať dodaciu adresu",
+    "add_payment_method": "+ Pridať spôsob platby",
+    "subtotal": "Medzisúčet",
+    "taxes": "dane",
+    "calculated_at_checkout": "Vypočítané pri pokladni",
+    "estimated_shipping": "Odhadovaná doprava",
+    "free": "ZADARMO",
+    "total": "Celkom",
+    "continue_shopping": "Pokračovať v nákupe",
+    "proceed_to_checkout": "Pokračujte k pokladni"
+  },
+  "loginview": {
+    "did_you": "Vedeli ste",
+    "forgot_your_password": "zabudol si heslo?",
+    "log_in": "Prihlásiť sa",
+    "sign_up": "Prihlásiť Se",
+    "email": "Email",
+    "password": "heslo",
+    "dont_have_an_account": "Nemáte účet?"
+  },
+  "signupview": {
+    "first_name": "Krstné meno",
+    "last_name": "Priezvisko",
+    "email": "Email",
+    "password": "heslo",
+    "info": "Info",
+    "password_must_be_longer": "Heslá musia byť dlhšie ako 7 znakov a musia obsahovať čísla.",
+    "do_you_have_an_account": "Máte účet?",
+    "sign_up": "Prihlásiť Se",
+    "log_in": "Prihlásiť sa"
+  },
+  "about": {
+    "who_are_we": "Kto sme?",
+    "description_1": "Tatra Hills je značka založená na kvalite, šetrnosti k životnému prostrediu a spoľahlivosti. Vďaka tomu majú turisti pohodlie a športovci víťazstvo. Ceníme si nielen proces, ale aj konečný výsledok. Vážime si dôveru tých, ktorí si nás vyberajú a záleží nám aj na planéte!",
+    "description_2": "Tatra Hills nie je výrobcom športových potrieb. Naša značka spolupracuje s turistami, športovcami, second-handmi. Starostlivo vyberáme tovar, ktorý sa vám dostane do rúk! Hlavnou úlohou spoločnosti je poskytnúť kupujúcemu finančnú dostupnosť kvalitných zariadení pri zachovaní šetrnosti k životnému prostrediu.",
+    "description_3": "Náš príbeh sa začal pred 5 rokmi, keď sme prekročili hranice Slovenska a zostali tu žiť. Ako študenti sme hľadali akékoľvek spôsoby zárobku. Tak sa zrodil start-up Tatra Hills – predaj turistického vybavenia. Vďaka starostlivému prístupu ľudí k oblečeniu chránime prírodu a pomáhame turistom byť v komfortných podmienkach v každom ročnom období.",
+    "abour_vlad": "Ahoj! Volám sa Vlad a som zakladateľom značky Tatry Hills. Mojím zdrojom inšpirácie je už viac ako 15 rokov príroda a to som ja, cez koho prechádza celý produkt, ktorý dostávate.",
+    "abour_daria": "A toto je Daria, spoluzakladateľka Tatra Hills a moja asistentka. Je tiež hlavným motorom všetkých procesov obsahu. Konečný výsledok, ktorý naši klienti dostávajú, je vďaka Darii."
+  },
+  "termsandconditions": {
+    "how_my_order_will_delivered": "Ako bude moja objednávka doručená?",
+    "how_my_order_will_delivered_description_1": "Vaša objednávka bude zabalená a odoslaná z nášho skladu v priebehu niekoľkých pracovných dní, zvyčajne 1-2 dní, ale môže sa to líšiť.",
+    "how_my_order_will_delivered_description_2": "Tovar bude odoslaný s Vami zvolenou možnosťou doručenia Slovenska pošta či Packeta. Dodacie lehoty sa budú líšiť v závislosti od vášho výberu a miesta.",
+    "how_my_order_will_delivered_description_3": "Po odoslaní balíka z nášho skladu dostanete aktualizáciu.",
+    "within_slovakia": "V ramci Slovenska:",
+    "within_slovakia_1": "Slovenska pošta – 3,5€",
+    "within_slovakia_2": "Dobierka – 4,5€",
+    "within_slovakia_3": "Packeta – 3€",
+    "within_slovakia_4": "Dobierka – 3,5€",
+    "to_czech": "Do Česká:",
+    "to_czech_1": "Packeta – 4€",
+    "to_czech_2": "Dobierka – 4,5€",
+    "how_can_you_pay_order": "Ako viete zaplatit za objednavku:",
+    "how_can_you_pay_order_description_1": "Online cez platobnú bránu Global payment a to kartou alebo bankovým prevodom – ZADARMO.",
+    "how_can_you_pay_order_description_2": "Klasickým bankovým prevodom – ZADARMO",
+    "how_can_you_pay_order_description_email": "Pokiaľ mate nejaké otázky k doručeniu či platobným metódam, pokojne sa ozvi na náš e-mail: tatrahills@gmail.com"
+  }
+}

@@ -49,6 +49,7 @@ export type Product = {
 export type SearchProductsBody = {
   search?: string
   categoryId?: string | number
+  categoryIds?: string | number
   brandId?: string | number
   sort?: string
   locale?: string

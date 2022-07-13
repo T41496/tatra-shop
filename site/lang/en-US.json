@@ -1,0 +1,168 @@
+{
+  "banner": {
+    "header": "Tatra Hills",
+    "description": "Save the planet - give clothes a second life",
+    "button": "Catalog"
+  },
+  "navbar": {
+    "catalog": "Catalog",
+    "blog": "Blog",
+    "about_us": "About Us"
+  },
+  "footer": {
+    "text": "Save the planet - give clothes a second life",
+    "catalog": "Catalog",
+    "blog": "Blog",
+    "about_us": "About Us",
+    "contact_us": "Contact Us",
+    "business_terms_and_conditions": "Business terms and conditions",
+    "shipping_and_payment": "Shipping and payment",
+    "privacy_policy": "Privacy policy",
+    "refund_and_Returns": "Refund and Returns",
+    "title": "Tatra Hills",
+    "all_rights_reserved": "All rights reserved."
+  },
+  "category": {
+    "men": "Men",
+    "women": "Women"
+  },
+  "index": {
+    "blog_text": "Want to see the blog in detail?",
+    "blog_link": "Blog",
+    "blog_brand": "Brand",
+    "blog_travel": "Travel",
+    "blog_mountains": "Mountains"
+  },
+  "hero": {
+    "about_us_title": "About Us",
+    "about_us_description": "Tatra Hills is a brand based on quality, environmental friendliness, and reliability. Thank to this, the tourists get comfort, and the athletes get victory. We value not only the process, but the final result as well. We appreciate the trust of those who choose us, and we also care about the planet!",
+    "why_eco_title": "Why Eco",
+    "why_eco_description": "So, why choose Recycled Clothing? In the world of fast fashion, where trends consistently come and go, a whopping 12.8 million tons of discarded clothing end up in Europe landfills every year. Our goal is to reduce clothing production as 70% of products can be reused without losing quality and functionality. Less old clothes in landfills.",
+    "about_us_link": "About Us"
+  },
+  "signup": {
+    "title": "Sign up TATRA HILLS emails",
+    "placeholder": "Enter your email address",
+    "button": "sign me up!"
+  },
+  "search": {
+    "gender": "Gender",
+    "product_category": "Product category",
+    "brand": "Brand",
+    "price": "Price",
+    "category": "Category",
+    "all_categories": "All Categories",
+    "sort": "Sort",
+    "trending": "Trending",
+    "latest_arrivals": "Latest arrivals",
+    "low_to_high": "Low to high",
+    "high_to_low": "High to low",
+    "there_are_no_products_that_match": "There are no products that match",
+    "there_are_no_products_that_match_the_selected_category": "There are no products that match the selected category.",
+    "searching_for": "Searching for",
+    "searching": "Searching...",
+    "showing": "Showing",
+    "results": "results",
+    "for": "for",
+    "men": "Men",
+    "women": "Women",
+    "reset_all": "Reset all"
+  },
+  "searchbar": {
+    "search": "Search"
+  },
+  "similarproducts": {
+    "similar_products": "Similar products",
+    "catalog": "Catalog"
+  },
+  "blogs": {
+    "read_more": "Read more..."
+  },
+  "productview": {
+    "product_image": "Product Image"
+  },
+  "productslider": {
+    "previous_product_image": "Previous Product Image",
+    "next_product_image": "Next Product Image"
+  },
+  "productsidebar": {
+    "add_to_cart": "Add To Cart",
+    "not_available": "Not Available",
+    "delivery_working_days": "Delivery in 3-8 working days."
+  },
+  "productoptions": {
+    "size": "Size",
+    "color": "Color"
+  },
+  "productdescription": {
+    "text": "Product description",
+    "description_1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a dolor, ut lacus erat. Purus diam et risus elementum elementum.",
+    "description_2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a dolor, ut lacus erat. Purus diam et risus elementum elementum.",
+    "description_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas nibh magna quis consequat cum. Etiam egestas eu suscipit egestas. Scelerisque nibh eleifend phasellus eu. Nunc sit sed aliquet egestas vel laoreet massa ultrices. Eget id ipsum sit tincidunt ullamcorper diam purus, eget."
+  },
+  "cart": {
+    "your_cart_is_empty": "Your cart is empty",
+    "your_cart_is_empty_description": "Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.",
+    "cart_couldnt_process_purchase": "We couldn’t process the purchase. Please check your card information and try again.",
+    "thank_you_for_order": "Thank you for your order.",
+    "my_cart": "My Cart",
+    "review_your_order": "Review your Order",
+    "before_you_leave_cart": "Before you leave, take a look at these items. We picked them just for you",
+    "add_shipping_address": "+ Add Shipping Address",
+    "add_payment_method": "+ Add Payment Method",
+    "subtotal": "Subtotal",
+    "taxes": "Taxes",
+    "calculated_at_checkout": "Calculated at checkout",
+    "estimated_shipping": "Estimated Shipping",
+    "free": "FREE",
+    "total": "Total",
+    "continue_shopping": "Continue Shopping",
+    "proceed_to_checkout": "Proceed to Checkout"
+  },
+  "loginview": {
+    "did_you": "Did you",
+    "forgot_your_password": "forgot your password?",
+    "log_in": "Log In",
+    "sign_up": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "dont_have_an_account": "Don't have an account?"
+  },
+  "signupview": {
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "info": "Info",
+    "password_must_be_longer": "Passwords must be longer than 7 chars and include numbers.",
+    "do_you_have_an_account": "Do you have an account?",
+    "sign_up": "Sign Up",
+    "log_in": "Log In"
+  },
+  "about": {
+    "who_are_we": "Who are we?",
+    "description_1": "Tatra Hills is a brand based on quality, environmental friendliness, and reliability. Thank to this, the tourists get comfort, and the athletes get victory. We value not only the process, but the final result as well. We appreciate the trust of those who choose us, and we also care about the planet!",
+    "description_2": "Tatra Hills is not a manufacturer of sports equipment. Our brand cooperates with tourists, sportsmen, second-hands. We carefully select the goods that fall into your hands! The main task of the company is to give financial availability of high-quality equipment to the buyer while maintaining environmental friendliness.",
+    "description_3": "Our story began 5 years ago when we crossed the boarder of Slovakia and stayed here to live. As students, we were looking for any ways to earn money. Thus, the start-up Tatra Hills was born – the resale of tourist equipment. Thanks to the careful attitude of people towards clothes, we preserve nature and help tourist to be in comfortable conditions at any time of the year.",
+    "abour_vlad": "Hi! My name is Vlad, and I am the founder of the Tatra Hills brand. My source of inspiration has been nature for more than 15 years and this is me through whom the whole entire product you receive passes.",
+    "abour_daria": "And this is Daria, the co-founder of Tatra Hills and my assistant. Also, she is the main engine of all content processes. The final result that our clients receive is thanks to Daria."
+  },
+  "termsandconditions": {
+    "how_my_order_will_delivered": "How will my order be delivered?",
+    "how_my_order_will_delivered_description_1": "Your order will be packaged and shipped from our warehouse within a few business days, usually 1-2 days, but this can vary.",
+    "how_my_order_will_delivered_description_2": "The goods will be sent with your chosen delivery option Slovakia Post or Packet. Delivery times will vary depending on your selection and location.",
+    "how_my_order_will_delivered_description_3": "You will receive an update after the package has been shipped from our warehouse.",
+    "within_slovakia": "Within Slovakia:",
+    "within_slovakia_1": "Slovak Post – €3.5",
+    "within_slovakia_2": "Cash on delivery - €4.50",
+    "within_slovakia_3": "Packet - €3",
+    "within_slovakia_4": "Cash on delivery - €3.50",
+    "to_czech": "To Czech:",
+    "to_czech_1": "Packet - €4",
+    "to_czech_2": "Cash on delivery - €4.50",
+    "how_can_you_pay_order": "How can you pay for the order:",
+    "how_can_you_pay_order_description_1": "Online through the payment gateway Global payment by card or bank transfer - FREE.",
+    "how_can_you_pay_order_description_2": "By classic bank transfer - FREE",
+    "how_can_you_pay_order_description_email": "If you have any questions about delivery or payment methods, feel free to contact us by email: tatrahills@gmail.com"
+  }
+}

@@ -6,6 +6,7 @@ import { Logo, Container, Button } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
 import { Menu } from '@components/icons'
 import { useUI } from '@components/ui/context'
+import { useTranslations } from 'next-intl'
 
 interface Link {
   href: string
@@ -25,6 +26,8 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
     openSidebar,
   } = useUI()
 
+  const t = useTranslations('navbar')
+
   return (
     <NavbarRoot>
       <Container clean className="mx-auto max-w-8xl px-6">
@@ -37,13 +40,13 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
             </Link>
             <nav className={s.navMenu}>
               <Link href="/search">
-                <a className={s.link}>Catalog</a>
+                <a className={s.link}>{t('catalog')}</a>
               </Link>
               <Link href="/blogs">
-                <a className={s.link}>Blog</a>
+                <a className={s.link}>{t('blog')}</a>
               </Link>
               <Link href="/about">
-                <a className={s.link}>About Us</a>
+                <a className={s.link}>{t('about_us')}</a>
               </Link>
               {/* {links?.map((l) => (
               <Link href={l.href} key={l.href}>

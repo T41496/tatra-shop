@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 import s from './Banner.module.css'
+import { useTranslations } from 'next-intl'
 
 export const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -17,6 +18,8 @@ export const Banner = () => {
     },
   })
 
+  const t = useTranslations('banner')
+
   return (
     <>
       <style>{`
@@ -29,14 +32,14 @@ export const Banner = () => {
         <div className="bg-[#70877B] flex justify-center h-[inherit] p-6">
           <div className="flex flex-col self-center">
             <h1 className="text-white font-bold text-4xl uppercase">
-              tatra hills
+              {t('header')}
             </h1>
             <p className="text-white text-2xl font-normal max-w-[21rem] mt-2">
-              Save the planet - give clothes a second life
+              {t('description')}
             </p>
             <Link href="/search">
               <a className="uppercase text-[#70877B] bg-[#FFFFFF] mr-auto mt-8 px-11 py-2 text-2xl font-medium">
-                catalog
+                {t('button')}
               </a>
             </Link>
           </div>

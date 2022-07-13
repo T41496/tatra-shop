@@ -3,6 +3,7 @@ import { Logo, Button, Input } from '@components/ui'
 import useLogin from '@framework/auth/use-login'
 import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
+import { useTranslations } from 'next-intl'
 
 const LoginView: React.FC = () => {
   // Form State
@@ -54,6 +55,8 @@ const LoginView: React.FC = () => {
     handleValidation()
   }, [handleValidation])
 
+  const t = useTranslations('loginview')
+
   return (
     <form
       onSubmit={handleLogin}
@@ -65,17 +68,21 @@ const LoginView: React.FC = () => {
       <div className="flex flex-col space-y-3">
         {message && (
           <div className="text-red border border-red p-3">
-            {message}. Did you {` `}
+            {message}. {t('did_you')} {` `}
             <a
               className="text-accent-9 inline font-bold hover:underline cursor-pointer"
               onClick={() => setModalView('FORGOT_VIEW')}
             >
-              forgot your password?
+              {t('forgot_your_password')}
             </a>
           </div>
         )}
-        <Input type="email" placeholder="Email" onChange={setEmail} />
-        <Input type="password" placeholder="Password" onChange={setPassword} />
+        <Input type="email" placeholder={t('email')} onChange={setEmail} />
+        <Input
+          type="password"
+          placeholder={t('password')}
+          onChange={setPassword}
+        />
 
         <Button
           variant="slim"
@@ -83,16 +90,16 @@ const LoginView: React.FC = () => {
           loading={loading}
           disabled={disabled}
         >
-          Log In
+          {t('log_in')}
         </Button>
         <div className="pt-1 text-center text-sm">
-          <span className="text-accent-7">Don't have an account?</span>
+          <span className="text-accent-7">{t('dont_have_an_account')}</span>
           {` `}
           <a
             className="text-accent-9 font-bold hover:underline cursor-pointer"
             onClick={() => setModalView('SIGNUP_VIEW')}
           >
-            Sign Up
+            {t('sign_up')}
           </a>
         </div>
       </div>

@@ -11,18 +11,13 @@ import type { Product } from '@commerce/types/product'
 import { Container, Skeleton } from '@components/ui'
 import { ChevronUp, Plus, Minus } from '@components/icons'
 import { Range, getTrackBackground } from 'react-range'
+import { Cross } from '@components/icons'
 
 import useSearch from '@framework/product/use-search'
 
 import getSlug from '@lib/get-slug'
 import rangeMap from '@lib/range-map'
-
-const SORT = {
-  'trending-desc': 'Trending',
-  'latest-desc': 'Latest arrivals',
-  'price-asc': 'Low to high',
-  'price-desc': 'High to low',
-}
+import { useTranslations } from 'next-intl'
 
 import {
   filterQuery,
@@ -33,6 +28,15 @@ import {
 import { divide } from 'lodash'
 
 export default function Search({ categories, brands }: SearchPropsType) {
+  const t = useTranslations('search')
+
+  const SORT = {
+    'trending-desc': t('trending'),
+    'latest-desc': t('latest_arrivals'),
+    'price-asc': t('low_to_high'),
+    'price-desc': t('high_to_low'),
+  }
+
   const [activeFilter, setActiveFilter] = useState('')
   const [toggleFilter, setToggleFilter] = useState(false)
   const [display, setDisplay] = useState(false)
@@ -40,22 +44,49 @@ export default function Search({ categories, brands }: SearchPropsType) {
 
   const router = useRouter()
   const { asPath, locale } = router
-  const { q, sort, price_min, price_max } = router.query
+  const { q, sort, price_min, price_max, g, c, b } = router.query
   const routeQuery = router.query
   // `q` can be included but because categories and designers can't be searched
   // in the same way of products, it's better to ignore the search input if one
   // of those is selected
-  const query = filterQuery({ sort })
+  const query = filterQuery({ q, sort, price_min, price_max, g, c, b })
+
+  const tagsGender: Any[] = []
+  const slugsGender =
+    typeof g === 'undefined' ? [] : [...new Set(String(g).split(','))]
+  slugsGender.map((item, index) => {
+    tagsGender.push(categories.find((cat: any) => cat.slug === item))
+  })
+
+  const tagsCategory: Any[] = []
+  const slugsCategory =
+    typeof c === 'undefined' ? [] : [...new Set(String(c).split(','))]
+  slugsCategory.map((item, index) => {
+    tagsCategory.push(categories.find((cat: any) => cat.slug === item))
+  })
+
+  const categoryIds: Number[] = []
+  if (tagsGender.length > 0) {
+    tagsGender.map((item, index) => {
+      categoryIds.push(Number(item.id))
+    })
+  }
+  if (tagsCategory.length > 0) {
+    tagsCategory.map((item, index) => {
+      categoryIds.push(Number(item.id))
+    })
+  }
 
   const { pathname, category, brand } = useSearchMeta(asPath)
-  const activeCategory = categories.find((cat: any) => cat.slug === category)
+  const activeGender = categories.find((cat: any) => cat.slug === g)
+  const activeCategory = categories.find((cat: any) => cat.slug === c)
   const activeBrand = brands.find(
-    (b: any) => getSlug(b.node.path) === `brands/${brand}`
+    (_b: any) => getSlug(_b.node.path) === b
   )?.node
 
   const { data } = useSearch({
     search: typeof q === 'string' ? q : '',
-    categoryId: activeCategory?.id,
+    categoryIds: categoryIds.filter((a) => a).join(),
     brandId: (activeBrand as any)?.entityId,
     sort: typeof sort === 'string' ? sort : '',
     locale,
@@ -77,7 +108,13 @@ export default function Search({ categories, brands }: SearchPropsType) {
     setDisplay(false)
   }
 
-  const filterNames = ['Gender', 'Product category', 'Brand', 'Price'] // , 'Size'
+  const filterNames = [
+    t('gender'),
+    t('product_category'),
+    t('brand'),
+    t('price'),
+    t('reset_all'),
+  ] // , 'Size'
   const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
 
   const STEP = 1
@@ -97,7 +134,85 @@ export default function Search({ categories, brands }: SearchPropsType) {
       <div className="bg-[url('/catalog-bg.png')] bg-cover h-60"></div>
       <Container>
         <div className="flex space-between justify-between">
-          <div className="w-[calc(50%-10px)] md:0">
+          <div className="w-[calc(50%-10px)] md:w-[calc(100%-200px)]">
+            <div className="hidden md:block pt-[1.5rem]">
+              {tagsGender.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative"
+                  >
+                    {t(item.slug)}
+                    <button
+                      onClick={(e) => {
+                        tagsGender.splice(index, 1)
+                        let genderIds: String[] = []
+                        tagsGender.map((item, index) => {
+                          genderIds.push(item.slug)
+                        })
+                        router.push(
+                          {
+                            pathname,
+                            query: filterQuery({
+                              q,
+                              g: String(genderIds.toString()),
+                              c,
+                              b,
+                              sort,
+                              price_min,
+                              price_max,
+                            }),
+                          },
+                          '',
+                          { scroll: false }
+                        )
+                      }}
+                      className="hover:text-accent-5 transition ease-in-out duration-150 focus:outline-none cursor-pointer"
+                    >
+                      <Cross className="h-6 w-6 absolute top-2 right-2" />
+                    </button>
+                  </div>
+                )
+              })}
+              {tagsCategory.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative"
+                  >
+                    {item.name}
+                    <button
+                      onClick={(e) => {
+                        tagsCategory.splice(index, 1)
+                        let categoryIds: String[] = []
+                        tagsCategory.map((item, index) => {
+                          categoryIds.push(item.slug)
+                        })
+                        router.push(
+                          {
+                            pathname,
+                            query: filterQuery({
+                              q,
+                              g,
+                              c: String(categoryIds.toString()),
+                              b,
+                              sort,
+                              price_min,
+                              price_max,
+                            }),
+                          },
+                          '',
+                          { scroll: false }
+                        )
+                      }}
+                      className="hover:text-accent-5 transition ease-in-out duration-150 focus:outline-none cursor-pointer"
+                    >
+                      <Cross className="h-6 w-6 absolute top-2 right-2" />
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
             <div className="block md:hidden pt-[1.5rem]">
               <span className="rounded-md shadow-sm">
                 <button
@@ -109,8 +224,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   aria-expanded="true"
                 >
                   {activeCategory?.name
-                    ? `Category: ${activeCategory?.name}`
-                    : 'All Categories'}
+                    ? `${t('category')}: ${activeCategory?.name}`
+                    : t('all_categories')}
                   <svg
                     className="-mr-1 ml-2 h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +242,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
               </span>
             </div>
           </div>
-          <div className="w-[calc(50%-10px)] md:w-full">
+          <div className="w-[calc(50%-10px)] md:w-[200px]">
             <ClickOutside active={display} onClick={() => setDisplay(false)}>
               <div className="pt-[1.5rem] md:pb-[1.5rem]">
                 <div className="flex items-center relative justify-end">
@@ -135,7 +250,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     className="cursor-pointer flex h-[3rem] w-[12rem] items-center p-[1rem] border border-[#C9C9C9]"
                     onClick={() => setDisplay(!display)}
                   >
-                    {sorting ? sorting : 'Sort'}
+                    {sorting ? sorting : t('sort')}
                     <ChevronUp
                       className={cn(
                         'ml-[auto]',
@@ -153,14 +268,19 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 pathname,
                                 query: filterQuery({
                                   q,
+                                  g,
+                                  c,
+                                  b,
                                   sort: key,
+                                  price_min,
+                                  price_max,
                                 }),
                               }}
                             >
                               <a
                                 onClick={(e) => {
-                                  handleClick(e, 'sort'),
-                                    activeSort(e.target as HTMLElement)
+                                  handleClick(e, 'sort')
+                                  activeSort(e.target as HTMLElement)
                                 }}
                                 className={
                                   'h-[3rem] px-[1rem]  items-center flex hover:bg-[#70877B] focus:bg-[#70877B] hover:text-white w-[100%]'
@@ -200,7 +320,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     <ul className="pr-0 md:pr-[4rem]">
                       {filterNames.map((name, index) => {
                         switch (name) {
-                          case 'Product category':
+                          case t('product_category'):
                             return (
                               <li className="accordion" key={index}>
                                 <div
@@ -212,7 +332,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                   }
                                 >
                                   <span className="text-[#161616] font-semibold text-xl">
-                                    Product category
+                                    {t('product_category')}
                                   </span>
                                   {toggleProductCategoryElement ? (
                                     <Minus />
@@ -233,21 +353,41 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                             >
                                               <Link
                                                 href={{
-                                                  pathname: getCategoryPath(
-                                                    cat.path,
-                                                    brand
-                                                  ),
-                                                  query,
+                                                  pathname,
+                                                  query: filterQuery({
+                                                    q,
+                                                    g,
+                                                    c: String(
+                                                      typeof c === 'undefined'
+                                                        ? cat.slug
+                                                        : c + ',' + cat.slug
+                                                    ),
+                                                    b,
+                                                    sort,
+                                                    price_min,
+                                                    price_max,
+                                                  }),
                                                 }}
                                               >
                                                 <a
-                                                  onClick={(e) =>
-                                                    handleClick(e, 'categories')
-                                                  }
+                                                  onClick={(e) => {
+                                                    e.preventDefault()
+                                                    router.push(
+                                                      e.target.getAttribute(
+                                                        'href'
+                                                      ),
+                                                      '',
+                                                      { scroll: false }
+                                                    )
+                                                    // handleClick(e, 'categories')
+                                                    setToggleProductCategoryElement(
+                                                      false
+                                                    )
+                                                  }}
                                                   className={cn(
-                                                    'text-[#161616] font-medium text-base py-[0.25rem] inline-block',
+                                                    'text-[#161616] font-medium leading-6 text-[1rem] py-[0.25rem] inline-block',
                                                     {
-                                                      'text-[#70877B]':
+                                                      'text--[#70877B]':
                                                         activeCategory?.id ===
                                                         cat.id,
                                                     }
@@ -264,7 +404,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 </div>
                               </li>
                             )
-                          case 'Price':
+                          case t('price'):
                             return (
                               <li key={index}>
                                 <div
@@ -377,7 +517,23 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 )}
                               </li>
                             )
-                          case 'Gender':
+                          case t('reset_all'):
+                            return (
+                              <li key={index} className="hidden md:block">
+                                <div className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap">
+                                  <Link
+                                    href={{
+                                      pathname,
+                                    }}
+                                  >
+                                    <a className="underline">
+                                      {t('reset_all')}
+                                    </a>
+                                  </Link>
+                                </div>
+                              </li>
+                            )
+                          case t('gender'):
                             return (
                               <li className="accordion" key={index}>
                                 <div
@@ -404,22 +560,42 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                             >
                                               <Link
                                                 href={{
-                                                  pathname: getCategoryPath(
-                                                    cat.path,
-                                                    brand
-                                                  ),
-                                                  query,
+                                                  pathname,
+                                                  query: filterQuery({
+                                                    q,
+                                                    g: String(
+                                                      typeof g === 'undefined'
+                                                        ? cat.slug
+                                                        : g + ',' + cat.slug
+                                                    ),
+                                                    c,
+                                                    b,
+                                                    sort,
+                                                    price_min,
+                                                    price_max,
+                                                  }),
                                                 }}
                                               >
                                                 <a
-                                                  onClick={(e) =>
-                                                    handleClick(e, 'categories')
-                                                  }
+                                                  onClick={(e) => {
+                                                    e.preventDefault()
+                                                    router.push(
+                                                      e.target.getAttribute(
+                                                        'href'
+                                                      ),
+                                                      '',
+                                                      { scroll: false }
+                                                    )
+                                                    // handleClick(e, 'categories')
+                                                    setToggleGenderElement(
+                                                      false
+                                                    )
+                                                  }}
                                                   className={cn(
-                                                    'text-[#161616] font-medium text-base py-[0.25rem] inline-block',
+                                                    'text-[#161616] font-medium leading-6 text-[1rem] py-[0.25rem] inline-block',
                                                     {
-                                                      'text-[#70877B]':
-                                                        activeCategory?.id ===
+                                                      'text--[#70877B]':
+                                                        activeGender?.id ===
                                                         cat.id,
                                                     }
                                                   )}
@@ -435,7 +611,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 </div>
                               </li>
                             )
-                          case 'Brand':
+                          case t('brand'):
                             return (
                               <li className="accordion" key={index}>
                                 <div
@@ -459,22 +635,40 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                             >
                                               <Link
                                                 href={{
-                                                  pathname: getDesignerPath(
-                                                    node.path,
-                                                    brand
-                                                  ),
-                                                  query,
+                                                  pathname,
+                                                  query: filterQuery({
+                                                    q,
+                                                    g,
+                                                    c,
+                                                    b: node.path.replace(
+                                                      /^\/|\/$/g,
+                                                      ''
+                                                    ),
+                                                    sort,
+                                                    price_min,
+                                                    price_max,
+                                                  }),
                                                 }}
                                               >
                                                 <a
-                                                  onClick={(e) =>
-                                                    handleClick(e, 'brands')
-                                                  }
+                                                  onClick={(e) => {
+                                                    e.preventDefault()
+                                                    router.push(
+                                                      e.target.getAttribute(
+                                                        'href'
+                                                      ),
+                                                      '',
+                                                      { scroll: false }
+                                                    )
+                                                    // handleClick(e, 'brands')
+                                                    setToggleBrandElement(false)
+                                                  }}
                                                   className={cn(
-                                                    'text-[#161616] font-medium text-base py-[0.25rem] inline-block',
+                                                    'text-[#161616] font-medium leading-6 text-[1rem] py-[0.25rem] inline-block',
                                                     {
                                                       'text-[#70877B] ':
-                                                        activeBrand?.id ===
+                                                        (activeBrand as any)
+                                                          ?.entityId ===
                                                         node.entityId,
                                                     }
                                                   )}
@@ -511,7 +705,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                       return (
                                         <div
                                           key={index}
-                                          className="border border-[#C9C9C9] w-[3rem] h-[2.5rem] hover:bg-[#70877B] hover:text-white hover:border-[#70877B] flex items-center justify-center cursor-pointer  font-medium  text-base uppercase"
+                                          className="border border-[#C9C9C9] w-[3rem] h-[2.5rem] hover:bg-[#70877B] hover:text-white hover:border-[#70877B] flex items-center justify-center cursor-pointer  font-medium  leading-6 text-[1rem] uppercase"
                                         >
                                           {item}
                                         </div>
@@ -598,6 +792,84 @@ export default function Search({ categories, brands }: SearchPropsType) {
 
           {/* Products */}
           <div className="col-span-3">
+            <div className="block md:hidden">
+              {tagsGender.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative"
+                  >
+                    {t(item.slug)}
+                    <button
+                      onClick={(e) => {
+                        tagsGender.splice(index, 1)
+                        let genderIds: String[] = []
+                        tagsGender.map((item, index) => {
+                          genderIds.push(item.slug)
+                        })
+                        router.push(
+                          {
+                            pathname,
+                            query: filterQuery({
+                              q,
+                              g: String(genderIds.toString()),
+                              c,
+                              b,
+                              sort,
+                              price_min,
+                              price_max,
+                            }),
+                          },
+                          '',
+                          { scroll: false }
+                        )
+                      }}
+                      className="hover:text-accent-5 transition ease-in-out duration-150 focus:outline-none cursor-pointer"
+                    >
+                      <Cross className="h-6 w-6 absolute top-2 right-2" />
+                    </button>
+                  </div>
+                )
+              })}
+              {tagsCategory.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="border border-[#C9C9C9] font-medium text-[1rem] inline-block p-2 pr-10 mr-2 mb-2 relative"
+                  >
+                    {item.name}
+                    <button
+                      onClick={(e) => {
+                        tagsCategory.splice(index, 1)
+                        let categoryIds: String[] = []
+                        tagsCategory.map((item, index) => {
+                          categoryIds.push(item.slug)
+                        })
+                        router.push(
+                          {
+                            pathname,
+                            query: filterQuery({
+                              q,
+                              g,
+                              c: String(categoryIds.toString()),
+                              b,
+                              sort,
+                              price_min,
+                              price_max,
+                            }),
+                          },
+                          '',
+                          { scroll: false }
+                        )
+                      }}
+                      className="hover:text-accent-5 transition ease-in-out duration-150 focus:outline-none cursor-pointer"
+                    >
+                      <Cross className="h-6 w-6 absolute top-2 right-2" />
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
             {(q || activeCategory || activeBrand) && (
               <div className="mb-12 transition ease-in duration-75">
                 {data ? (
@@ -608,10 +880,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
                         hidden: !data.found,
                       })}
                     >
-                      Showing {data.products.length} results{' '}
+                      {t('showing')} {data.products.length} {t('results')}{' '}
                       {q && (
                         <>
-                          for "<strong>{q}</strong>"
+                          {t('for')} "<strong>{q}</strong>"
                         </>
                       )}
                     </span>
@@ -623,26 +895,37 @@ export default function Search({ categories, brands }: SearchPropsType) {
                     >
                       {q ? (
                         <>
-                          There are no products that match "<strong>{q}</strong>
-                          "
+                          {t('there_are_no_products_that_match')} "
+                          <strong>{q}</strong>"
                         </>
                       ) : (
                         <>
-                          There are no products that match the selected
-                          category.
+                          {t(
+                            'there_are_no_products_that_match_the_selected_category'
+                          )}
                         </>
                       )}
                     </span>
                   </>
                 ) : q ? (
                   <>
-                    Searching for: "<strong>{q}</strong>"
+                    {t('searching_for')}: "<strong>{q}</strong>"
                   </>
                 ) : (
-                  <>Searching...</>
+                  <>{t('searching')}</>
                 )}
               </div>
             )}
+            <div className="block md:hidden pb-[1rem] float-right">
+              <Link
+                href={{
+                  pathname,
+                }}
+              >
+                <a className="underline">{t('reset_all')}</a>
+              </Link>
+            </div>
+            <div className="clear-both"></div>
             {data && data.found == true ? (
               <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
                 {data.products.map((product: Product) => (

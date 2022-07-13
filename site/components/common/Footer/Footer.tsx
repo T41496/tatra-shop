@@ -7,6 +7,7 @@ import getSlug from '@lib/get-slug'
 import { Github } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import s from './Footer.module.css'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   className?: string
@@ -26,6 +27,8 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const rootClassName = cn(s.root, className)
   const currentYear = new Date().getFullYear()
 
+  const t = useTranslations('footer')
+
   return (
     <footer className={rootClassName}>
       <Container>
@@ -35,7 +38,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               <a className="flex flex-initial items-center font-bold md:mr-24 items-end">
                 <Logo className="max-w-[4.5rem]" />
                 <span className="text-white font-normal pl-[2rem]">
-                  Save the planet - give <br /> clothes a second life
+                  {t('text')}
                 </span>
               </a>
             </Link>
@@ -43,23 +46,29 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="flex justify-left md:justify-center mt-5 md:mt-0">
             <ul>
               <li className="pb-1">
-                <Link href="/">
-                  <a className="text-white font-normal text-lg">Catalog</a>
+                <Link href="/search">
+                  <a className="text-white font-normal text-lg">
+                    {t('catalog')}
+                  </a>
+                </Link>
+              </li>
+              <li className="pb-1">
+                <Link href="/blogs">
+                  <a className="text-white font-normal text-lg">{t('blog')}</a>
+                </Link>
+              </li>
+              <li className="pb-1">
+                <Link href="/about">
+                  <a className="text-white font-normal text-lg">
+                    {t('about_us')}
+                  </a>
                 </Link>
               </li>
               <li className="pb-1">
                 <Link href="/">
-                  <a className="text-white font-normal text-lg">Blog</a>
-                </Link>
-              </li>
-              <li className="pb-1">
-                <Link href="/">
-                  <a className="text-white font-normal text-lg">About Us</a>
-                </Link>
-              </li>
-              <li className="pb-1">
-                <Link href="/">
-                  <a className="text-white font-normal text-lg">Contact Us</a>
+                  <a className="text-white font-normal text-lg">
+                    {t('contact_us')}
+                  </a>
                 </Link>
               </li>
             </ul>
@@ -67,33 +76,33 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="flex justify-left md:justify-center">
             <ul>
               <li className="pb-1">
+                <Link href="/terms-and-conditions">
+                  <a className="text-white font-normal text-lg">
+                    {t('business_terms_and_conditions')}
+                  </a>
+                </Link>
+              </li>
+              {/* <li className="pb-1">
                 <Link href="/">
                   <a className="text-white font-normal text-lg">
-                    Business terms and conditions
+                    {t('shipping_and_payment')}
                   </a>
                 </Link>
               </li>
               <li className="pb-1">
                 <Link href="/">
                   <a className="text-white font-normal text-lg">
-                    Shipping and payment
+                    {t('privacy_policy')}
                   </a>
                 </Link>
               </li>
               <li className="pb-1">
                 <Link href="/">
                   <a className="text-white font-normal text-lg">
-                    Privacy policy
+                    {t('refund_and_Returns')}
                   </a>
                 </Link>
-              </li>
-              <li className="pb-1">
-                <Link href="/">
-                  <a className="text-white font-normal text-lg">
-                    Refund and Returns
-                  </a>
-                </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           {/* <div className="col-span-1 lg:col-span-8">
@@ -124,17 +133,25 @@ const Footer: FC<Props> = ({ className, pages }) => {
         </div>
         <div className="w-[100%] h-px bg-[#C9C9C9] mt-[2rem] mb-[1.5rem]"></div>
         <div className="flex items-center justify-center">
-          <a href="#" className="mx-[1rem]">
+          <a
+            href="https://www.instagram.com/tatrahills/"
+            target="_blank"
+            className="mx-[1rem]"
+          >
             <img src="/instagram-icon.svg" alt="instagram" className="w-8" />
           </a>
-          <a href="#" className="mx-[1rem]">
+          <a
+            href="https://www.facebook.com/tatrahills.sk/"
+            target="_blank"
+            className="mx-[1rem]"
+          >
             <img src="/facebook-icon.svg" alt="facebook" className="w-10" />
           </a>
         </div>
         <div className="pt-[1.2rem] pb-[1rem] flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
           <div className="m-auto">
             <span className="font-medium text-white">
-              Tatra Hills &copy; {currentYear} All rights reserved.
+              {t('title')} &copy; {currentYear} {t('all_rights_reserved')}
             </span>
           </div>
           <div className="flex items-center text-primary text-sm"></div>
