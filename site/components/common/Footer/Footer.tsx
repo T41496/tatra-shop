@@ -82,7 +82,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                   </a>
                 </Link>
               </li>
-              <li className="pb-1">
+              {/* <li className="pb-1">
                 <Link href="/">
                   <a className="text-white font-normal text-lg">
                     {t('shipping_and_payment')}
@@ -102,7 +102,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                     {t('refund_and_Returns')}
                   </a>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           {/* <div className="col-span-1 lg:col-span-8">
