@@ -133,10 +133,18 @@ const Footer: FC<Props> = ({ className, pages }) => {
         </div>
         <div className="w-[100%] h-px bg-[#C9C9C9] mt-[2rem] mb-[1.5rem]"></div>
         <div className="flex items-center justify-center">
-          <a href="#" className="mx-[1rem]">
+          <a
+            href="https://www.instagram.com/tatrahills/"
+            target="_blank"
+            className="mx-[1rem]"
+          >
             <img src="/instagram-icon.svg" alt="instagram" className="w-8" />
           </a>
-          <a href="#" className="mx-[1rem]">
+          <a
+            href="https://www.facebook.com/tatrahills.sk/"
+            target="_blank"
+            className="mx-[1rem]"
+          >
             <img src="/facebook-icon.svg" alt="facebook" className="w-10" />
           </a>
         </div>
