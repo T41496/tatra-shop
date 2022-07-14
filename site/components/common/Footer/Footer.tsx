@@ -76,7 +76,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="flex justify-left md:justify-center">
             <ul>
               <li className="pb-1">
-                <Link href="/terms-and-conditions">
+                <Link href="/">
                   <a className="text-white font-normal text-lg">
                     {t('business_terms_and_conditions')}
                   </a>
@@ -133,20 +133,16 @@ const Footer: FC<Props> = ({ className, pages }) => {
         </div>
         <div className="w-[100%] h-px bg-[#C9C9C9] mt-[2rem] mb-[1.5rem]"></div>
         <div className="flex items-center justify-center">
-          <a
-            href="https://www.instagram.com/tatrahills/"
-            target="_blank"
-            className="mx-[1rem]"
-          >
-            <img src="/instagram-icon.svg" alt="instagram" className="w-8" />
-          </a>
-          <a
-            href="https://www.facebook.com/tatrahills.sk/"
-            target="_blank"
-            className="mx-[1rem]"
-          >
-            <img src="/facebook-icon.svg" alt="facebook" className="w-10" />
-          </a>
+          <Link href="https://www.instagram.com/tatrahills/" target="_blank">
+            <a className="mx-[1rem]">
+              <img src="/instagram-icon.svg" alt="instagram" className="w-8" />
+            </a>
+          </Link>
+          <Link href="https://www.facebook.com/tatrahills.sk/" target="_blank">
+            <a className="mx-[1rem]">
+              <img src="/facebook-icon.svg" alt="facebook" className="w-10" />
+            </a>
+          </Link>
         </div>
         <div className="pt-[1.2rem] pb-[1rem] flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm">
           <div className="m-auto">
