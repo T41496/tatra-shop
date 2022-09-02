@@ -146,5 +146,21 @@
     "description_3": "Náš príbeh sa začal pred 5 rokmi, keď sme prekročili hranice Slovenska a zostali tu žiť. Ako študenti sme hľadali akékoľvek spôsoby zárobku. Tak sa zrodil start-up Tatra Hills – predaj turistického vybavenia. Vďaka starostlivému prístupu ľudí k oblečeniu chránime prírodu a pomáhame turistom byť v komfortných podmienkach v každom ročnom období.",
     "abour_vlad": "Ahoj! Volám sa Vlad a som zakladateľom značky Tatry Hills. Mojím zdrojom inšpirácie je už viac ako 15 rokov príroda a to som ja, cez koho prechádza celý produkt, ktorý dostávate.",
     "abour_daria": "A toto je Daria, spoluzakladateľka Tatra Hills a moja asistentka. Je tiež hlavným motorom všetkých procesov obsahu. Konečný výsledok, ktorý naši klienti dostávajú, je vďaka Darii."
+  },
+  "tos": {
+    "title-1": "Slovak title",
+    "description-1": "Slovak Description"
+  },
+  "shipping": {
+    "title-1": "Slovak title",
+    "description-1": "Slovak Description"
+  },
+  "refund": {
+    "title-1": "Slovak title",
+    "description-1": "Slovak Description"
+  },
+  "privacy": {
+    "title-1": "Slovak title",
+    "description-1": "Slovak Description"
   }
 }

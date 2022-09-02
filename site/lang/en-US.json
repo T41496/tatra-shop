@@ -146,5 +146,21 @@
     "description_3": "Our story began 5 years ago when we crossed the boarder of Slovakia and stayed here to live. As students, we were looking for any ways to earn money. Thus, the start-up Tatra Hills was born – the resale of tourist equipment. Thanks to the careful attitude of people towards clothes, we preserve nature and help tourist to be in comfortable conditions at any time of the year.",
     "abour_vlad": "Hi! My name is Vlad, and I am the founder of the Tatra Hills brand. My source of inspiration has been nature for more than 15 years and this is me through whom the whole entire product you receive passes.",
     "abour_daria": "And this is Daria, the co-founder of Tatra Hills and my assistant. Also, she is the main engine of all content processes. The final result that our clients receive is thanks to Daria."
+  },
+  "tos": {
+    "title-1": "English title",
+    "description-1": "English Description"
+  },
+  "shipping": {
+    "title-1": "English title",
+    "description-1": "English Description"
+  },
+  "refund": {
+    "title-1": "English title",
+    "description-1": "English Description"
+  },
+  "privacy": {
+    "title-1": "English title",
+    "description-1": "English Description"
   }
 }

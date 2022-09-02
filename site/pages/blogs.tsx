@@ -69,7 +69,7 @@ Blogs.Layout = Layout
 
 const data = [
   {
-    picture: '/assets/brown-wooden-house-trees-body-water-during-winter 5.png',
+    picture: '/assets/blogs/photo-1.png',
     title: 'Fjallraven',
     subTitle: 'history',
     description: (
@@ -87,7 +87,7 @@ const data = [
     ),
   },
   {
-    picture: '/assets/s.png',
+    picture: '/assets/blogs/photo-2.png',
     title: 'Arteryx',
     subTitle: 'history',
     description: (
@@ -102,7 +102,7 @@ const data = [
     ),
   },
   {
-    picture: '/assets/brown-wooden-house-trees-body-water-during-winter 5.png',
+    picture: '/assets/blogs/photo-3.png',
     title: 'Fjallraven',
     subTitle: 'history',
     description: (
@@ -120,7 +120,7 @@ const data = [
     ),
   },
   {
-    picture: '/assets/s.png',
+    picture: '/assets/blogs/photo-4.png',
     title: 'Arteryx',
     subTitle: 'history',
     description: (
@@ -135,7 +135,7 @@ const data = [
     ),
   },
   {
-    picture: '/assets/brown-wooden-house-trees-body-water-during-winter 5.png',
+    picture: '/assets/blogs/photo-5.png',
     title: 'Fjallraven',
     subTitle: 'history',
     description: (
@@ -153,7 +153,7 @@ const data = [
     ),
   },
   {
-    picture: '/assets/s.png',
+    picture: '/assets/blogs/photo-6.png',
     title: 'Arteryx',
     subTitle: 'history',
     description: (
@@ -168,7 +168,7 @@ const data = [
     ),
   },
   {
-    picture: '/assets/brown-wooden-house-trees-body-water-during-winter 5.png',
+    picture: '/assets/blogs/photo-7.png',
     title: 'Fjallraven',
     subTitle: 'history',
     description: (
@@ -186,40 +186,7 @@ const data = [
     ),
   },
   {
-    picture: '/assets/s.png',
-    title: 'Arteryx',
-    subTitle: 'history',
-    description: (
-      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
-        Originaly named Rock Solid by founder Dave Lane, the company's first
-        line of products was climbing gear. Dave Lane sold his 50% interest to
-        Blair Murdoch and Tim Duholke who became silent partners in 1989.
-        Then-principal Jeremy Guard changed the company name to "Arc'teryx" in
-        1991 to reflect the company's vision of creating disruptive
-        "evolutionary" innovation within the outdoor products industry.
-      </p>
-    ),
-  },
-  {
-    picture: '/assets/brown-wooden-house-trees-body-water-during-winter 5.png',
-    title: 'Fjallraven',
-    subTitle: 'history',
-    description: (
-      <p className="text-xl md:text-[20px] text-[#161616] leading-[40px] md:leading-[40px] font-normal">
-        Fjällräven was born out of one man’s vision: a vision to make nature
-        accessible to more people.
-        <br />
-        Åke Nordin was born in Örnsköldsvik, on Sweden’s High Coast, in 1936.
-        Combining rolling hills, deep forests and sheltered coastline it was the
-        perfect playground for a young, curious Åke. And it was on one of his
-        many adventures that the seed for Fjällräven was planted, deep in Åke’s
-        mind. The idea arose out of necessity: to create a backpack that
-        swallowed up gear, but sat comfortably on his back.
-      </p>
-    ),
-  },
-  {
-    picture: '/assets/s.png',
+    picture: '/assets/blogs/photo-8.png',
     title: 'Arteryx',
     subTitle: 'history',
     description: (

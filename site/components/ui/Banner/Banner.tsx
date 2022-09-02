@@ -65,16 +65,16 @@ export const Banner = () => {
             <div className="keen-slider__slide">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 h-[inherit] p-6 md:p-0">
                 <div
-                  className={`bg-[url('/assets/banner/photo-1.png')] bg-cover`}
-                ></div>
-                <div
-                  className={`bg-[url('/assets/banner/photo-2.png')] bg-cover hidden md:block`}
-                ></div>
-                <div
-                  className={`bg-[url('/assets/banner/photo-3.png')] bg-cover hidden md:block`}
+                  className={`bg-[url('/assets/banner/photo-5.png')] bg-cover`}
                 ></div>
                 <div
                   className={`bg-[url('/assets/banner/photo-4.png')] bg-cover hidden md:block`}
+                ></div>
+                <div
+                  className={`bg-[url('/assets/banner/photo-1.png')] bg-cover hidden md:block`}
+                ></div>
+                <div
+                  className={`bg-[url('/assets/banner/photo-8.png')] bg-cover hidden md:block`}
                 ></div>
               </div>
             </div>

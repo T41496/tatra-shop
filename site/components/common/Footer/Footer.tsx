@@ -76,33 +76,33 @@ const Footer: FC<Props> = ({ className, pages }) => {
           <div className="flex justify-left md:justify-center">
             <ul>
               <li className="pb-1">
-                <Link href="/">
+                <Link href="/tos">
                   <a className="text-white font-normal text-lg">
                     {t('business_terms_and_conditions')}
                   </a>
                 </Link>
               </li>
-              {/* <li className="pb-1">
-                <Link href="/">
+              <li className="pb-1">
+                <Link href="/shipping">
                   <a className="text-white font-normal text-lg">
                     {t('shipping_and_payment')}
                   </a>
                 </Link>
               </li>
               <li className="pb-1">
-                <Link href="/">
+                <Link href="/privacy">
                   <a className="text-white font-normal text-lg">
                     {t('privacy_policy')}
                   </a>
                 </Link>
               </li>
               <li className="pb-1">
-                <Link href="/">
+                <Link href="/refund">
                   <a className="text-white font-normal text-lg">
                     {t('refund_and_Returns')}
                   </a>
                 </Link>
-              </li> */}
+              </li>
             </ul>
           </div>
           {/* <div className="col-span-1 lg:col-span-8">
