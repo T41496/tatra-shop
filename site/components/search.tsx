@@ -113,8 +113,10 @@ export default function Search({ categories, brands }: SearchPropsType) {
     t('product_category'),
     t('brand'),
     t('price'),
+    t('size'),
     t('reset_all'),
   ] // , 'Size'
+
   const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
 
   const STEP = 1
@@ -520,7 +522,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                           case t('reset_all'):
                             return (
                               <li key={index} className="hidden md:block">
-                                <div className="relative border-t border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap">
+                                <div className="relative border-none border-[#C9C9C9] py-[1rem] cursor-pointer flex justify-between flex-wrap">
                                   <Link
                                     href={{
                                       pathname,
