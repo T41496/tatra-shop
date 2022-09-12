@@ -157,8 +157,20 @@
     "description-1": "Slovak Description"
   },
   "refund": {
-    "title-1": "Slovak title",
-    "description-1": "Slovak Description"
+    "title-1": "Vrátenie tovaru",
+    "description-1": "Po skontrolovaní tovaru ktorý ste vrátili, dáme Vám vedieť či bola refundácia schválená alebo nie. V prípade schválenia Vám budú automatický vrátene peniaze na Váš bankový účet. Pamätajte si, že môže to chvíľku trvať, kým Vaša banka spracuje a odošle refundáciu.",
+    "title-2": "Postup pri vrátení dodaného tovaru:",
+    "rules": {
+      "rule-1": "Zákonná lehota na vrátenie dodaného tovaru je 14 dní od dátumu prevzatia tovaru. Ak chcete mať nárok na vrátenie, vaša položka musí byť v rovnakom stave, v akom ste ju dostali.",
+      "rule-2": "Kontaktujte nás aby sme zaslali vám na mail formulár. Vypíšte ho a vložte v balík tatrahills@gmail.com.",
+      "rule-3": "Tovar, ktorý chcete vrátiť, zašlite na adresu: trans logistic servis s.r.o. Osloboditeľov 42. Košice. 04017 buď doporučenou zásielkou alebo balíkom (budete mať potvrdenie o odoslaní zásielky v prípade jej straty) alebo obyčajnou zásielkou. Na mail nám zašlite podacie číslo zásielky, pretože sa stáva, že nám pošta neoznámi, že máme uloženú zásielku na pošte a teda váš vrátený tovar nemôžeme prebrať. Dôležite : Nepreberáme žiadne zásielky posielané na dobierku! Vrátený tovar musí byť označený naším štítkom s číslom tovaru /tak ako bol odoslaný/.",
+      "rule-4": "Po obdržaní tovaru a jeho skontrolovaní vám bude vystavený dobropis na vrátený tovar a zaslaná platba na váš bankový účet do 14 dní."
+    },
+    "decription-3": "V prípade akýchkoľvek otázok nás kontaktujte na mail : tatrahills@gmail.com",
+    "title-3": "Škody a problémy",
+    "description-4": "Skontrolujte si svoju objednávku pri prijatí a okamžite nás kontaktujte, ak je položka poškodená alebo ak dostanete nesprávnu položku, aby sme mohli problém vyhodnotiť a opraviť.",
+    "title-4": "Výmeny",
+    "description-5": "Najrýchlejší spôsob, ako zabezpečiť, aby ste dostali to, čo chcete, je vrátiť položku, ktorú máte, a po prijatí vrátenia uskutočniť samostatný nákup novej položky."
   },
   "privacy": {
     "title-1": "Slovak title",
