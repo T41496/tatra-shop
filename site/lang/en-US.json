@@ -153,8 +153,24 @@
     "description-1": "English Description"
   },
   "shipping": {
-    "title-1": "English title",
-    "description-1": "English Description"
+    "title-1": "How will my order be delivered?",
+    "description-1": "Your order will be packed and shipped from our warehouse within a few business days, usually 1-2 days, but this may vary. The goods will be sent with your chosen delivery option Slovenská pošta or Packeta. Delivery times will vary depending on your choice and location. After sending the package from our warehouse you will receive an update.",
+    "method-title": "Within Slovakia:",
+    "method": {
+      "method-1": "Slovak Post - 4 €",
+      "method-2": "Packet - 4€"
+    },
+    "method-title-1": "To Czech:",
+    "method-1": {
+      "method-1": " Packet - 5 €"
+    },
+    "method-title-2": "To other countries:",
+    "method-2": {
+      "method-1": "Please contact us by email (tatrahills@gmail.com) or at instagram @tatrahills"
+    },
+    "title-2": "How can you pay for the order:",
+    "description-2": "Online via the Stripe gateway by card or bank transfer.",
+    "description-3": "If you have any questions about delivery or payment methods, feel free to contact us at tatrahills@gmail.com."
   },
   "refund": {
     "title-1": "Refunds",

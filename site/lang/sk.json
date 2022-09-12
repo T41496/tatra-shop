@@ -153,8 +153,24 @@
     "description-1": "Slovak Description"
   },
   "shipping": {
-    "title-1": "Slovak title",
-    "description-1": "Slovak Description"
+    "title-1": "Ako bude moja objednávka doručená?",
+    "description-1": "Vaša objednávka bude zabalená a odoslaná z nášho skladu v priebehu niekoľkých pracovných dní, zvyčajne 1-2 dní. Tovar bude odoslaný s Vami zvolenou možnosťou doručenia Slovenska pošta či Packeta. Dodacie lehoty sa budú líšiť v závislosti od vášho výberu a miesta. Po odoslaní balíka z nášho skladu dostanete aktualizáciu.",
+    "method-title": "V ramci Slovenska:",
+    "method": {
+      "method-1": "Slovenska pošta – 4€",
+      "method-2": "Packeta – 4€"
+    },
+    "method-title-1": "Do Česká:",
+    "method-1": {
+      "method-1": "Packeta – 5€"
+    },
+    "method-title-2": "Do innych štatov:",
+    "method-2": {
+      "method-1": "Prosim kontaktujte nas mailom ( tatrahills@gmail.com) alebo na instagram @tatrahills"
+    },
+    "title-2": "Ako viete zaplatit za objednavku:",
+    "description-2": "Online cez platobnú bránu Stripe.",
+    "description-3": "Pokiaľ mate nejaké otázky k doručeniu či platobným metódam, pokojne sa ozvi na náš email tatrahills@gmail.com . "
   },
   "refund": {
     "title-1": "Vrátenie tovaru",
