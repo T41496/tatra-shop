@@ -57,6 +57,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
       <h2 className=" text-[30px] md:text-[1.8rem] mt-[0.5rem] uppercase font-exo2 font-semibold text-[#70877B] mb-8">
         {`${price} `}
       </h2>
+      <div dangerouslySetInnerHTML={{ __html: product.description }} />
       <div className=" mb-[12px] md:mb-[auto]">
         <ProductOptions
           options={product.options}
