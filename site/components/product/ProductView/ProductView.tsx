@@ -14,6 +14,8 @@ import ProductDescription from '../ProductDescription'
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react'
 import { useTranslations } from 'next-intl'
+import ModalImage from 'react-modal-image'
+
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -27,6 +29,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
   })
   const [currentSlide, setCurrentSlide] = useState(0)
   const [loaded, setLoaded] = useState(false)
+  const [fullImage, setFullImage] = useState('')
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
     slideChanged(slider) {
@@ -49,11 +52,10 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
         <div className={cn(s.root, 'fit')}>
           <div className={cn(s.main, 'fit')}>
             <div className={s.sliderContainer}>
-              <ProductSlider key={product.id}>
+              <ProductSlider key={product.id} setFullImage={setFullImage}>
                 {product.images.map((image, i) => (
                   <div key={image.url} className={s.imageContainer}>
                     <img
-                      className={s.img}
                       src={image.url!}
                       alt={image.alt || t('product_image')}
                     />
@@ -148,6 +150,14 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
             </Link>
           </div>
         </section>
+        {fullImage && (
+          <div className={s.fullsizePhoto}>
+            <div
+              style={{ backgroundImage: `url(${fullImage})` }}
+              onClick={() => setFullImage('')}
+            ></div>
+          </div>
+        )}
       </Container>
       <SEO
         title={product.name}

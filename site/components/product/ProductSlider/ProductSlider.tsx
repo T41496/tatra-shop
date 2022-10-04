@@ -6,6 +6,7 @@ import React, {
   useRef,
   useEffect,
 } from 'react'
+
 import cn from 'clsx'
 import { a } from '@react-spring/web'
 import s from './ProductSlider.module.css'
@@ -15,16 +16,19 @@ import { useTranslations } from 'next-intl'
 interface ProductSliderProps {
   children: React.ReactNode[]
   className?: string
+  setFullImage: (src: string) => void
 }
 
 const ProductSlider: React.FC<ProductSliderProps> = ({
   children,
   className = '',
+  setFullImage,
 }) => {
   const t = useTranslations('productslider')
 
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isMounted, setIsMounted] = useState(false)
+
   const sliderContainerRef = useRef<HTMLDivElement>(null)
   const thumbsContainerRef = useRef<HTMLDivElement>(null)
 
@@ -111,8 +115,10 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
           if (isValidElement(child)) {
             return {
               ...child,
+
               props: {
                 ...child.props,
+                onClick: () => setFullImage(child.props.children.props.src),
                 className: `${
                   child.props.className ? `${child.props.className} ` : ''
                 }keen-slider__slide`,
@@ -145,6 +151,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
             })}
         </a.div>
       </div>
+
       <Arrow
         left
         className={cn(s.leftControlMobile)}
@@ -186,3 +193,10 @@ function Arrow(props: any) {
 }
 
 export default ProductSlider
+function dangerouslySetInnerHTML(
+  arg0: string,
+  dangerouslySetInnerHTML: any,
+  arg2: { __html: JSX.Element }
+) {
+  throw new Error('Function not implemented.')
+}
