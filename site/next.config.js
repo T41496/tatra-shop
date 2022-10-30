@@ -12,7 +12,7 @@ module.exports = withCommerceConfig({
   commerce,
   i18n: {
     locales: ['en-US', 'sk'],
-    defaultLocale: 'en-US',
+    defaultLocale: 'sk',
     domains: [
       {
         domain: 'tatrahills.com',
