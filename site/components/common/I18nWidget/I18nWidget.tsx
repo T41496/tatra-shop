@@ -10,7 +10,7 @@ const I18nWidget: FC = () => {
   const {
     locale,
     locales,
-    defaultLocale = 'en-US',
+    defaultLocale = 'en',
     asPath: currentPath,
   } = useRouter()
 
@@ -19,7 +19,7 @@ const I18nWidget: FC = () => {
 
   const checkLang = (lang: string) => {
     switch (lang) {
-      case 'en-US':
+      case 'en':
         return 'EN'
       case 'sk':
         return 'SK'

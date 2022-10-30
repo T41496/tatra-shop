@@ -8,7 +8,7 @@ import { Head } from '@components/common'
 import { ManagedUIContext } from '@components/ui/context'
 import { NextIntlProvider } from 'next-intl'
 import { useRouter } from 'next/router'
-import en from '../lang/en-US.json'
+import en from '../lang/en.json'
 import sk from '../lang/sk.json'
 
 const Noop: FC = ({ children }) => <>{children}</>
@@ -23,7 +23,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const { locale } = router
   const translations = {
-    'en-US': en,
+    en: en,
     sk,
   }
   pageProps.messages = translations[locale]

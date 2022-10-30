@@ -11,14 +11,9 @@ const isVendure = provider === '@vercel/commerce-vendure'
 module.exports = withCommerceConfig({
   commerce,
   i18n: {
-    locales: ['en-US', 'sk'],
+    locales: ['en', 'sk'],
     defaultLocale: 'sk',
-    domains: [
-      {
-        domain: 'tatrahills.com',
-        defaultLocale: 'sk',
-      },
-    ],
+    localeDetection: false,
   },
   rewrites() {
     return [
