@@ -89,17 +89,17 @@
   "productsidebar": {
     "add_to_cart": "Add To Cart",
     "not_available": "Not Available",
-    "delivery_working_days": "Delivery in 3-8 working days."
+    "delivery_working_days": "Delivery in 1-3 working days."
   },
   "productoptions": {
     "size": "Size",
     "color": "Color"
   },
   "productdescription": {
-    "text": "Product description",
-    "description_1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a dolor, ut lacus erat. Purus diam et risus elementum elementum.",
-    "description_2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a dolor, ut lacus erat. Purus diam et risus elementum elementum.",
-    "description_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas nibh magna quis consequat cum. Etiam egestas eu suscipit egestas. Scelerisque nibh eleifend phasellus eu. Nunc sit sed aliquet egestas vel laoreet massa ultrices. Eget id ipsum sit tincidunt ullamcorper diam purus, eget."
+    "text": "How will my order be delivered?",
+    "description_1": "Your order will be packaged and shipped from our warehouse within a few business days, usually 1-2 days. We send from Slovak post or Packet.",
+    "description_2": "To other states: Please contact us by email (tatrahills@gmail.com) or on Instagram @tatrahills Regarding the return or claim of goods, you can find instructions in the 'Complaints and returns' selection.",
+    "description_3": "Best regards, Tatra Hills team."
   },
   "cart": {
     "your_cart_is_empty": "Your cart is empty",

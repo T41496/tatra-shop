@@ -46,7 +46,7 @@
     "button": "Prihlás ma!"
   },
   "search": {
-    "gender": "rod",
+    "gender": "Pohlavie",
     "product_category": "Kategória produktu",
     "brand": "Značka",
     "size": "Veľkosť",
@@ -89,17 +89,17 @@
   "productsidebar": {
     "add_to_cart": "Pridať do košíka",
     "not_available": "Nie je k dispozícií",
-    "delivery_working_days": "Dodanie do 3-8 pracovných dní."
+    "delivery_working_days": "Dodanie do 1-3 pracovných dní."
   },
   "productoptions": {
     "size": "Veľkosť",
     "color": "Farba"
   },
   "productdescription": {
-    "text": "Popis produktu",
-    "description_1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a dolor, ut lacus erat. Purus diam et risus elementum elementum.",
-    "description_2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sodales a dolor, ut lacus erat. Purus diam et risus elementum elementum.",
-    "description_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas nibh magna quis consequat cum. Etiam egestas eu suscipit egestas. Scelerisque nibh eleifend phasellus eu. Nunc sit sed aliquet egestas vel laoreet massa ultrices. Eget id ipsum sit tincidunt ullamcorper diam purus, eget."
+    "text": "Ako bude moja objednávka doručená?",
+    "description_1": "Vaša objednávka bude zabalená a odoslaná z nášho skladu v priebehu niekoľkých pracovných dní, zvyčajne 1-2 dní. Posielame zo Slovenskou poštou alebo Packetou.",
+    "description_2": "Do innych štatov: Prosim kontaktujte nas mailom ( tatrahills@gmail.com) alebo na instagram @tatrahills Čo sa týka vratenia alebo reklamacie tovaru, navod nájdete vo výbere „Reklamácie a vrátenie",
+    "description_3": "S pozdravom tím Tatra Hills."
   },
   "cart": {
     "your_cart_is_empty": "vaša karta je prázdna",
