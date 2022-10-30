@@ -115,8 +115,9 @@ export default function Search({ categories, brands }: SearchPropsType) {
     t('price'),
     t('size'),
     t('reset_all'),
-  ] // , 'Size'
+  ]
 
+  console.log(filterNames)
   const sizes = ['xs', 's', 'm', 'l', 'xl', 'xxl']
 
   const STEP = 1
@@ -687,7 +688,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                                 </div>
                               </li>
                             )
-                          case 'Size':
+                          case t('size'):
                             return (
                               <li key={index}>
                                 <div
