@@ -13,6 +13,12 @@ module.exports = withCommerceConfig({
   i18n: {
     locales: ['en-US', 'sk'],
     defaultLocale: 'en-US',
+    domains: [
+      {
+        domain: 'tatrahills.com',
+        defaultLocale: 'sk',
+      },
+    ],
   },
   rewrites() {
     return [
